@@ -247,6 +247,18 @@ function googleTranslateElementInit() {
 	    	$('nav').show();
 	    };
 	  });
+	  
+	  // next 
+	    // function to generate random int inside a given range
+	    function getRandomInt(min, max) {
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	    }
+	    var video = document.getElementById('background-video');
+	    var sources = video.getElementsByTagName('source');
+	    var videoUrlsMp4=["https://electronero.org/assets/video/electronero_2-20.mp4", "https://electronero.org/assets/video/electronero_3-20.mp4", "https://electronero.org/assets/video/electronero_4-20.mp4", "https://electronero.org/assets/video/electronero_5-20.mp4"];
+	    var random_nr = getRandomInt(0, videoUrlsMp4.length-1);
+	    sources[0].src = videoUrlsMp4[random_nr ];
+	    video.load();
     	});
     </script>
 

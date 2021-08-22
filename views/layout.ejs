@@ -240,12 +240,17 @@ function googleTranslateElementInit() {
     
     <script>
     	window.addEventListener('DOMContentLoaded', (event) => {
-	    $('nav').hide();
-	    $(window).scroll(function(){
-	    var aTop = $('.ad').height();
-	    if($(this).scrollTop()>=aTop){
-	    	$('nav').show();
-	    };
+	  $('nav').hide();
+	  $("#header-2").hide(); // hide the fixed navbar initially
+	  var topofDiv = $(".ad").offset().top; //gets offset of header
+	  var height = $(".ad").outerHeight(); //gets height of header
+	  $(window).scroll(function(){
+	      if($(window).scrollTop() > (topofDiv + height)){
+	         $("nav").show();
+	        }
+	      else{
+	         $("nav").hide();
+	      }
 	  });
 	  
 	  // next 

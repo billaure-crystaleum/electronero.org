@@ -391,7 +391,7 @@ function googleTranslateElementInit() {
     </script>
     
     <script>
-    $(function(){
+    window.addEventListener('DOMContentLoaded', (event) => {
       // vars for clients list carousel
       // http://stackoverflow.com/questions/6759494/jquery-function-definition-in-a-carousel-script
       var $coinscarousel = $('#coins-list');

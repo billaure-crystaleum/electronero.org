@@ -51,18 +51,9 @@ function googleTranslateElementInit() {
                 font-size: 1.2em;
                 font-weight: bold;
             }
-                        /* Three image containers (use 25% for four, and 50% for two, etc) */
-            .columns {
-              float: left;
-              width: 33.33%;
-              padding: 5px;
-            }
-
-            /* Clear floats after image containers */
-            .rows::after {
-              content: "";
-              clear: both;
-              display: table;
+            .t-image {
+                position: relative /* Declared position allows for location changes */
+                top: -2px; /* Moves the image 2px closer to the top of the page */
             }
     </style>
         <!-- Navbar -->
@@ -166,7 +157,7 @@ function googleTranslateElementInit() {
                                 </div>
                                 <div class="col-sm-2 col-md-2 col-lg-2">
                                 </div>                               
-                                <div class="col-sm-8 col-md-4 col-lg-8">
+                                <div class="col-sm-8 col-md-4 col-lg-8 t-image">
                                     <a href='https://crystaleum.org'><img width="70%" height="70%" src="https://crystaleum.org/assets/images/crystaleum-blockchain-cryptocurrency-crypto-altcoin.png" alt="chart"></a>
                                 </div>
                                 <div class="col-sm-2 col-md-2 col-lg-2">

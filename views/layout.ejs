@@ -51,6 +51,19 @@ function googleTranslateElementInit() {
                 font-size: 1.2em;
                 font-weight: bold;
             }
+                        /* Three image containers (use 25% for four, and 50% for two, etc) */
+            .columns {
+              float: left;
+              width: 33.33%;
+              padding: 5px;
+            }
+
+            /* Clear floats after image containers */
+            .rows::after {
+              content: "";
+              clear: both;
+              display: table;
+            }
     </style>
         <!-- Navbar -->
         <div class="navbar navbar-expand-lg is-transparent interchained" id="mainnav" style="color:#fff">
@@ -111,11 +124,11 @@ function googleTranslateElementInit() {
                                 </ul>
                                 <ul class="social">
                                     <li><a target="_blank" href="https://t.me/electronero"><em class="fab fa-telegram"></em></a></li>
-                    <li><a target="_blank" href="https://twitter.com/_electronero"><em class="fab fa-twitter"></em></a></li>
-                    <li><a target="_blank" href="https://instagram.com/electronero"><em class="fab fa-instagram"></em></a></li>
-                    <li><a target="_blank" href="https://github.com/electronero/"><em class="fab fa-github"></em></a></li>
-                    <li><a target="_blank" href="https://www.reddit.com/r/Electronero_official/"><em class="fab fa-reddit"></em></a></li>
-                    <li><a target="_blank" href="https://discord.gg/Msy85Uz"><em class="fab fa-discord"></em></a></li>
+                                    <li><a target="_blank" href="https://twitter.com/_electronero"><em class="fab fa-twitter"></em></a></li>
+                                    <li><a target="_blank" href="https://instagram.com/electronero"><em class="fab fa-instagram"></em></a></li>
+                                    <li><a target="_blank" href="https://github.com/electronero/"><em class="fab fa-github"></em></a></li>
+                                    <li><a target="_blank" href="https://www.reddit.com/r/Electronero_official/"><em class="fab fa-reddit"></em></a></li>
+                                    <li><a target="_blank" href="https://discord.gg/Msy85Uz"><em class="fab fa-discord"></em></a></li>
                                 </ul>
                             </div>
                         </div><!-- .col  -->
@@ -130,7 +143,7 @@ function googleTranslateElementInit() {
                                     </h2>
                                     
                                 </div> <!-- .col -->
-                                <div class="text-center">
+                                <div class="row text-center">
                                 <div class="col-sm-4 col-md-4 col-lg-4">
                                     <a href='https://litenero.org'><img width="50%" height="50%" src="https://litenero.org/images/logo-white2x.png" alt="chart"></a>
                                 </div>

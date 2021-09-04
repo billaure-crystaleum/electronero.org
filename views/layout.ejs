@@ -397,7 +397,7 @@ function googleTranslateElementInit() {
       // coins list carousel
       var $coinscarousel = $('#coins-list');
       var coins = $coinscarousel.children().length;
-      var coinwidth = (coins * 220); // 140px width for each client item 
+      var coinwidth = (coins * 240); // 140px width for each client item 
       $coinscarousel.css('width',coinwidth);
       var rotating = true;
       var coinsspeed = 0;
@@ -413,7 +413,7 @@ function googleTranslateElementInit() {
       function rotateCoins() {
         if(rotating != false) {
           var $first = $('#coins-list li:first');
-          $first.animate({ 'margin-left': '-220px' }, 3000, "linear", function() {
+          $first.animate({ 'margin-left': '-240px' }, 3000, "linear", function() {
             $first.remove().css({ 'margin-left': '0px' });
             $('#coins-list li:last').after($first);
           });

@@ -394,17 +394,14 @@ function googleTranslateElementInit() {
     
     <script>
     window.addEventListener('DOMContentLoaded', (event) => {
-      // vars for clients list carousel
-      // http://stackoverflow.com/questions/6759494/jquery-function-definition-in-a-carousel-script
+      // coins list carousel
       var $coinscarousel = $('#coins-list');
       var coins = $coinscarousel.children().length;
       var coinwidth = (coins * 220); // 140px width for each client item 
       $coinscarousel.css('width',coinwidth);
-
       var rotating = true;
       var coinsspeed = 0;
       var seecoins = setInterval(rotateCoins, coinsspeed);
-
       $(document).on({
         mouseenter: function(){
           rotating = false; // turn off rotation when hovering
@@ -413,7 +410,6 @@ function googleTranslateElementInit() {
           rotating = true;
         }
       }, '#coins');
-
       function rotateCoins() {
         if(rotating != false) {
           var $first = $('#coins-list li:first');

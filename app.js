@@ -12,6 +12,7 @@ var blog = require('./routes/blog');
 var docs = require('./routes/docs'); 
 var legal = require('./routes/legal'); 
 var contact = require('./routes/contact');
+var shop = require('./routes/shop'); 
 // var REQUIREDROOT = require('./path/to/routes/ROUTEjs');
 var hardfork = require('./routes/hardfork'); 
 var app = express();

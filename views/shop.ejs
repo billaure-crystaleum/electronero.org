@@ -379,6 +379,24 @@ var mobTip;
 
 	//default Animation
 	function defaultAnimation(){
+	  snore = new PIXI.extras.AnimatedSprite(snoreTextures);
+	 
+	  snore.animationSpeed = 0.131;
+	  snore.loop = true;
+
+	  snore.position.x = width/2;
+	  snore.position.y = height/2;
+	  snore.anchor.x = 0.5;
+	  snore.anchor.y = 0.5;
+
+	  snore.play();
+	  $("#snore-sound")[0].volume = 1;
+
+	  if($(".relax-off").hasClass("playing")){	
+	  	$("#snore-sound")[0].play();
+		}
+
+	  stage.addChild(snore);
 	  requestAnimationFrame(animate);
 	  defAn = true;
 
@@ -388,75 +406,196 @@ var mobTip;
 
 
 	leftpokeAnimation = function(){//console.log(333)
-		if(defAn){			
+		if(defAn){
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
+
 				thisFunction();
+
 			 	defAn = false;
 			//}
 		}else{
 			thisFunction();
 		}
 		function thisFunction() {
+			$("#snore-sound")[0].pause();
+			$("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				$("#pokeleft")[0].play();
+		  }
+			snore = new PIXI.extras.AnimatedSprite(leftpokeTextures);
+		  snore.animationSpeed = 0.2;
+		
+			snore.loop = false;
+		  snore.play();
+		  stage.addChild(snore);
+
 		  // start animating
+		  requestAnimationFrame(animate);
+			
+			snore.onComplete = function(){
+				snore.destroy();
+				stepsAnimation();
+
+		 	}
+		}
+
 	}
 
 	leftpokeAnimation2 = function(){//console.log(333)
 		if(defAn){
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
+
 				thisFunction();
+
 			 	defAn = false;
 			//}
 		}else{
 			thisFunction();
 		}
-		function thisFunction() {	
-		  // start animating	          
+		function thisFunction() {
+			$("#snore-sound")[0].pause();
+			$("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				$("#pokeleft2")[0].play();
+		  }
+			snore = new PIXI.extras.AnimatedSprite(leftpokeTextures2);
+		  snore.animationSpeed = 0.2;
+		
+			snore.loop = false;
+		  snore.play();
+		  stage.addChild(snore);
+
+		  // start animating
 		  requestAnimationFrame(animate);
+			
+			snore.onComplete = function(){
+				snore.destroy();
+				stepsAnimation();
+
+		 	}
+		}
+
 	}
 
 	rightpokeAnimation = function(){
 		if(defAn){
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
+
 				thisFunction();
+
 			 	defAn = false;
 			//}
 		}else{
 			thisFunction();
 		}
 		function thisFunction() {
+			$("#snore-sound")[0].pause();
+			$("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				$("#pokeright")[0].play();
+		  }
+			snore = new PIXI.extras.AnimatedSprite(rightpokeTextures);
+		  snore.animationSpeed = 0.2;
+		
+			snore.loop = false;
+		  snore.play();
+		  stage.addChild(snore);
+
 		  // start animating
 		  requestAnimationFrame(animate);
 			
+			snore.onComplete = function(){
+				snore.destroy();
+				stepsAnimation();
+
+		 	}
 		}
 	}
 	rightpokeAnimation2 = function(){
 		if(defAn){
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
+
 				thisFunction();
+
 			 	defAn = false;
 			//}
 		}else{
 			thisFunction();
 		}
 		function thisFunction() {
+			$("#snore-sound")[0].pause();
+			$("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				$("#pokeright2")[0].play();
+		  }
+			snore = new PIXI.extras.AnimatedSprite(rightpokeTextures2);
+		  snore.animationSpeed = 0.2;
+		
+			snore.loop = false;
+		  snore.play();
+		  stage.addChild(snore);
+
 		  // start animating
 		  requestAnimationFrame(animate);
+			
+			snore.onComplete = function(){
+				snore.destroy();
+				stepsAnimation();
+
+		 	}
 		}
 	}
 	centerpokeAnimation1 = function(){
 		if(defAn){
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
+
 				thisFunction();
+
 			 	defAn = false;
 			//}
 		}else{
 			thisFunction();
 		}
 		function thisFunction() {
-			
+			$("#snore-sound")[0].pause();
+			$("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				$("#pokecenter1")[0].play();
+		  }
+			snore = new PIXI.extras.AnimatedSprite(centerpokeTextures);
+		  snore.animationSpeed = 0.2;
+		
+			snore.loop = false;
+		  snore.play();
+		  stage.addChild(snore);
+
 		  // start animating
 		  requestAnimationFrame(animate);
+			
+			snore.onComplete = function(){
+				snore.destroy();
+				stepsAnimation();
 
+		 	}
 		}
 	}
 
 	centerpokeAnimation2 = function(){
 		if(defAn){
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
+
 				thisFunction();
 
 			 	defAn = false;
@@ -465,15 +604,35 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			
+			$("#snore-sound")[0].pause();
+			$("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				$("#pokecenter2")[0].play();
+		  }
+
+			snore = new PIXI.extras.AnimatedSprite(centerpokeTextures2);
+		  snore.animationSpeed = 0.2;
+		
+			snore.loop = false;
+		  snore.play();
+		  stage.addChild(snore);
+
 		  // start animating
 		  requestAnimationFrame(animate);
+			
+			snore.onComplete = function(){
+				snore.destroy();
+				stepsAnimation();
 
+		 	}
 		}
 	}
 
 	centerpokeAnimation3 = function(){
 		if(defAn){
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
 
 				thisFunction();
 
@@ -483,31 +642,73 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			
+			$("#snore-sound")[0].pause();
+			$("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				$("#pokecenter2")[0].play();
+		  }
+
+			snore = new PIXI.extras.AnimatedSprite(centerpokeTextures3);
+		  snore.animationSpeed = 0.2;
+		
+			snore.loop = false;
+		  snore.play();
+		  stage.addChild(snore);
 
 		  // start animating
 		  requestAnimationFrame(animate);
+			
+			snore.onComplete = function(){
+				snore.destroy();
+				stepsAnimation();
 
+		 	}
 		}
 	}
 
 	laugh1Animation = function(){
 		if(defAn){
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
+
 				thisFunction();
+
 			 	defAn = false;
 			//}
 		}else{
 			thisFunction();
 		}
 		function thisFunction() {
+			$("#snore-sound")[0].pause();
+			$("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				$("#laugh1")[0].play();
+		  }
+
+			snore = new PIXI.extras.AnimatedSprite(laughTextures1);
+		  snore.animationSpeed = 0.2;
+		
+			snore.loop = false;
+		  snore.play();
+		  stage.addChild(snore);
 
 		  // start animating
 		  requestAnimationFrame(animate);
 			
+			snore.onComplete = function(){
+				snore.destroy();
+				stepsAnimation();
+
+		 	}
 		}
 	}
 	laugh2Animation = function(){
 		if(defAn){
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
+
 				thisFunction();
 
 			 	defAn = false;
@@ -516,15 +717,35 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			
+			$("#snore-sound")[0].pause();
+			$("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				$("#laugh2")[0].play();
+		  }
+
+			snore = new PIXI.extras.AnimatedSprite(laughTextures2);
+		  snore.animationSpeed = 0.2;
+		
+			snore.loop = false;
+		  snore.play();
+		  stage.addChild(snore);
+
 		  // start animating
 		  requestAnimationFrame(animate);
+			
+			snore.onComplete = function(){
+				snore.destroy();
+				stepsAnimation();
 
+		 	}
 		}
 	}
 	laugh3Animation = function(){
 		if(defAn){
-			
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
+
 				thisFunction();
 
 			 	defAn = false;
@@ -533,16 +754,35 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			
+			$("#snore-sound")[0].pause();
+			$("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				$("#laugh3")[0].play();
+		  }
+			snore = new PIXI.extras.AnimatedSprite(laughTextures3);
+		  snore.animationSpeed = 0.2;
+		
+			snore.loop = false;
+		  snore.play();
+		  stage.addChild(snore);
+
 		  // start animating
 		  requestAnimationFrame(animate);
+			
+			snore.onComplete = function(){
+				snore.destroy();
+				stepsAnimation();
 
+		 	}
 		}
 	}
 
 	laugh4Animation = function(){
 		if(defAn){
-		
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
+
 				thisFunction();
 
 			 	defAn = false;
@@ -551,19 +791,37 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
+			$("#snore-sound")[0].pause();
+			$("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				$("#laugh4")[0].play();
+		  }
+
+			snore = new PIXI.extras.AnimatedSprite(laughTextures4);
+		  snore.animationSpeed = 0.2;
 		
+			snore.loop = false;
+		  snore.play();
+		  stage.addChild(snore);
 
 		  // start animating
 		  requestAnimationFrame(animate);
 			
+			snore.onComplete = function(){
+				snore.destroy();
+				stepsAnimation();
 
+		 	}
 		}
 	}
 
 	sunAnimation = function(){
 		if(defAn){
 			//alert(1);
-			
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
+
 				thisFunction();
 
 			 	defAn = false;
@@ -572,7 +830,22 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
+			$("#snore-sound")[0].pause();
+			$("#snore-sound")[0].currentTime = 0;
+
+			snore = new PIXI.extras.AnimatedSprite(sunTextures);
+			if($(".relax-off").hasClass("playing")){
+				$("#sunanimationsound")[0].play();
+		  }
+			
+		  snore.animationSpeed = 0.08;
 		
+			snore.loop = true;
+
+		  snore.play();
+		  
+		  stage.addChild(snore);
+
 		  // start animating
 		  requestAnimationFrame(animate);
 
@@ -584,16 +857,27 @@ var mobTip;
 			setTimeout(function(){
 		  	$("body").addClass("putOnMask");
 		  	if($(".relax-off").hasClass("playing")){
+					$("#move")[0].play();
 			  }
 			},1000);
 
-			
+			snore.onComplete = function(){			
+				snore.destroy();
+
+				stepsAnimation();
+				$("#sunanimationsound")[0].pause();
+				$("#sunanimationsound")[0].currentTime = 0;
+				
+		 	}
 		}
 	}
 
 	mosquitoAnimation = function(){
 		if(defAn){
-			
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
+
 				thisFunction();
 
 			 	defAn = false;
@@ -602,16 +886,32 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			
+			$("#snore-sound")[0].pause();
+			$("#snore-sound")[0].currentTime = 0;
+			snore = new PIXI.extras.AnimatedSprite(mosquitoTextures);
+		  snore.animationSpeed = 0.2;
+		
+			snore.loop = true;
+		  snore.play();
+		  stage.addChild(snore);
+
 		  // start animating
 		  requestAnimationFrame(animate);
+			
+			snore.onComplete = function(){
+				snore.destroy();
+				stepsAnimation();
 
+		 	}
 		}
 	}
 
 	musicAnimation = function(){
 		if(defAn){
-			
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
+
 				thisFunction();
 
 			 	defAn = false;
@@ -620,15 +920,47 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
+			snore = new PIXI.extras.AnimatedSprite(musicTextures);
+		  snore.animationSpeed = 0.2;
+
+			if($(".shake").hasClass("playing")){
+				snore.loop = true;
+				turnMusic = true;
+			}else{
+				snore.loop = false;
+				turnMusic = false;
+			}
+
+			
+			
+		  snore.play();
+		  stage.addChild(snore);
+
+
+
+		 /* setTimeout(function(){
+		  	if(jQuery("body").hasClass("play-shake")){
+					
+					alert(1)
+				}
+
+		  },6000);*/
 
 		  // start animating
 		  requestAnimationFrame(animate);
-		
+			
+			snore.onComplete = function(){
+				snore.destroy();
+				stepsAnimation();
+
+		 	}
 		}
 	}
 	alarmAnimation = function(){
 		if(defAn){
-		
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
 
 				thisFunction();
 
@@ -638,15 +970,28 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			
-		  setTimeout(function(){
+			snore = new PIXI.extras.AnimatedSprite(alarmTextures);
+		  snore.animationSpeed = 0.2;
+		
+			snore.loop = true;
+		  snore.play();
+		  stage.addChild(snore);
 
+		  setTimeout(function(){
+		  	if($("body").hasClass("play-alarm") || jQuery("body").hasClass("default")){
+		  		snore.loop = false;
+		  	}
 		  },2000);
 
 
 		  // start animating
 		  requestAnimationFrame(animate);
 			
+			snore.onComplete = function(){
+				snore.destroy();
+				stepsAnimation();
+
+		 	}
 		}
 	}
 
@@ -949,22 +1294,13 @@ var mobTip;
 											if(startAnimation){
 												startAnimation = false;
 												//alert($(window).height());
-												if($(".relax-off").hasClass("playing")){	
-													$("#time-end")[0].play();
-											  }
+												
 												$("#time-end")[0].pause();
 												if($(".relax-off").hasClass("playing")){	
 													$("#end")[0].play();
 											  }
 												$("#end")[0].pause();
-												if($(".relax-off").hasClass("playing")){	
-													$("#mosquito-slap")[0].play();
-											  }
-												$("#mosquito-slap")[0].pause();
-												if($(".relax-off").hasClass("playing")){	
-													$("#mosquitoanimationsound")[0].play();
-												}
-												$("#mosquitoanimationsound")[0].pause();
+												
 
 												
 												$("body").addClass("load-desktop");
@@ -973,7 +1309,7 @@ var mobTip;
 												//stop
 												circularTimer(1);  
 
-												$(".relax").addClass("playing")
+												// $(".relax").addClass("playing")
 												var audio = $("#relax-sound"),
 
 												play = $('.relax .music-progres'),
@@ -987,17 +1323,7 @@ var mobTip;
 													'stroke-dasharray': totalLength,
 													'stroke-dashoffset': totalLength
 												});
-												if($(".relax-off").hasClass("playing")){	
-													audio[0].play();
-											  }
 
-												audio.on('timeupdate', function() {
-													var currentTime = audio[0].currentTime,
-														maxduration = audio[0].duration,
-														calc = totalLength - ( currentTime / maxduration * totalLength );
-
-													circle.attr('stroke-dashoffset', calc);
-												});
 												playAnimation();
 											}
 										})

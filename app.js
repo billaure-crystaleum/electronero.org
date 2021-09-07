@@ -82,7 +82,7 @@ app.use('/json/:path?/:tracker?/:subpath?/:from?-:to?', function (req, res, next
   req.coins_config = {
     name: req.params.name ? req.params.name : '',
     symbol: req.params.symbol ? req.params.symbol : '',
-    pairs: currency_pairs != [] ? currency_pairs : [from+'-BTC',from+'-LTC',from+'-ETH',from+'-BNB',from+'-BSC',from+'-USDT'],
+    pairs: [from+'-BTC',from+'-LTC',from+'-ETH',from+'-BNB',from+'-BSC',from+'-USDT'],
     base: req.params.base ? req.params.base : '',
     from: from != '' ? from : '',
     to: req.params.to ? req.params.to : '',

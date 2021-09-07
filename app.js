@@ -94,12 +94,13 @@ app.use('/json/:path?/:tracker?/:subpath?/:from?-:to?', function (req, res, next
     base: req.params.base ? req.params.base : '',
     from: from ? from : '',
     to: req.params.to ? req.params.to : '',
-    price: req.params.price ? req.params.price : '',
-    btc_price: req.params.btc_price ? req.params.btc_price : '',
-    eth_price: req.params.eth_price ? req.params.eth_price : '',
-    usdt_price: req.params.usdt_price ? req.params.usdt_price : '',
+    price: req.params.price ? req.params.price : 0,
+    btc_price: req.params.btc_price ? req.params.btc_price : 0,
+    eth_price: req.params.eth_price ? req.params.eth_price : 0,
+    usdt_price: req.params.usdt_price ? req.params.usdt_price : 0,
     ltc_price: req.params.ltc_price ? req.params.ltc_price : '',
     tracker: req.params.tracker ? req.params.tracker : '',
+    oracle: req.params.oracle ? req.params.tracker : req.params.tracker ? req.params.tracker : '',
   };console.log(req.coins_config)  
   next();
 }, json);

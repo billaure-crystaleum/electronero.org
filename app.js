@@ -84,7 +84,7 @@ app.use('/json/:path?/:tracker?/:subpath?/:from?-:to?', function (req, res, next
    for (i=0;i<base_pairs.length;i++){
     let from_to = from.toUpperCase()+"-"+base_pairs[i];
     requested_pairs.push(from_to);
-   }
+  }
    req.coins_config = {
     name: req.params.name ? req.params.name : '',
     symbol: symbol ? symbol : '',
@@ -99,7 +99,7 @@ app.use('/json/:path?/:tracker?/:subpath?/:from?-:to?', function (req, res, next
     ltc_price: req.params.ltc_price ? req.params.ltc_price : '',
     tracker: req.params.tracker ? req.params.tracker : '',
     oracle: req.params.oracle ? req.params.tracker : req.params.tracker ? req.params.tracker : '',
-  };  
+  };console.log(req.coins_config)  
   next();
 }, json);
 

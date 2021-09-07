@@ -1365,7 +1365,7 @@ router.get('/oracle/:tracker/pairs/:from'+"-"+':to', (req, res, next) => {
           serveCryptocurrency(pretty_json_obj)
           console.log(r_unserialized);
       } catch(e) {
-        pretty_json_obj = response.data;
+          pretty_json_obj = response.data;
           console.log(e);
       }
       }).catch((error) => {

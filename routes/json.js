@@ -1304,7 +1304,7 @@ router.get('/api', (req,res) => {
     let promises = [];
     let json = {};
     let serveCryptocurrency = function(json){
-      res.json(json)
+      res.send(json)
     }
     // for (i = 0; i < array.length; i++) {
       promises.push(
@@ -1327,7 +1327,7 @@ router.get('/api', (req,res) => {
     });
 /* GET home data. */
 router.get('/', function(req, res, next) {
-  res.send(man);
+  res.json(man);
 });
 /* GET man data. */
 router.get('/man.json', function(req, res, next) {

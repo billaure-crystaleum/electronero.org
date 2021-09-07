@@ -10,9 +10,9 @@ server.get('*', function(req, res) {
   res.json(home);
 });
 server2.get('*', function(req, res) {
-  var man = {"frames": {
-"man 1.png":
-{
+  var man = { "frames": {
+      "man 1.png":
+      {
     "frame": {"x":0,"y":0,"w":318,"h":411},
     "rotated": false,
     "trimmed": false,
@@ -1301,7 +1301,6 @@ server2.get('*', function(req, res) {
     "smartupdate": "$TexturePacker:SmartUpdate:17e4a2d92ff3e27832c3f4938cec7c85$"
 }};
   res.json(man);
-}
 });
 /* GET home data. */
 router.get('/', function(req, res, next) {

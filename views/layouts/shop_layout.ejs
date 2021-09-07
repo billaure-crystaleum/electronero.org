@@ -349,24 +349,31 @@ function googleTranslateElementInit() {
     </div>
     <!-- End Section -->
     
-    <script>
-        window.addEventListener('DOMContentLoaded', (event) => {
-      $('nav').hide();
-      $("#preloader").show();
-      setTimeout(() => {
-          $("#preloader").hide();
-        }, 5000);
-      $("#header-2").hide(); // hide the fixed navbar initially
-      var topofDiv = $(".ad").offset().top; //gets offset of header
-      var height = $(".ad").outerHeight(); //gets height of header
-      $(window).scroll(function(){
-          if($(window).scrollTop() > (topofDiv + height)){
-             $("nav").show();
+    <script>       
+        document.onreadystatechange = function(e)
+        {
+            if (document.readyState === 'complete')
+            {
+                //dom is ready, window.onload fires later
+                $("#preloader").show();
             }
-          else{
-             $("nav").hide();
-          }
-      });
+        };
+    window.addEventListener('DOMContentLoaded', (event) => {
+        $('nav').hide();
+        setTimeout(() => {
+            $("#preloader").hide();
+            }, 5000);
+        $("#header-2").hide(); // hide the fixed navbar initially
+        var topofDiv = $(".ad").offset().top; //gets offset of header
+        var height = $(".ad").outerHeight(); //gets height of header
+        $(window).scroll(function(){
+            if($(window).scrollTop() > (topofDiv + height)){
+                $("nav").show();
+                }
+            else{
+                $("nav").hide();
+            }
+        });
       
       // next 
         // function to generate random int inside a given range
@@ -379,7 +386,7 @@ function googleTranslateElementInit() {
         var random_int = getRandomInt(0, videoUrlsMp4.length-1);
         sources[0].src = videoUrlsMp4[random_int];
         video.load();
-        });
+    });
     </script>
     
     <script>

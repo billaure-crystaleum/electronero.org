@@ -419,8 +419,8 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			$("#snore-sound")[0].pause();
-			$("#snore-sound")[0].currentTime = 0;
+			// $("#snore-sound")[0].pause();
+			// $("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
 				// $("#pokeleft")[0].play();
 		  }
@@ -457,7 +457,7 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			$("#snore-sound")[0].pause();
+			// $("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
 				$("#pokeleft2")[0].play();
@@ -495,7 +495,7 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			$("#snore-sound")[0].pause();
+			// $("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
 				// $("#pokeright")[0].play();
@@ -531,7 +531,7 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			$("#snore-sound")[0].pause();
+			// $("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
 				// $("#pokeright2")[0].play();
@@ -567,7 +567,7 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			$("#snore-sound")[0].pause();
+			// $("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
 				// $("#pokecenter1")[0].play();
@@ -604,7 +604,7 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			$("#snore-sound")[0].pause();
+			// $("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
 				// $("#pokecenter2")[0].play();
@@ -642,7 +642,7 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			$("#snore-sound")[0].pause();
+			// $("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
 				// $("#pokecenter2")[0].play();
@@ -680,7 +680,7 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			$("#snore-sound")[0].pause();
+			// $("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
 				// $("#laugh1")[0].play();
@@ -717,7 +717,7 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			$("#snore-sound")[0].pause();
+			// $("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
 				// $("#laugh2")[0].play();
@@ -754,7 +754,7 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			$("#snore-sound")[0].pause();
+			// $("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
 				// $("#laugh3")[0].play();
@@ -791,7 +791,7 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			$("#snore-sound")[0].pause();
+			// $("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
 				// $("#laugh4")[0].play();
@@ -830,7 +830,7 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			$("#snore-sound")[0].pause();
+			// $("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 
 			snore = new PIXI.extras.AnimatedSprite(sunTextures);
@@ -865,8 +865,8 @@ var mobTip;
 				snore.destroy();
 
 				stepsAnimation();
-				$("#sunanimationsound")[0].pause();
-				$("#sunanimationsound")[0].currentTime = 0;
+				// $("#sunanimationsound")[0].pause();
+				// $("#sunanimationsound")[0].currentTime = 0;
 				
 		 	}
 		}
@@ -886,8 +886,8 @@ var mobTip;
 			thisFunction();
 		}
 		function thisFunction() {
-			$("#snore-sound")[0].pause();
-			$("#snore-sound")[0].currentTime = 0;
+			// $("#snore-sound")[0].pause();
+			// $("#snore-sound")[0].currentTime = 0;
 			snore = new PIXI.extras.AnimatedSprite(mosquitoTextures);
 		  snore.animationSpeed = 0.2;
 		
@@ -1268,13 +1268,13 @@ var mobTip;
 											  }
 												// $("#time-end")[0].pause();
 												if($(".relax-off").hasClass("playing")){	
-													// $("#end")[0].play();
+													$("#end")[0].play();
 											  }
 												$("#end")[0].pause();
 												if($(".relax-off").hasClass("playing")){	
 													// $("#mosquito-slap")[0].play();
 											  }
-												$("#mosquito-slap")[0].pause();
+												// $("#mosquito-slap")[0].pause();
 												if($(".relax-off").hasClass("playing")){	
 													// $("#mosquitoanimationsound")[0].play();
 												}
@@ -1554,8 +1554,8 @@ var mobTip;
 			    		$(".folder-inner").removeClass("blocked");
 			    		$("body").addClass("closeOnMask");
 			    		
-			    		$("#curtains")[0].pause();
-			    		$("#curtains")[0].currentTime = 0;
+			    		// $("#curtains")[0].pause();
+			    		// $("#curtains")[0].currentTime = 0;
 			    		setTimeout(function(){
 			    			$("body").removeClass("closeOnMask");
 			    			$("body").removeClass("putOnMask");
@@ -1635,7 +1635,7 @@ var mobTip;
 
 		  			setTimeout(function(){
 		  				$("body").addClass("slapp");
-		  				$("#mosquito-sound")[0].pause();
+		  				// $("#mosquito-sound")[0].pause();
 		  				$("#mosquito").addClass("mosquito-stop");
 		  				if($(".relax-off").hasClass("playing")){
 		  					// $("#mosquito-slap")[0].play();
@@ -1651,7 +1651,7 @@ var mobTip;
 								snore.destroy();
 	  						stepsAnimation();
 	  						
-	  						$("#mosquitoanimationsound")[0].pause();
+	  						// $("#mosquitoanimationsound")[0].pause();
 
 			  				$("body").removeClass("slapp");
 			  				setTimeout(function(){
@@ -1863,14 +1863,14 @@ var mobTip;
 	    	  });
 		    } else if($(this).hasClass("alarm")){
 		    	$("body").removeClass("play-shake closeMusic");
-		    	$("#shake-sound")[0].pause();
-					$("#shake-sound")[0].currentTime = 0;
+		    	// $("#shake-sound")[0].pause();
+					// $("#shake-sound")[0].currentTime = 0;
 
 					snore.loop = false;
 		    	
 		    	$(this).addClass("progres-in");
-		    	$("#snore-sound")[0].pause();
-					$("#snore-sound")[0].currentTime = 0;
+		    	// $("#snore-sound")[0].pause();
+					// $("#snore-sound")[0].currentTime = 0;
 
 		    	//$("#click")[0].play();
 		    	if($(".relax-off").hasClass("playing")){
@@ -1898,8 +1898,8 @@ var mobTip;
 						},500);*/
 
 						setTimeout(function(){
-							$("#alarm-sound")[0].pause();
-							$("#alarm-sound")[0].currentTime = 0;
+							// $("#alarm-sound")[0].pause();
+							// $("#alarm-sound")[0].currentTime = 0;
 
 							if($(".relax-off").hasClass("playing")){	
 								// $("#relax-sound")[0].play();
@@ -1954,8 +1954,8 @@ var mobTip;
 
 								setTimeout(function(){
 
-									$("#snore-sound")[0].pause();
-									$("#snore-sound")[0].currentTime = 0;
+									// $("#snore-sound")[0].pause();
+									// $("#snore-sound")[0].currentTime = 0;
 					    		addSteps("musicAnimation");
 					    	},1000);
 
@@ -1971,8 +1971,8 @@ var mobTip;
 				
 										setTimeout(function(){
 
-											audio[0].pause();
-											audio[0].currentTime = 0;
+											// audio[0].pause();
+											// audio[0].currentTime = 0;
 
 											$(".icon").removeClass("playing");
 											
@@ -1995,8 +1995,8 @@ var mobTip;
 						}else{
 							snore.loop = false;
 							$(".shake").removeClass("playing");
-							audio[0].pause();
-							audio[0].currentTime = 0;
+							// audio[0].pause();
+							// audio[0].currentTime = 0;
 							if($(".relax-off").hasClass("playing")){
 								// $("#snore-sound")[0].play();
 						  }
@@ -2024,7 +2024,7 @@ var mobTip;
 
 		    	if(!$(this).hasClass("playing")){
 		    		$(".shake").removeClass("playing");
-		    		$("#shake-sound")[0].pause();
+		    		// $("#shake-sound")[0].pause();
 		    		$(this).addClass("playing");
 		    		$(".stop-sounds").addClass("playing");
 		    		
@@ -2036,7 +2036,7 @@ var mobTip;
 		    	}else{
 		    		$(this).removeClass("playing");
 		    		$(".stop-sounds").removeClass("playing");
-		    		$("#relax-sound")[0].pause();
+		    		// $("#relax-sound")[0].pause();
 
 		    	}			    
 		    }
@@ -2187,7 +2187,7 @@ var mobTip;
     			
 
 						$(".audio").each(function(){
-							$(this)[0].pause();
+							// $(this)[0].pause();
 						});	
 
 						if($(".relax-off").hasClass("playing")){

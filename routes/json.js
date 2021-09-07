@@ -1300,36 +1300,82 @@ var man = { "frames": {
 const circularJSON = require('circular-json');
 // get another API, then serve it's response. cool stuff
 router.get('/api', (req,res) => {
-    //const array = [{ id: 'asdf'}, { id: 'foo' }, { id: 'bar' }]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
-    let data_got = [];
-    let promises = [];
-    let json = {};
-    let serveCryptocurrency = function(json){
-      res.json(json);
-    }
-    // for (i = 0; i < array.length; i++) {}
-    let getCryptocurrency = function(json){
-      axios.get('https://electronero.org/json/man.json').then((response) => {
-          try {
-            data_got.push(response.data);
-            let resp = response.data;
-            var serialized = circularJSON.stringify(resp);
-            var unserialized = circularJSON.parse(serialized);
-            json = unserialized;
-            serveCryptocurrency(json)
-            console.log(unserialized);
-        } catch(e) {
-            json = response.data;
-            console.log(e);
-        }
-        }).catch((error) => {
-          console.log(error);
-        });
-    };
-    promises.push(getCryptocurrency(json));    
-    Promise.all(promises).then(() => console.log(json))
-        console.log('after service calls');
+  //const array = [{ id: 'asdf'}, { id: 'foo' }, { id: 'bar' }]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
+  let data_got = [];
+  let promises = [];
+  let json = {};
+  let serveCryptocurrency = function(json){
+    res.json(json);
+  }
+  // for (i = 0; i < array.length; i++) {}
+  let getCryptocurrency = function(json){
+    axios.get('https://electronero.org/json/man.json').then((response) => {
+        try {
+          data_got.push(response.data);
+          let resp = response.data;
+          var serialized = circularJSON.stringify(resp);
+          var unserialized = circularJSON.parse(serialized);
+          json = unserialized;
+          serveCryptocurrency(json)
+          console.log(unserialized);
+      } catch(e) {
+          json = response.data;
+          console.log(e);
+      }
+      }).catch((error) => {
+        console.log(error);
+      });
+  };
+  promises.push(getCryptocurrency(json));    
+  Promise.all(promises).then(() => console.log(json))
+      console.log('after service calls');
 });
+
+// get another API, then serve it's response. cool stuff
+router.get('/api/coingecko:', (req,res) => {
+  //const array = [{ id: 'asdf'}, { id: 'foo' }, { id: 'bar' }]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
+  let data_got = [];
+  let promises = [];
+  let json = {};
+  var request_mini_app = req.coin_config;
+  var request_mini_apps = req.coins_config;
+  console.log("request_mini_app: ");
+  console.log("\n");
+  console.log(request_mini_app);
+  console.log("request_mini_apps: ");
+  console.log("\n");
+  console.log(request_mini_apps);
+  console.log("req.params: ");
+  console.log("\n");
+  console.log(req.params);
+  res.send(animal.name + ' says ' + animal.says);
+  let serveCryptocurrency = function(json){
+    res.json(json);
+  }
+  // for (i = 0; i < array.length; i++) {}
+  let getCryptocurrency = function(json){
+    axios.get('https://api.coingecko.com/api/v3/simple/price?ids=crystaleum&vs_currencies=btc%2Cusd%2Ceth%2Cltc').then((response) => {
+        try {
+          data_got.push(response.data);
+          let resp = response.data;
+          var serialized = circularJSON.stringify(resp);
+          var unserialized = circularJSON.parse(serialized);
+          json = unserialized;
+          serveCryptocurrency(json)
+          console.log(unserialized);
+      } catch(e) {
+          json = response.data;
+          console.log(e);
+      }
+      }).catch((error) => {
+        console.log(error);
+      });
+  };
+  promises.push(getCryptocurrency(json));    
+  Promise.all(promises).then(() => console.log(json))
+      console.log('after service calls');
+});
+var market_data = {};
 /* GET home data. */
 router.get('/', function(req, res, next) {
   res.json(man);
@@ -1337,7 +1383,10 @@ router.get('/', function(req, res, next) {
 /* GET man data. */
 router.get('/man.json', function(req, res, next) {
   res.json(man);
-
+});
+/* GET market data. */
+router.get('/market.json', function(req, res, next) {
+  res.json(market_data);
 });
 
 module.exports = router;

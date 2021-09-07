@@ -37,7 +37,7 @@ app.use('/public', serveIndex('public')); // shows you the public folder file li
 app.use('/public', express.static('public')); // serve the files inside public ...when you get /public
 
 app.use('/', index); 
-app.use('/json', json); 
+// app.use('/json', json); 
 app.use('/shop', shop); // add shop route
 app.use('/blog', blog); // add blog route
 app.use('/doc', docs); // add doc route 
@@ -50,6 +50,20 @@ app.use('/privacy', legal); // add privacy route
 // app.use('/routeIwantToVisit', REQUIREDROUTE); // something useful...
 app.use('/hardfork', hardfork); // add hardfork route 
 app.use('/', contact);
+
+
+app.use('/json', function (req, res, next) {
+  req.coin_config = {
+    name: 'Electronero',
+    symbol: 'ETNX',
+    pairs: ['BTC','LTC','ETH','BNB','BSC','USDT'],
+    price: 0,
+    base: 'USDT',
+  };
+  req.coins_config = {};
+  next();
+}, json);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

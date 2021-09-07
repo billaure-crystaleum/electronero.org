@@ -488,7 +488,7 @@ body.bg-feather,
 	width: 65px;
 	height: 27px;
 	position: absolute;
-	top: 10px;
+	top: -10px;
 	left: 13px;
 
 }

@@ -1306,9 +1306,9 @@ router.get('/api', (req,res) => {
     let serveCryptocurrency = function(json){
       res.json(json);
     }
-    // for (i = 0; i < array.length; i++) {
-      promises.push(
-        axios.get('https://electronero.org/json/man.json').then((response) => {
+    // for (i = 0; i < array.length; i++) {}
+    let getCryptocurrency = function(json){
+      axios.get('https://electronero.org/json/man.json').then((response) => {
           try {
             data_got.push(response.data);
             let resp = response.data;
@@ -1325,9 +1325,10 @@ router.get('/api', (req,res) => {
         }).catch((error) => {
           console.log(error);
         });
-      );
-    // }
-    Promise.all(promises).then(() => serveCryptocurrency(json));
+    };
+    promises.push(getCryptocurrency(json));
+    
+    Promise.all(promises).then(() => serveCryptocurrency(json))
         console.log('after service calls');
     });
 /* GET home data. */

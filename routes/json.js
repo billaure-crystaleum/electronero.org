@@ -1297,12 +1297,9 @@ var man = { "frames": {
 }};
 
 router.get('/api', (req,res) => {
-    async function getJSONAsync(){
-	  let json = await axios.get('https://electronero.org/json/man.json');
+	  let json = axios.get('https://electronero.org/json/man.json');
 	  console.log('after the call to service');
     res.json(json);
-	}  
-  getJSONAsync();
 });
 /* GET home data. */
 router.get('/', function(req, res, next) {

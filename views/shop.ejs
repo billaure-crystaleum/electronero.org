@@ -1497,28 +1497,6 @@ var mobTip;
 												$(".relax").addClass("playing")
 												var audio = $("#relax-sound");
 
-												// play = $('.relax .music-progres'),
-												// circle = $('.relax').find('#circle'),
-												// getCircle = circle.get(0),
-												// totalLength = getCircle.getTotalLength();
-												
-												// audio[0].volume = 0.5; 
-
-												circle.attr({
-													'stroke-dasharray': totalLength,
-													'stroke-dashoffset': totalLength
-												});
-												if($(".relax-off").hasClass("playing")){	
-													// audio[0].play();
-											  }
-
-												audio.on('timeupdate', function() {
-													var currentTime = audio[0].currentTime,
-														maxduration = audio[0].duration,
-														calc = totalLength - ( currentTime / maxduration * totalLength );
-
-													circle.attr('stroke-dashoffset', calc);
-												});
 												playAnimation();
 											}
 										})
@@ -2133,25 +2111,6 @@ var mobTip;
 
 			    	// $("#relax-sound")[0].pause();
 
-			    	var audio = $("#shake-sound")
-					// 	play = $('.shake .music-progres'),
-					// 	circle = $('.shake').find('#circle'),
-					// 	getCircle = circle.get(0),
-					// 	totalLength = getCircle.getTotalLength();
-
-						circle.attr({
-							'stroke-dasharray': totalLength,
-							'stroke-dashoffset': totalLength
-						});
-
-						audio.on('timeupdate', function() {
-							var currentTime = audio[0].currentTime,
-								maxduration = audio[0].duration,
-								calc = totalLength - ( currentTime / maxduration * totalLength );
-
-							circle.attr('stroke-dashoffset', calc);
-						});
-
 						if(!$(".shake").hasClass("playing")){	
 							$(".shake").addClass("playing");
 
@@ -2325,30 +2284,6 @@ var mobTip;
 
 
 						$(".relax").addClass("playing")
-						// var audio = $("#relax-sound"),
-
-						// play = $('.relax .music-progres'),
-						// circle = $('.relax').find('#circle'),
-						// getCircle = circle.get(0),
-						// totalLength = getCircle.getTotalLength();
-						
-						audio[0].volume = 0.5; 
-
-						circle.attr({
-							'stroke-dasharray': totalLength,
-							'stroke-dashoffset': totalLength
-						});
-						if($(".relax-off").hasClass("playing")){		
-							// audio[0].play();
-					  }
-
-						audio.on('timeupdate', function() {
-							var currentTime = audio[0].currentTime,
-								maxduration = audio[0].duration,
-								calc = totalLength - ( currentTime / maxduration * totalLength );
-
-							circle.attr('stroke-dashoffset', calc);
-						});
 						playAnimation();
 					}	
 

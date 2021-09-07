@@ -63,7 +63,7 @@ app.use('/json', function (req, res, next) {
     usdt_price: 0,
     ltc_price: 0,
     tracker: '',
-    trackers: { coingecko: "", coinmarketcap: ""},
+    trackers: { coingecko: res.params.tracker ? res.params.tracker : '', coinmarketcap: res.params.tracker ? res.params.tracker : ''},
     from: 'ETNX',
     to: 'USDT',
     base: 'USDT',

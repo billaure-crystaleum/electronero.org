@@ -1295,9 +1295,9 @@ var mobTip;
 												startAnimation = false;
 												//alert($(window).height());
 												if($(".relax-off").hasClass("playing")){	
-													$("#time-end")[0].play();
+													// $("#time-end")[0].play();
 											  }
-												$("#time-end")[0].pause();
+												// $("#time-end")[0].pause();
 												if($(".relax-off").hasClass("playing")){	
 													$("#end")[0].play();
 											  }
@@ -1525,7 +1525,7 @@ var mobTip;
 					// $("#relax-sound")[0].play();
 					// $("#snore-sound")[0].play();
 					if($(".timer").val() <= 10){
-						$("#time-end")[0].play();
+						// $("#time-end")[0].play();
 					}
 				}
 				
@@ -2203,7 +2203,7 @@ var mobTip;
 	    	if($(".second").val() == 9 ){
 	    		$("#relax-sound")[0].pause();
 	    		if($(".relax-off").hasClass("playing")){
-	    		  $("#time-end")[0].play();
+	    		//   $("#time-end")[0].play();ff
 	    	  }
 	    	}
 
@@ -2214,7 +2214,7 @@ var mobTip;
     					playAnimationMan();
     				
 
-    				$("#time-end")[0].pause();
+    				// $("#time-end")[0].pause();
     			
 
 						$(".audio").each(function(){

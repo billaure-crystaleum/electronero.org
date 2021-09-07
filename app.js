@@ -52,7 +52,7 @@ app.use('/hardfork', hardfork); // add hardfork route
 app.use('/', contact);
 
 
-app.use('/json', function (req, res, next) {
+app.use('/json:', function (req, res, next) {
   console.log("req.params")
   console.log(req)
   req.coin_config = {

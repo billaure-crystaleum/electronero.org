@@ -50,17 +50,17 @@ app.use('/privacy', legal); // add privacy route
 // app.use('/routeIwantToVisit', REQUIREDROUTE); // something useful...
 app.use('/hardfork', hardfork); // add hardfork route 
 app.use('/', contact);
-
+// json API route
 // basically you can use the query operator and the parameters are optional 
 // https://stackoverflow.com/questions/41736413/multiple-optional-route-parameters-in-express
 // /articles/:year?/:month?/:day?
 app.use('/json/:oracle?/:tracker?/:base?/:pairs?', function (req, res, next) {
   console.log("client_passport")
-  var client_passport = { 
-    oracle: req.params.oracle ? req.params.oracle : 'oracle',
-    tracker:  req.params.tracker ? req.params.tracker : 'coingecko',
-    base:  req.params.base ? req.params.base : 'pairs',
-    pairs:  req.params.pairs ? req.params.pairs : 'btc-usdt,ltc,eth' 
+  req.client_passport = { 
+    oracle: req.params.oracle ? req.params.oracle : '',
+    tracker:  req.params.tracker ? req.params.tracker : '',
+    base:  req.params.base ? req.params.base : '',
+    pairs:  req.params.pairs ? req.params.pairs : '' 
   }; console.log(client_passport);
   
   req.coin_config = {

@@ -471,91 +471,87 @@ var mobTip;
 	//Texture frames
 	function playAnimation(){
 		//snoring
-	  for (i = 0; i < 28; i++){
-	    snore = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
-	    snoreTextures.push(snore);
-	  }
-	  //left poke
-	  for (i = 28; i < 33; i++){
-	    leftpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
-	    leftpokeTextures.push(leftpoke);
-	  }
-	  //right poke
-	  for (i = 33; i < 38; i++){
-	    rightpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
-	    rightpokeTextures.push(rightpoke);
-	  }
-	  //center poke
-	  for (i = 38; i < 43; i++){
-	    centerpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
-	    centerpokeTextures.push(centerpoke);
-	  }
-	  //left poke 2
-	  for (i = 43; i < 48; i++){
-	    leftpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
-	    leftpokeTextures2.push(leftpoke);
-	  }
-	  //right poke
-	  for (i = 48; i < 53; i++){
-	    rightpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
-	    rightpokeTextures2.push(rightpoke);
-	  }
-	  //center poke 2
-	  for (i = 53; i < 58; i++){
-	    centerpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
-	    centerpokeTextures2.push(centerpoke);
-	  }  
-	  //center poke 3
-	  for (i = 58; i < 63; i++){
-	    centerpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
-	    centerpokeTextures3.push(centerpoke);
-	  }    
-	  //laugh 1
-	  for (i = 63; i < 70; i++){
-	    laughpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
-	    laughTextures1.push(laughpoke);
-	  }
-	  //laugh 2
-	  for (i = 70; i < 77; i++){
-	    laughpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
-	    laughTextures2.push(laughpoke);
-	  }
-	  //laugh 3
-	  for (i = 77; i < 84; i++){
-	    laughpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
-	    laughTextures3.push(laughpoke);
-	  }
-	  //laugh 4
-	  for (i = 84; i < 91; i++){
-	    laughpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
-	    laughTextures4.push(laughpoke);
-	  }
+	//   for (i = 0; i < 28; i++){
+	//     snore = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     snoreTextures.push(snore);
+	//   }
+	//   //left poke
+	//   for (i = 28; i < 33; i++){
+	//     leftpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     leftpokeTextures.push(leftpoke);
+	//   }
+	//   //right poke
+	//   for (i = 33; i < 38; i++){
+	//     rightpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     rightpokeTextures.push(rightpoke);
+	//   }
+	//   //center poke
+	//   for (i = 38; i < 43; i++){
+	//     centerpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     centerpokeTextures.push(centerpoke);
+	//   }
+	//   //left poke 2
+	//   for (i = 43; i < 48; i++){
+	//     leftpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     leftpokeTextures2.push(leftpoke);
+	//   }
+	//   //right poke
+	//   for (i = 48; i < 53; i++){
+	//     rightpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     rightpokeTextures2.push(rightpoke);
+	//   }
+	//   //center poke 2
+	//   for (i = 53; i < 58; i++){
+	//     centerpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     centerpokeTextures2.push(centerpoke);
+	//   }  
+	//   //center poke 3
+	//   for (i = 58; i < 63; i++){
+	//     centerpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     centerpokeTextures3.push(centerpoke);
+	//   }    
+	//   //laugh 1
+	//   for (i = 63; i < 70; i++){
+	//     laughpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     laughTextures1.push(laughpoke);
+	//   }
+	//   //laugh 2
+	//   for (i = 70; i < 77; i++){
+	//     laughpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     laughTextures2.push(laughpoke);
+	//   }
+	//   //laugh 3
+	//   for (i = 77; i < 84; i++){
+	//     laughpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     laughTextures3.push(laughpoke);
+	//   }
+	//   //laugh 4
+	//   for (i = 84; i < 91; i++){
+	//     laughpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     laughTextures4.push(laughpoke);
+	//   }
 
-	  //sun
-	  for (i = 91; i < 96; i++){
-	    sun = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
-	    sunTextures.push(sun);
-	  }
-	  //mosquito
-	  for (i = 96; i < 100; i++){
-	    sun = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
-	    mosquitoTextures.push(sun);
-	  }
-	  //music
-	  for (i = 100; i < 104; i++){
-	    sun = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
-	    musicTextures.push(sun);
-	  }
+	//   //sun
+	//   for (i = 91; i < 96; i++){
+	//     sun = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     sunTextures.push(sun);
+	//   }
+	//   //mosquito
+	//   for (i = 96; i < 100; i++){
+	//     sun = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     mosquitoTextures.push(sun);
+	//   }
+	//   //music
+	//   for (i = 100; i < 104; i++){
+	//     sun = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     musicTextures.push(sun);
+	//   }
 
-	  //alarm
-	  for (i = 104; i < 110; i++){
-	    sun = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
-	    alarmTextures.push(sun);
-	  }
-
-
-
-
+	//   //alarm
+	//   for (i = 104; i < 110; i++){
+	//     sun = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     alarmTextures.push(sun);
+	//   }
 
 		defaultAnimation();
 	}

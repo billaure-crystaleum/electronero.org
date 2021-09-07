@@ -1143,8 +1143,8 @@ var mobTip;
 			);
 
 			if($(".relax-off").hasClass("playing")){	
-				$("#relax-sound")[0].play();
-				$("#snore-sound")[0].play();
+				// $("#relax-sound")[0].play();
+				// $("#snore-sound")[0].play();
 				
 		  }
 			
@@ -1255,38 +1255,7 @@ var mobTip;
 								$("body").addClass("load-click");
 								setTimeout(function(){
 									if($("body").hasClass("hover")){
-										//stop
-										/*circularTimer(1); 
-
-										$("body").addClass("load-desktop");
-										$(".browser").show("size", { origin: ["top", "right"] }, 700);
-
-
-										$(".relax").addClass("playing")
-										var audio = $("#relax-sound"),
-
-										play = $('.relax .music-progres'),
-										circle = $('.relax').find('#circle'),
-										getCircle = circle.get(0),
-										totalLength = getCircle.getTotalLength();
 										
-										audio[0].volume = 0.5; 
-
-										circle.attr({
-											'stroke-dasharray': totalLength,
-											'stroke-dashoffset': totalLength
-										});
-
-										audio[0].play();
-
-										audio.on('timeupdate', function() {
-											var currentTime = audio[0].currentTime,
-												maxduration = audio[0].duration,
-												calc = totalLength - ( currentTime / maxduration * totalLength );
-
-											circle.attr('stroke-dashoffset', calc);
-										});
-										playAnimation();*/
 
 									}else{
 										var startAnimation = true;
@@ -1319,7 +1288,7 @@ var mobTip;
 												circularTimer(1);  
 
 												$(".relax").addClass("playing")
-												var audio = $("#relax-sound"),
+												// var audio = $("#relax-sound"),
 
 												play = $('.relax .music-progres'),
 												circle = $('.relax').find('#circle'),
@@ -1913,7 +1882,7 @@ var mobTip;
 		    	$("body").addClass("play-alarm");
 
 		    	$(".icon").removeClass("playing");
-		    	$("#relax-sound")[0].pause();
+		    	// $("#relax-sound")[0].pause();
 		    	setTimeout(function(){
 		    		addSteps("alarmAnimation");
 		    	}, 1000)
@@ -1955,7 +1924,7 @@ var mobTip;
 		    		$("body").addClass("play-shake");
 	    			$(".relax").removeClass("playing");
 
-			    	$("#relax-sound")[0].pause();
+			    	// $("#relax-sound")[0].pause();
 
 			    	var audio = $("#shake-sound"),
 						play = $('.shake .music-progres'),
@@ -2201,7 +2170,7 @@ var mobTip;
 	    if($(".second").val() <= 10 ){
 
 	    	if($(".second").val() == 9 ){
-	    		$("#relax-sound")[0].pause();
+	    		// $("#relax-sound")[0].pause();
 	    		if($(".relax-off").hasClass("playing")){
 	    		//   $("#time-end")[0].play();ff
 	    	  }

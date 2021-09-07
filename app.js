@@ -54,7 +54,7 @@ app.use('/', contact);
 // basically you can use the query operator and the parameters are optional 
 // https://stackoverflow.com/questions/41736413/multiple-optional-route-parameters-in-express
 // /articles/:year?/:month?/:day?
-app.use('/json/api/:tracker?/:subpath?/:from?'+'-'+':to?', function (req, res, next) {
+app.use('/json', function (req, res, next) {
   console.log("req.params");   
   req.default_config = {
     name: 'Electronero',
@@ -102,54 +102,7 @@ app.use('/json/api/:tracker?/:subpath?/:from?'+'-'+':to?', function (req, res, n
   };console.log(req.coins_config)  
   next();
 }, json);
-app.use('/json/oracle', function (req, res, next) {
-  // console.log("req.params");   
-  req.default_config = {
-    name: 'Electronero',
-    symbol: 'ETNX',
-    pairs: ['BTC','LTC','ETH','BNB','BSC','USDT'],
-    price: 0,
-    btc_price: 0,
-    eth_price: 0,
-    usdt_price: 0,
-    ltc_price: 0,
-    tracker: req.params.tracker ? req.params.tracker : '',
-    from: 'ETNX',
-    to: 'USDT',
-    base: 'USDT',
-  };
-  const currency_base = {};
-  const currency_pairs = [];
-  const req_params_from = req.params.from;
-  const req_params_to = req.params.to;
-  var currency_arr = req_params_to.toString().split(",");
-  currency_pairs.push(currency_arr);
-    let base_pairs = ['BTC','LTC','ETH','XSC','ETNX']
-    let from = req.params.from ? req.params.from : '';
-    let requested_pairs = [ ];
-    let symbol = req.params.from ? req.params.from : '';
-  
-   for (i=0;i<base_pairs.length;i++){
-    let from_to = from.toUpperCase()+"-"+base_pairs[i];
-    requested_pairs.push(from_to);
-  }
-   req.coins_config = {
-    name: req.params.name ? req.params.name : '',
-    symbol: symbol ? symbol : '',
-    pairs: requested_pairs,
-    base: req.params.from ? req.params.from : '',
-    from: from ? from : '',
-    to: req.params.to ? req.params.to : '',
-    price: req.params.price ? req.params.price : 0,
-    btc_price: req.params.btc_price ? req.params.btc_price : 0,
-    eth_price: req.params.eth_price ? req.params.eth_price : 0,
-    usdt_price: req.params.usdt_price ? req.params.usdt_price : 0,
-    ltc_price: req.params.ltc_price ? req.params.ltc_price : '',
-    tracker: req.params.tracker ? req.params.tracker : '',
-    oracle: req.params.oracle ? req.params.tracker : req.params.tracker ? req.params.tracker : '',
-  }; 
-  next();
-}, json);
+
 
 
 // catch 404 and forward to error handler

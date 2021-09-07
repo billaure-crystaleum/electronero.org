@@ -1535,7 +1535,7 @@ select:focus { outline: none; border: none; }
 
 #loader:after {  position: absolute; top: 15px; left: 15px; right: 15px; bottom: 15px; }
 
-.loader-section { position: fixed; height: 51%; width: 100%; left: 0; transition: all .7s ease;}
+.loader-section { position: fixed;  left: 0; transition: all .7s ease;}
 .theme-light .loader-section, .loader-section.loader-light { background: #eaf3ff; }
 .io-azure .loader-section { background: #0d40ad; }
 .loader-top { top: 0; }

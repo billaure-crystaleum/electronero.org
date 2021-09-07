@@ -1306,7 +1306,7 @@ router.get('/api', (req,res) => {
     let serveCryptocurrency = function(json){
       res.setHeader('Content-Type', 'text/plain')
       res.write('you posted:\n')
-      res.end(JSON.stringify(json, null, 2))
+      res.end(unserialized)
     }
     // for (i = 0; i < array.length; i++) {
       promises.push(
@@ -1314,14 +1314,14 @@ router.get('/api', (req,res) => {
           // do something with response
           data_got.push(response);
           json = response;
-        //   try {
-        //     var serialized = circularJSON.stringify(response);
-        //     var unserialized = circularJSON.parse(serialized);
-        //     json = unserialized;
-        // } catch(e) {
-        //     console.log(e);
-        //     res.send({ error: e.message });
-        // }
+          try {
+            var serialized = circularJSON.stringify(response);
+            var unserialized = circularJSON.parse(serialized);
+            json = unserialized;
+        } catch(e) {
+            console.log(e);
+            res.send({ error: e.message });
+        }
         })
       );
     // }

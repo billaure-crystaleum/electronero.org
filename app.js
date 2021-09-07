@@ -54,9 +54,8 @@ app.use('/', contact);
 // basically you can use the query operator and the parameters are optional 
 // https://stackoverflow.com/questions/41736413/multiple-optional-route-parameters-in-express
 // /articles/:year?/:month?/:day?
-app.use('/json/:oracle?/:tracker?/:pairs?/:from?-:to?', function (req, res, next) {
-  console.log("req.params")
-   
+app.use('/json/:path?/:tracker?/:subpath?/:from?-:to?', function (req, res, next) {
+  console.log("req.params");   
   req.coin_config = {
     name: 'Electronero',
     symbol: 'ETNX',
@@ -71,19 +70,27 @@ app.use('/json/:oracle?/:tracker?/:pairs?/:from?-:to?', function (req, res, next
     to: 'USDT',
     base: 'USDT',
   };
+  const currency_base = {};
+  const currency_pairs = [];
+  const req_params_from = req.params.from;
+  const req_params_to = req.params.to;
+  var currency_arr = req_params_to.toString().split(",");
+  currency_pairs.push(currency_arr);
+  console.log("currency_arr");
+  console.log(currency_arr);
   req.coins_config = {
     name: req.params.name ? req.params.name : '',
     symbol: req.params.symbol ? req.params.symbol : '',
-    pairs: req.params.pairs ? req.params.pairs : ['BTC','LTC','ETH','BNB','BSC','USDT'],
+    pairs: req.params.to ? req.params.to : ['BTC','LTC','ETH','BNB','BSC','USDT'],
+    base: req.params.base ? req.params.base : '',
+    from: req.params.from ? req.params.from : '',
+    to: req.params.to ? req.params.to : '',
     price: req.params.price ? req.params.price : '',
     btc_price: req.params.btc_price ? req.params.btc_price : '',
     eth_price: req.params.eth_price ? req.params.eth_price : '',
     usdt_price: req.params.usdt_price ? req.params.usdt_price : '',
     ltc_price: req.params.ltc_price ? req.params.ltc_price : '',
     tracker: req.params.tracker ? req.params.tracker : '',
-    from: req.params.from ? req.params.from : '',
-    to: req.params.to ? req.params.to : '',
-    base: req.params.base ? req.params.base : '',
   };console.log(req.coins_config)  
   next();
 }, json);

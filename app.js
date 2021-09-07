@@ -53,9 +53,8 @@ app.use('/', contact);
 
 
 app.use('/json', function (req, res, next) {
-  console.log("req.params")
-  console.log(req)
-  req.coin_config = {
+  console.log("req.params");   
+  req.default_config = {
     name: 'Electronero',
     symbol: 'ETNX',
     pairs: ['BTC','LTC','ETH','BNB','BSC','USDT'],
@@ -69,20 +68,37 @@ app.use('/json', function (req, res, next) {
     to: 'USDT',
     base: 'USDT',
   };
-  req.coins_config = {
+  const currency_base = {};
+  const currency_pairs = [];
+  const req_params_from = req.params.from;
+  const req_params_to = req.params.to;
+  var currency_arr = req_params_to.toString().split(",");
+  currency_pairs.push(currency_arr);
+    let base_pairs = ['BTC','LTC','ETH','XSC','ETNX']
+    let from = req.params.from ? req.params.from : '';
+    let requested_pairs = [ ];
+    let symbol = req.params.from ? req.params.from : '';
+  
+   for (i=0;i<base_pairs.length;i++){
+    let from_to = from.toUpperCase()+"-"+base_pairs[i];
+    requested_pairs.push(from_to);
+  }
+   req.coins_config = {
     name: req.params.name ? req.params.name : '',
-    symbol: req.params.symbol ? req.params.symbol : '',
-    pairs: req.params.pairs ? req.params.pairs : ['BTC','LTC','ETH','BNB','BSC','USDT'],
-    price: req.params.price ? req.params.price : '',
-    btc_price: req.params.btc_price ? req.params.btc_price : '',
-    eth_price: req.params.eth_price ? req.params.eth_price : '',
-    usdt_price: req.params.usdt_price ? req.params.usdt_price : '',
+    symbol: symbol ? symbol : '',
+    pairs: requested_pairs,
+    base: req.params.from ? req.params.from : '',
+    from: from ? from : '',
+    to: req.params.to ? req.params.to : '',
+    price: req.params.price ? req.params.price : 0,
+    btc_price: req.params.btc_price ? req.params.btc_price : 0,
+    eth_price: req.params.eth_price ? req.params.eth_price : 0,
+    usdt_price: req.params.usdt_price ? req.params.usdt_price : 0,
     ltc_price: req.params.ltc_price ? req.params.ltc_price : '',
     tracker: req.params.tracker ? req.params.tracker : '',
-    from: req.params.from ? req.params.from : '',
-    to: req.params.to ? req.params.to : '',
-    base: req.params.base ? req.params.base : '',
-  };
+    oracle: req.params.oracle ? req.params.tracker : req.params.tracker ? req.params.tracker : '',
+  };console.log(req.coins_config)  
+  
   next();
 }, json);
 

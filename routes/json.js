@@ -1300,15 +1300,17 @@ router.get('/api', (req,res) => {
     //const array = [{ id: 'asdf'}, { id: 'foo' }, { id: 'bar' }]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
     let data_got = [];
     let promises = [];
+    let json = {};
     // for (i = 0; i < array.length; i++) {
       promises.push(
         axios.get("https://electronero.org/json/man.json").then(response => {
           // do something with response
           data_got.push(response);
+          json = response;
         })
       );
     // }
-    Promise.all(promises).then(() => res.json(data_got));
+    Promise.all(promises).then(() => res.json(json));
         console.log('after service calls');
     });
 /* GET home data. */

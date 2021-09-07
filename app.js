@@ -53,6 +53,8 @@ app.use('/', contact);
 
 
 app.use('/json', function (req, res, next) {
+  console.log("req.params")
+  console.log(req.params)
   req.coin_config = {
     name: 'Electronero',
     symbol: 'ETNX',

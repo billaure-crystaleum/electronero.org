@@ -1302,6 +1302,7 @@ router.get('/api', (req,res) => {
 	  console.log('after the call to service');
     res.json(json);
 	}  
+  getJSONAsync();
 });
 /* GET home data. */
 router.get('/', function(req, res, next) {

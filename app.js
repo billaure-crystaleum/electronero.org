@@ -56,7 +56,7 @@ app.use('/', contact);
 // /articles/:year?/:month?/:day?
 app.use('/json/:oracle?/:tracker?/:base?/:pairs?', function (req, res, next) {
   console.log("req.params")
-  req.client_passport = { 
+  var client_passport = { 
     oracle: req.params.oracle ? req.params.oracle : '',
     tracker:  req.params.tracker ? req.params.tracker : '',
     base:  req.params.base ? req.params.base : '',

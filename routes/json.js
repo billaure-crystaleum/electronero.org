@@ -1299,7 +1299,7 @@ var man = { "frames": {
 
 const circularJSON = require('circular-json');
 // get another API, then serve it's response. cool stuff
-router.get('/api/man', (req,res) => {
+router.get('/api', (req,res) => {
   //const array = [{ id: 'asdf'}, { id: 'foo' }, { id: 'bar' }]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
   let data_got = [];
   let promises = [];
@@ -1334,7 +1334,7 @@ router.get('/api/man', (req,res) => {
 // get another API, then serve it's response. cool stuff
 // oracle -> tracker -> :from-:to 
 // 09/07/2021 the day electronero deployed an oracle... 
-router.get('/oracle/:tracker?/pairs/:from?-:to?', (req, res, next) => {
+router.get('/oracle/:tracker/pairs/:from'+"-"+':to', (req, res, next) => {
   //const array = [{ id: 'asdf'}, { id: 'foo' }, { id: 'bar' }]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
   let data_we_actually_got = [];
   let for_data_we_want = [];
@@ -1350,10 +1350,10 @@ router.get('/oracle/:tracker?/pairs/:from?-:to?', (req, res, next) => {
   console.log("req.params: ");
   console.log("\n");
   console.log(req.params);
+
   let serveCryptocurrency = function(json_obj){
     res.json(json_obj);
   }
-  // jump in a [poll] later?
   // for (i = 0; i < array.length; i++) {}
   let getCryptocurrency = function(json_obj){
     axios.get('https://api.coingecko.com/api/v3/simple/price?ids=crystaleum&vs_currencies=btc%2Cusd%2Ceth%2Cltc').then((response) => {

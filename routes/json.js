@@ -1297,7 +1297,7 @@ var man = { "frames": {
 }};
 
 
-const circularJSON = require('circular-json');
+const CircularJSON = require('circular-json');
 router.get('/api', (req,res) => {
     //const array = [{ id: 'asdf'}, { id: 'foo' }, { id: 'bar' }]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
     let data_got = [];

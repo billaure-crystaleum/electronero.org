@@ -58,6 +58,14 @@ app.use('/json', function (req, res, next) {
     symbol: 'ETNX',
     pairs: ['BTC','LTC','ETH','BNB','BSC','USDT'],
     price: 0,
+    btc_price: 0,
+    eth_price: 0,
+    usdt_price: 0,
+    ltc_price: 0,
+    tracker: '',
+    trackers: { coingecko: "", coinmarketcap: ""},
+    from: 'ETNX',
+    to: 'USDT',
     base: 'USDT',
   };
   req.coins_config = {};

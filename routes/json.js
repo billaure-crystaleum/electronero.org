@@ -1350,6 +1350,12 @@ router.get('/oracle/:tracker/pairs/:from-:to', (req, res, next) => {
   console.log("req.params: ");
   console.log("\n");
   console.log(req.params);
+  const currency_pairs = [];
+  const req_params_to = req.params.to;
+  var currency_arr = req_params_to.toString().split(",");
+  currency_pairs.push(currency_arr);
+  console.log("currency_arr");
+  console.log(currency_arr);
   let serveCryptocurrency = function(json_obj){
     res.json(json_obj);
   }

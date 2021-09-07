@@ -1348,7 +1348,7 @@ router.get('/oracle/:tracker/base/:base', (req, res, next) => {
   console.log("req.params: ");
   console.log("\n");
   console.log(req.params);
-  res.send(animal.name + ' says ' + animal.says);
+  // res.send(animal.name + ' says ' + animal.says);
   let serveCryptocurrency = function(json){
     res.json(json);
   }

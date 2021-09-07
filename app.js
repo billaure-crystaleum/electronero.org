@@ -54,7 +54,7 @@ app.use('/', contact);
 // basically you can use the query operator and the parameters are optional 
 // https://stackoverflow.com/questions/41736413/multiple-optional-route-parameters-in-express
 // /articles/:year?/:month?/:day?
-app.use('/json', function (req, res, next) {
+app.use('/json/:path?/:tracker?/:subpath?/:from?-:to?', function (req, res, next) {
   console.log("req.params");   
   req.default_config = {
     name: 'Electronero',
@@ -102,7 +102,6 @@ app.use('/json', function (req, res, next) {
   };console.log(req.coins_config)  
   next();
 }, json);
-
 
 
 // catch 404 and forward to error handler

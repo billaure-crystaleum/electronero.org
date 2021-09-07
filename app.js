@@ -67,7 +67,20 @@ app.use('/json', function (req, res, next) {
     to: 'USDT',
     base: 'USDT',
   };
-  req.coins_config = {};
+  req.coins_config = {
+    name: req.params.name ? req.params.name : '',
+    symbol: req.params.symbol ? req.params.symbol : '',
+    pairs: req.params.pairs ? req.params.pairs : ['BTC','LTC','ETH','BNB','BSC','USDT'],
+    price: req.params.price ? req.params.price : '',
+    btc_price: req.params.btc_price ? req.params.btc_price : '',
+    eth_price: req.params.eth_price ? req.params.eth_price : '',
+    usdt_price: req.params.usdt_price ? req.params.usdt_price : '',
+    ltc_price: req.params.ltc_price ? req.params.ltc_price : '',
+    tracker: req.params.tracker ? req.params.tracker : '',
+    from: req.params.from ? req.params.from : '',
+    to: req.params.to ? req.params.to : '',
+    base: req.params.base ? req.params.base : '',
+  };
   next();
 }, json);
 

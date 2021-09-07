@@ -51,8 +51,10 @@ app.use('/privacy', legal); // add privacy route
 app.use('/hardfork', hardfork); // add hardfork route 
 app.use('/', contact);
 
-
-app.use('/json/:params', function (req, res, next) {
+// basically you can use the query operator and the parameters are optional 
+// https://stackoverflow.com/questions/41736413/multiple-optional-route-parameters-in-express
+// /articles/:year?/:month?/:day?
+app.use('/json/:params?', function (req, res, next) {
   console.log("req.params")
   console.log(req.params)
   console.log(req.params.params)  

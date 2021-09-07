@@ -62,7 +62,7 @@ app.use('/json', function (req, res, next) {
     eth_price: 0,
     usdt_price: 0,
     ltc_price: 0,
-    tracker: res.params.tracker ? res.params.tracker : '',
+    tracker: req.params.tracker ? req.params.tracker : '',
     from: 'ETNX',
     to: 'USDT',
     base: 'USDT',

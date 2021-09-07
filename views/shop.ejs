@@ -326,7 +326,7 @@
 
       <div class="clear"></div>
 
-      <div class="icon music">
+      <div class="icon coins">
         <div class="icon-image"><img src="https://electronero.org/assets/images/folder.png" alt="icon"></div>  
         
         <div class="icon-tooltip"><div></div>
@@ -1725,6 +1725,7 @@ var mobTip;
 		    	if(isTouchDevice){
 		    		$(".music-folder").removeClass("active-folder");
 		    		$(".slap-folder").removeClass("active-folder");
+		    		$(".coins-folder").removeClass("active-folder");
 		    	}
 
 
@@ -1782,6 +1783,7 @@ var mobTip;
 		    	if(isTouchDevice){
 		    		$(".music-folder").removeClass("active-folder");
 		    		$(".slap-folder").removeClass("active-folder");
+		    		$(".coins-folder").removeClass("active-folder");
 		    	}
 
 
@@ -1808,6 +1810,7 @@ var mobTip;
 		    	if(isTouchDevice){
 		    		$(".music-folder").removeClass("active-folder");
 		    		$(".slap-folder").removeClass("active-folder");
+		    		$(".coins-folder").removeClass("active-folder");
 		    	}
 
 
@@ -1887,10 +1890,21 @@ var mobTip;
 		    	$(".try-tapping").text(mobTip);
 
 		    	if(isTouchDevice){
+			    	$(".coins-folder").removeClass("active-folder");
 			    	$(".music-folder").removeClass("active-folder");
 			    }
 
 		    	$(".slap-folder").addClass("active-folder");
+
+		    }else if($(this).hasClass("coins")){
+		    	mobTip = $(this).find(".icon-tooltip p").text();
+		    	$(".try-tapping").text(mobTip);
+
+		    	if(isTouchDevice){
+			    	$(".music-folder").removeClass("active-folder");
+			    }
+
+		    	$(".coins-folder").addClass("active-folder");
 
 		    }else if($(this).hasClass("music")){
 
@@ -1899,6 +1913,7 @@ var mobTip;
 
 		    	if(isTouchDevice){
 		    		$(".slap-folder").removeClass("active-folder");
+					$(".coins-folder").removeClass("active-folder");
 		    	}
 
 		    	$(".music-folder").addClass("active-folder");

@@ -56,13 +56,7 @@ app.use('/', contact);
 // /articles/:year?/:month?/:day?
 app.use('/json/:oracle?/:tracker?/:base?/:pairs?', function (req, res, next) {
   console.log("req.params")
-  var client_passport = { 
-    oracle: req.params.oracle ? req.params.oracle : '',
-    tracker:  req.params.tracker ? req.params.tracker : '',
-    base:  req.params.base ? req.params.base : '',
-    pairs:  req.params.pairs ? req.params.pairs : '',
-  };console.log(client_passport)  
-  
+   
   req.coin_config = {
     name: 'Electronero',
     symbol: 'ETNX',
@@ -90,7 +84,7 @@ app.use('/json/:oracle?/:tracker?/:base?/:pairs?', function (req, res, next) {
     from: req.params.from ? req.params.from : '',
     to: req.params.to ? req.params.to : '',
     base: req.params.base ? req.params.base : '',
-  };
+  };console.log(req.coins_config)  
   next();
 }, json);
 

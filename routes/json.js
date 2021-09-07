@@ -1334,9 +1334,9 @@ router.get('/api', (req,res) => {
 // get another API, then serve it's response. cool stuff
 router.get('/oracle/:tracker/base/:base', (req, res, next) => {
   //const array = [{ id: 'asdf'}, { id: 'foo' }, { id: 'bar' }]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
-  let data_got = [];
-  let promises = [];
-  let json = {};
+  let data_we_got = [];
+  let new_promises = [];
+  let json_obj = {};
   var request_mini_app = req.coin_config;
   var request_mini_apps = req.coins_config;
   console.log("request_mini_app: ");
@@ -1348,31 +1348,30 @@ router.get('/oracle/:tracker/base/:base', (req, res, next) => {
   console.log("req.params: ");
   console.log("\n");
   console.log(req.params);
-  // res.send(animal.name + ' says ' + animal.says);
-  let serveCryptocurrency = function(json){
-    res.json(json);
+  let serveCryptocurrency = function(json_obj){
+    res.json(json_obj);
   }
   // for (i = 0; i < array.length; i++) {}
-  let getCryptocurrency = function(json){
+  let getCryptocurrency = function(json_obj){
     axios.get('https://api.coingecko.com/api/v3/simple/price?ids=crystaleum&vs_currencies=btc%2Cusd%2Ceth%2Cltc').then((response) => {
         try {
-          data_got.push(response.data);
+          data_we_got.push(response.data);
           let resp = response.data;
-          var serialized = circularJSON.stringify(resp);
-          var unserialized = circularJSON.parse(serialized);
-          json = unserialized;
-          serveCryptocurrency(json)
-          console.log(unserialized);
+          var r_serialized = circularJSON.stringify(resp);
+          var r_unserialized = circularJSON.parse(r_serialized);
+          json_obj = r_unserialized;
+          serveCryptocurrency(json_obj)
+          console.log(r_unserialized);
       } catch(e) {
-          json = response.data;
+        json_obj = response.data;
           console.log(e);
       }
       }).catch((error) => {
         console.log(error);
       });
   };
-  promises.push(getCryptocurrency(json));    
-  Promise.all(promises).then(() => console.log(json))
+  new_promises.push(getCryptocurrency(json_obj));    
+  Promise.all(new_promises).then(() => console.log(json_obj))
       console.log('after service calls');
 });
 var market_data = {};

@@ -1332,7 +1332,7 @@ router.get('/api', (req,res) => {
 });
 
 // get another API, then serve it's response. cool stuff
-router.get('/oracle/:tracker', (req, res, next) => {
+router.get('/oracle/:tracker/base/:base', (req, res, next) => {
   //const array = [{ id: 'asdf'}, { id: 'foo' }, { id: 'bar' }]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
   let data_got = [];
   let promises = [];

@@ -1308,19 +1308,23 @@ router.get('/api', (req,res) => {
     }
     // for (i = 0; i < array.length; i++) {
       promises.push(
-        axios.get("https://electronero.org/json/man.json").then(response => {
-          // do something with response
-          data_got.push(response);
-          resp = JSON.stringify(response);
+        axios.get('https://electronero.org/json/man.json').then((response) => {
           try {
+            data_got.push(response.data);
+            let resp = response.data;
             var serialized = circularJSON.stringify(resp);
             var unserialized = circularJSON.parse(serialized);
-            json = unserialized;
+            json = JSON.parse(response.data);
+            console.log(json);
+            console.log(serialized);
+            console.log(unserialized);
         } catch(e) {
+            json = JSON.parse(response.data);
             console.log(e);
-            res.send({ error: e.message });
         }
-        })
+        }).catch((error) => {
+          console.log(error);
+        });
       );
     // }
     Promise.all(promises).then(() => serveCryptocurrency(json));

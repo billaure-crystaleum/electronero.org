@@ -1335,7 +1335,7 @@ router.get('/api', (req,res) => {
 // oracle -> tracker -> :from-:to 
 // 09/07/2021 the day electronero deployed an oracle... 
 
-router.get('/oracle/:tracker/pairs/:from-:to', (req, res, next) => {
+router.get(':path?/:tracker?/:subpath?/:from?-:to?', (req, res, next) => {
 // router.get('/oracle/:tracker/pairs/:from'+'-'+':to', (req, res, next) => {
   let data_we_actually_got = [];
   let for_data_we_want = [];

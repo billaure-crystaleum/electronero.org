@@ -1315,7 +1315,7 @@ router.get('/api', (req,res) => {
           resp = response;
           try {
             var serialized = circularJSON.stringify(resp);
-            var unserialized = circularJSON.parse(JSON.stringify(resp));
+            var unserialized = circularJSON.parse(JSON.stringify(serialized));
             json = unserialized;
         } catch(e) {
             console.log(e);

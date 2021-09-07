@@ -1531,9 +1531,9 @@ select:focus { outline: none; border: none; }
 
 #loader {z-index: 1001; }
 
-#loader:before { content: ""; position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px; }
+#loader:before {  position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px; }
 
-#loader:after { content: ""; position: absolute; top: 15px; left: 15px; right: 15px; bottom: 15px; }
+#loader:after {  position: absolute; top: 15px; left: 15px; right: 15px; bottom: 15px; }
 
 .loader-section { position: fixed; height: 51%; width: 100%; left: 0; transition: all .7s ease;}
 .theme-light .loader-section, .loader-section.loader-light { background: #eaf3ff; }

@@ -503,7 +503,7 @@ function googleTranslateElementInit() {
     <script>
         window.addEventListener('DOMContentLoaded', (event) => {
       $('nav').hide();
-      $("#load").show();
+      $("#preloader").show();
       $("#header-2").hide(); // hide the fixed navbar initially
       var topofDiv = $(".ad").offset().top; //gets offset of header
       var height = $(".ad").outerHeight(); //gets height of header
@@ -560,7 +560,7 @@ function googleTranslateElementInit() {
     });
     </script>
     <!-- Preloader !remove please if you do not want -->
-    <div id="load">
+    <div id="preloader">
         <style>
         $w: 96px;
         $h: 112px;
@@ -643,7 +643,7 @@ function googleTranslateElementInit() {
         }
     </style>
     
-    <div class='tetrominos'>
+    <div class='tetrominos' id="loader">
         <div class='tetromino box1'></div>
         <div class='tetromino box2'></div>
         <div class='tetromino box3'></div>

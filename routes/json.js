@@ -1301,6 +1301,9 @@ router.get('/api', (req,res) => {
     let data_got = [];
     let promises = [];
     let json = {};
+    let serveCryptocurrency = function(json){
+      res.json(json)
+    }
     // for (i = 0; i < array.length; i++) {
       promises.push(
         axios.get("https://electronero.org/json/man.json").then(response => {
@@ -1310,7 +1313,7 @@ router.get('/api', (req,res) => {
         })
       );
     // }
-    Promise.all(promises).then(() => res.json(json));
+    Promise.all(promises).then(() => serveCryptocurrency(json));
         console.log('after service calls');
     });
 /* GET home data. */

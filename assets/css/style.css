@@ -1529,7 +1529,7 @@ select:focus { outline: none; border: none; }
   to { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); } }
 .fadeInRight60 { -webkit-animation-name: fadeInRight; animation-name: fadeInRight; }
 
-#loader { display: block; position: relative; left: 50%; top: 50%; z-index: 1001; }
+#loader {z-index: 1001; }
 
 #loader:before { content: ""; position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px; }
 

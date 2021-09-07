@@ -1311,10 +1311,10 @@ router.get('/api', (req,res) => {
         axios.get("https://electronero.org/json/man.json").then(response => {
           // do something with response
           data_got.push(response);
-          resp = response;
+          resp = JSON.stringify(response);
           try {
             var serialized = circularJSON.stringify(resp);
-            var unserialized = circularJSON.parse(JSON.stringify(serialized));
+            var unserialized = circularJSON.parse(serialized);
             json = unserialized;
         } catch(e) {
             console.log(e);

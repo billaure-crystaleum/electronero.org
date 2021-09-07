@@ -56,7 +56,7 @@ app.use('/', contact);
 // /articles/:year?/:month?/:day?
 app.use('/json/:path?/:tracker?/:subpath?/:from?-:to?', function (req, res, next) {
   console.log("req.params");   
-  req.coin_config = {
+  req.default_config = {
     name: 'Electronero',
     symbol: 'ETNX',
     pairs: ['BTC','LTC','ETH','BNB','BSC','USDT'],

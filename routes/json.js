@@ -1335,10 +1335,9 @@ router.get('/api', (req,res) => {
 // oracle -> tracker -> :from-:to 
 // 09/07/2021 the day electronero deployed an oracle... 
 router.get('/oracle/:tracker/pairs/:from'+"-"+':to', (req, res, next) => {
-  //const array = [{ id: 'asdf'}, { id: 'foo' }, { id: 'bar' }]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
   let data_we_actually_got = [];
   let for_data_we_want = [];
-  let json_obj = {};
+  let pretty_json_obj = {};
   var request_mini_app_default = req.default_config;
   var request_mini_app = req.coins_config;
   console.log("request_mini_app_default: ");
@@ -1350,31 +1349,31 @@ router.get('/oracle/:tracker/pairs/:from'+"-"+':to', (req, res, next) => {
   console.log("req.params: ");
   console.log("\n");
   console.log(req.params);
-  let serveCryptocurrency = function(json_obj){
-    res.json(json_obj);
+  let serveCryptocurrency = function(pretty_json_obj){
+    res.json(pretty_json_obj);
   }
   // wrap in a [poll] ?
   // for (i = 0; i < array.length; i++) {}
-  let getCryptocurrency = function(json_obj){
+  let getCryptocurrency = function(pretty_json_obj){
     axios.get('https://api.coingecko.com/api/v3/simple/price?ids=crystaleum&vs_currencies=btc%2Cusd%2Ceth%2Cltc').then((response) => {
         try {
           let resp = response.data;
           var r_serialized = circularJSON.stringify(resp);
           var r_unserialized = circularJSON.parse(r_serialized);
-          json_obj = r_unserialized;
-          data_we_actually_got.push(json_obj);
-          serveCryptocurrency(json_obj)
+          pretty_json_obj = r_unserialized;
+          data_we_actually_got.push(pretty_json_obj);
+          serveCryptocurrency(pretty_json_obj)
           console.log(r_unserialized);
       } catch(e) {
-        json_obj = response.data;
+        pretty_json_obj = response.data;
           console.log(e);
       }
       }).catch((error) => {
         console.log(error);
       });
   };
-  for_promises_we_kept.push(getCryptocurrency(json_obj));    
-  Promise.all(for_data_we_want).then(() => console.log(json_obj))
+  for_data_we_want.push(getCryptocurrency(pretty_json_obj));    
+  Promise.all(for_data_we_want).then(() => console.log(pretty_json_obj))
       console.log('after service calls');
 });
 var market_data = {};

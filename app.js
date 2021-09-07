@@ -76,22 +76,19 @@ app.use('/json/:path?/:tracker?/:subpath?/:from?-:to?', function (req, res, next
   const req_params_to = req.params.to;
   var currency_arr = req_params_to.toString().split(",");
   currency_pairs.push(currency_arr);
-  console.log("currency_arr");
-  console.log(currency_pairs);
     let base_pairs = ['BTC','LTC','ETH','XSC','ETNX']
     let from = req.params.from ? req.params.from : '';
-    let supported_pairs = [ ];
+    let requested_pairs = [ ];
     let symbol = req.params.from ? req.params.from : '';
-  for (i=0;i<base_pairs.length;i++){
+  
+   for (i=0;i<base_pairs.length;i++){
     let from_to = from.toUpperCase()+"-"+base_pairs[i];
-    supported_pairs.push(from_to);
-  }
-  console.log("supported_pairs");
-  console.log(supported_pairs);
+    requested_pairs.push(from_to);
+   }
    req.coins_config = {
     name: req.params.name ? req.params.name : '',
     symbol: symbol ? symbol : '',
-    pairs: supported_pairs,
+    pairs: requested_pairs,
     base: req.params.from ? req.params.from : '',
     from: from ? from : '',
     to: req.params.to ? req.params.to : '',
@@ -102,7 +99,7 @@ app.use('/json/:path?/:tracker?/:subpath?/:from?-:to?', function (req, res, next
     ltc_price: req.params.ltc_price ? req.params.ltc_price : '',
     tracker: req.params.tracker ? req.params.tracker : '',
     oracle: req.params.oracle ? req.params.tracker : req.params.tracker ? req.params.tracker : '',
-  };console.log(req.coins_config)  
+  };  
   next();
 }, json);
 

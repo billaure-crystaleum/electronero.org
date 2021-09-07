@@ -1468,12 +1468,12 @@ var mobTip;
 
 		$(".stop-sounds").on("click", function(){
 			if($(this).hasClass("playing")){
-				//$(this).removeClass("playing");
+				$(this).removeClass("playing");
 				$(".relax, .stop-sounds").removeClass("playing");
 				// $("#relax-sound")[0].pause();
 
 			}else{
-				//$(this).addClass("playing");
+				$(this).addClass("playing");
 				$(".relax, .stop-sounds").addClass("playing");
 				if($(".relax-off").hasClass("playing")){	
 					// $("#relax-sound")[0].play();
@@ -1529,7 +1529,7 @@ var mobTip;
 
 		    	if($(".relax-off").hasClass("playing")){
 		    		// $("#curtains")[0].play();
-		    		// $("#move")[0].play();
+		    		$("#move")[0].play();
 		    	}
 		    	
 		    	$("#move")[0].pause();
@@ -1872,7 +1872,7 @@ var mobTip;
 		    	// $("#snore-sound")[0].pause();
 					// $("#snore-sound")[0].currentTime = 0;
 
-		    	//$("#click")[0].play();
+		    	$("#click")[0].play();
 		    	if($(".relax-off").hasClass("playing")){
 		    		// $("#alarm-sound")[0].play();
 		      }
@@ -1920,7 +1920,7 @@ var mobTip;
 		    	
 
 		    	//if(!$("body").hasClass("play-shake")){
-		    		//$("#click")[0].play();
+		    		$("#click")[0].play();
 		    		$("body").addClass("play-shake");
 	    			$(".relax").removeClass("playing");
 
@@ -2011,7 +2011,7 @@ var mobTip;
 		    	}
 
 
-		    	//$("#click")[0].play();
+		    	$("#click")[0].play();
      	
 		    	if($(".relax-off").hasClass("playing")){	
 		    		// $("#snore-sound")[0].play();

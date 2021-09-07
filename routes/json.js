@@ -1,10 +1,11 @@
 const axios = require('axios');
 const express = require('express');
 const app = express();
-const app2 = express();
 const router = express.Router();
 const port = 1990;
 const port2 = 1991;
+var http = require('http');
+
 var man = { "frames": {
     "man 1.png":
     {
@@ -1295,37 +1296,25 @@ var man = { "frames": {
   "scale": "1",
   "smartupdate": "$TexturePacker:SmartUpdate:17e4a2d92ff3e27832c3f4938cec7c85$"
 }};
-//   app.listen(port, () => {
-//     console.log(`Success! Data server 1 is running on port ${port}.`);
-//     app.get('*', function(req, res) {
-//         var home = {};
-//         res.json(home);
-//       });
-//   });
-//   app2.listen(port2, () => {
-//     console.log(`Success! Data server 2 running on port ${port2}.`);
-//   });
 
-
-// app2.get('*', function(req, res) {
-  
-//   res.json(man);
-// });
+router.get('/api', (req,res) => {
+  res.json({ message: 'Hello World'});
+});
 /* GET home data. */
 router.get('/', function(req, res, next) {
-    async function getJSONAsync(){
-	//   let json = await axios.get('http://localhost:1990/');
-	//   console.log('after the call to service');
-	  res.json(man);
-	}
+  //   async function getJSONAsync(){
+	// //   let json = await axios.get('http://localhost:1990/');
+	// //   console.log('after the call to service');
+	// }
+  res.json(man);
 });
 /* GET man data. */
 router.get('/man.json', function(req, res, next) {
-    async function getJSONAsync(){
-	//   let json = await axios.get('http://localhost:1990/');
-	//   console.log('after the call to service');
-	  res.json(man);
-	}
+  //   async function getJSONAsync(){
+	// //   let json = await axios.get('http://localhost:1990/');
+	// //   console.log('after the call to service');
+	// }
+  res.json(man);
 
 });
 module.exports = router;

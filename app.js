@@ -58,7 +58,7 @@ app.use('/json/:route?/:tracker?/:base?/:pairs?', function (req, res, next) {
   console.log("client_passport")
   req.client_passport = { 
     oracle: req.params.tracker ? req.params.tracker : '',
-    pairs:  req.params.pairs ? req.params.pairs : '' 
+    pairs:  req.params.pairs ? req.params.pairs : '',
     base:  req.params.base ? req.params.base : '' 
   }; console.log(client_passport);
   

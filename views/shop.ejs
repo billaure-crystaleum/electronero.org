@@ -309,8 +309,8 @@
       </div>  
 
 	  <div class="column-icons">
-    	<div class="use-icon">Use the tools to try to access Electronero Network/div>
-      <div class="use-icon-desktop">Click on one of these tools to interact with the blockchain!</div>
+    	<div class="use-icon">Use the tools to try to wake it up</div>
+      <div class="use-icon-desktop">Click on one of these tools to interact with the site and try to wake it up!</div>
       
       <div class="icon slap">
         <div class="icon-image"><img src="https://electronero.org/assets/images/folder.png" alt="icon"></div>  
@@ -326,7 +326,7 @@
 
       <div class="clear"></div>
 
-      <div class="icon mosquito">
+      <div class="icon music">
         <div class="icon-image"><img src="https://electronero.org/assets/images/folder.png" alt="icon"></div>  
         
         <div class="icon-tooltip"><div></div>
@@ -334,6 +334,23 @@
         </div>
 
         <div class="icon-title">Exchanges</div>
+
+        <div class="progres"><div></div></div>
+      </div>
+
+      <div class="clear"></div>
+
+      <div class="icon mosquito">
+        <div class="icon-image">
+          <!-- <div class="img"></div> -->
+		  <img src="https://electronero.org/assets/images/folder.png" alt="icon">
+        </div>  
+        
+        <div class="icon-tooltip"><div></div>
+          <p>Blockchain.</p>
+        </div>
+
+        <div class="icon-title">Bug it</div>
 
         <div class="progres"><div></div></div>
       </div>
@@ -1478,21 +1495,21 @@ var mobTip;
 												circularTimer(1);  
 
 												$(".relax").addClass("playing")
-												var audio = $("#relax-sound"),
+												var audio = $("#relax-sound");
 
 												// play = $('.relax .music-progres'),
-												circle = $('.relax').find('#circle');
-												// getCircle = circle.get(0);
+												// circle = $('.relax').find('#circle'),
+												// getCircle = circle.get(0),
 												// totalLength = getCircle.getTotalLength();
 												
 												// audio[0].volume = 0.5; 
 
-												// circle.attr({
-												// 	'stroke-dasharray': totalLength,
-												// 	'stroke-dashoffset': totalLength
-												// });
+												circle.attr({
+													'stroke-dasharray': totalLength,
+													'stroke-dashoffset': totalLength
+												});
 												if($(".relax-off").hasClass("playing")){	
-													audio[0].play();
+													// audio[0].play();
 											  }
 
 												audio.on('timeupdate', function() {
@@ -1500,7 +1517,7 @@ var mobTip;
 														maxduration = audio[0].duration,
 														calc = totalLength - ( currentTime / maxduration * totalLength );
 
-													// circle.attr('stroke-dashoffset', calc);
+													circle.attr('stroke-dashoffset', calc);
 												});
 												playAnimation();
 											}
@@ -1708,7 +1725,6 @@ var mobTip;
 		    	if(isTouchDevice){
 		    		$(".music-folder").removeClass("active-folder");
 		    		$(".slap-folder").removeClass("active-folder");
-		    		$(".coins-folder").removeClass("active-folder");
 		    	}
 
 
@@ -1766,7 +1782,6 @@ var mobTip;
 		    	if(isTouchDevice){
 		    		$(".music-folder").removeClass("active-folder");
 		    		$(".slap-folder").removeClass("active-folder");
-		    		$(".coins-folder").removeClass("active-folder");
 		    	}
 
 
@@ -1793,7 +1808,6 @@ var mobTip;
 		    	if(isTouchDevice){
 		    		$(".music-folder").removeClass("active-folder");
 		    		$(".slap-folder").removeClass("active-folder");
-		    		$(".coins-folder").removeClass("active-folder");
 		    	}
 
 
@@ -1873,21 +1887,10 @@ var mobTip;
 		    	$(".try-tapping").text(mobTip);
 
 		    	if(isTouchDevice){
-			    	$(".coins-folder").removeClass("active-folder");
 			    	$(".music-folder").removeClass("active-folder");
 			    }
 
 		    	$(".slap-folder").addClass("active-folder");
-
-		    }else if($(this).hasClass("coins")){
-		    	mobTip = $(this).find(".icon-tooltip p").text();
-		    	$(".try-tapping").text(mobTip);
-
-		    	if(isTouchDevice){
-			    	$(".music-folder").removeClass("active-folder");
-			    }
-
-		    	$(".coins-folder").addClass("active-folder");
 
 		    }else if($(this).hasClass("music")){
 
@@ -1896,7 +1899,6 @@ var mobTip;
 
 		    	if(isTouchDevice){
 		    		$(".slap-folder").removeClass("active-folder");
-					$(".coins-folder").removeClass("active-folder");
 		    	}
 
 		    	$(".music-folder").addClass("active-folder");
@@ -2131,23 +2133,23 @@ var mobTip;
 
 			    	// $("#relax-sound")[0].pause();
 
-			    	var audio = $("#shake-sound"),
+			    	var audio = $("#shake-sound")
 					// 	play = $('.shake .music-progres'),
-						circle = $('.shake').find('#circle');
+					// 	circle = $('.shake').find('#circle'),
 					// 	getCircle = circle.get(0),
 					// 	totalLength = getCircle.getTotalLength();
 
-						// circle.attr({
-						// 	'stroke-dasharray': totalLength,
-						// 	'stroke-dashoffset': totalLength
-						// });
+						circle.attr({
+							'stroke-dasharray': totalLength,
+							'stroke-dashoffset': totalLength
+						});
 
 						audio.on('timeupdate', function() {
 							var currentTime = audio[0].currentTime,
 								maxduration = audio[0].duration,
 								calc = totalLength - ( currentTime / maxduration * totalLength );
 
-							// circle.attr('stroke-dashoffset', calc);
+							circle.attr('stroke-dashoffset', calc);
 						});
 
 						if(!$(".shake").hasClass("playing")){	
@@ -2216,7 +2218,7 @@ var mobTip;
 		    	}
 
 
-		    	$("#click")[0].play();
+		    	//$("#click")[0].play();
      	
 		    	if($(".relax-off").hasClass("playing")){	
 		    		// $("#snore-sound")[0].play();
@@ -2323,19 +2325,19 @@ var mobTip;
 
 
 						$(".relax").addClass("playing")
-						var audio = $("#relax-sound"),
+						// var audio = $("#relax-sound"),
 
 						// play = $('.relax .music-progres'),
-						circle = $('.relax').find('#circle');
+						// circle = $('.relax').find('#circle'),
 						// getCircle = circle.get(0),
 						// totalLength = getCircle.getTotalLength();
 						
-						// audio[0].volume = 0.5; 
+						audio[0].volume = 0.5; 
 
-						// circle.attr({
-						// 	'stroke-dasharray': totalLength,
-						// 	'stroke-dashoffset': totalLength
-						// });
+						circle.attr({
+							'stroke-dasharray': totalLength,
+							'stroke-dashoffset': totalLength
+						});
 						if($(".relax-off").hasClass("playing")){		
 							// audio[0].play();
 					  }
@@ -2345,7 +2347,7 @@ var mobTip;
 								maxduration = audio[0].duration,
 								calc = totalLength - ( currentTime / maxduration * totalLength );
 
-							// circle.attr('stroke-dashoffset', calc);
+							circle.attr('stroke-dashoffset', calc);
 						});
 						playAnimation();
 					}	
@@ -2377,7 +2379,7 @@ var mobTip;
 	    	if($(".second").val() == 9 ){
 	    		// $("#relax-sound")[0].pause();
 	    		if($(".relax-off").hasClass("playing")){
-	    		//   $("#time-end")[0].play();
+	    		//   $("#time-end")[0].play();ff
 	    	  }
 	    	}
 

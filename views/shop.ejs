@@ -390,10 +390,10 @@ var mobTip;
 	  snore.anchor.y = 0.5;
 
 	  snore.play();
-	  $("#snore-sound")[0].volume = 1;
+	//   $("#snore-sound")[0].volume = 1;
 
 	  if($(".relax-off").hasClass("playing")){	
-	  	$("#snore-sound")[0].play();
+	  	// $("#snore-sound")[0].play();
 		}
 
 	  stage.addChild(snore);
@@ -422,7 +422,7 @@ var mobTip;
 			$("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
-				$("#pokeleft")[0].play();
+				// $("#pokeleft")[0].play();
 		  }
 			snore = new PIXI.extras.AnimatedSprite(leftpokeTextures);
 		  snore.animationSpeed = 0.2;
@@ -498,7 +498,7 @@ var mobTip;
 			$("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
-				$("#pokeright")[0].play();
+				// $("#pokeright")[0].play();
 		  }
 			snore = new PIXI.extras.AnimatedSprite(rightpokeTextures);
 		  snore.animationSpeed = 0.2;
@@ -534,7 +534,7 @@ var mobTip;
 			$("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
-				$("#pokeright2")[0].play();
+				// $("#pokeright2")[0].play();
 		  }
 			snore = new PIXI.extras.AnimatedSprite(rightpokeTextures2);
 		  snore.animationSpeed = 0.2;
@@ -570,7 +570,7 @@ var mobTip;
 			$("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
-				$("#pokecenter1")[0].play();
+				// $("#pokecenter1")[0].play();
 		  }
 			snore = new PIXI.extras.AnimatedSprite(centerpokeTextures);
 		  snore.animationSpeed = 0.2;
@@ -607,7 +607,7 @@ var mobTip;
 			$("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
-				$("#pokecenter2")[0].play();
+				// $("#pokecenter2")[0].play();
 		  }
 
 			snore = new PIXI.extras.AnimatedSprite(centerpokeTextures2);
@@ -645,7 +645,7 @@ var mobTip;
 			$("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
-				$("#pokecenter2")[0].play();
+				// $("#pokecenter2")[0].play();
 		  }
 
 			snore = new PIXI.extras.AnimatedSprite(centerpokeTextures3);
@@ -683,7 +683,7 @@ var mobTip;
 			$("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
-				$("#laugh1")[0].play();
+				// $("#laugh1")[0].play();
 		  }
 
 			snore = new PIXI.extras.AnimatedSprite(laughTextures1);
@@ -720,7 +720,7 @@ var mobTip;
 			$("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
-				$("#laugh2")[0].play();
+				// $("#laugh2")[0].play();
 		  }
 
 			snore = new PIXI.extras.AnimatedSprite(laughTextures2);
@@ -757,7 +757,7 @@ var mobTip;
 			$("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
-				$("#laugh3")[0].play();
+				// $("#laugh3")[0].play();
 		  }
 			snore = new PIXI.extras.AnimatedSprite(laughTextures3);
 		  snore.animationSpeed = 0.2;
@@ -794,7 +794,7 @@ var mobTip;
 			$("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
 			if($(".relax-off").hasClass("playing")){
-				$("#laugh4")[0].play();
+				// $("#laugh4")[0].play();
 		  }
 
 			snore = new PIXI.extras.AnimatedSprite(laughTextures4);
@@ -835,7 +835,7 @@ var mobTip;
 
 			snore = new PIXI.extras.AnimatedSprite(sunTextures);
 			if($(".relax-off").hasClass("playing")){
-				$("#sunanimationsound")[0].play();
+				// $("#sunanimationsound")[0].play();
 		  }
 			
 		  snore.animationSpeed = 0.08;
@@ -857,7 +857,7 @@ var mobTip;
 			setTimeout(function(){
 		  	$("body").addClass("putOnMask");
 		  	if($(".relax-off").hasClass("playing")){
-					$("#move")[0].play();
+					// $("#move")[0].play();
 			  }
 			},1000);
 
@@ -1268,17 +1268,17 @@ var mobTip;
 											  }
 												// $("#time-end")[0].pause();
 												if($(".relax-off").hasClass("playing")){	
-													$("#end")[0].play();
+													// $("#end")[0].play();
 											  }
 												$("#end")[0].pause();
 												if($(".relax-off").hasClass("playing")){	
-													$("#mosquito-slap")[0].play();
+													// $("#mosquito-slap")[0].play();
 											  }
 												$("#mosquito-slap")[0].pause();
 												if($(".relax-off").hasClass("playing")){	
-													$("#mosquitoanimationsound")[0].play();
+													// $("#mosquitoanimationsound")[0].play();
 												}
-												$("#mosquitoanimationsound")[0].pause();
+												// $("#mosquitoanimationsound")[0].pause();
 
 												
 												$("body").addClass("load-desktop");
@@ -1302,7 +1302,7 @@ var mobTip;
 													'stroke-dashoffset': totalLength
 												});
 												if($(".relax-off").hasClass("playing")){	
-													audio[0].play();
+													// audio[0].play();
 											  }
 
 												audio.on('timeupdate', function() {

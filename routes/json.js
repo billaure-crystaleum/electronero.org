@@ -1314,12 +1314,12 @@ router.get('/api', (req,res) => {
             let resp = response.data;
             var serialized = circularJSON.stringify(resp);
             var unserialized = circularJSON.parse(serialized);
-            json = JSON.parse(response.data);
+            json = response.data;
             console.log(json);
             console.log(serialized);
             console.log(unserialized);
         } catch(e) {
-            json = JSON.parse(response.data);
+            json = response.data;
             console.log(e);
         }
         }).catch((error) => {

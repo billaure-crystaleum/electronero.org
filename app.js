@@ -58,11 +58,11 @@ app.use('/json/:oracle?/:tracker?/:base?/:pairs?', function (req, res, next) {
   console.log("req.params")
   console.log(req.params)
   var client_passport = { 
-    oracle: req.params.oracle ? req.params.oracle : 'oracle',
-    tracker:  req.params.tracker ? req.params.tracker : 'coingecko',
-    base:  req.params.base ? req.params.base : 'pairs',
-    pairs:  req.params.pairs ? req.params.pairs : 'btc-usdt,ltc,eth' 
-  } console.log(client_passport)
+    oracle: req.params.oracle ? req.params.oracle : '',
+    tracker:  req.params.tracker ? req.params.tracker : '',
+    base:  req.params.base ? req.params.base : '',
+    pairs:  req.params.pairs ? req.params.pairs : '',
+  };console.log(client_passport)  
   
   req.coin_config = {
     name: 'Electronero',

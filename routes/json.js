@@ -1,15 +1,23 @@
 const axios = require('axios');
 const express = require('express');
 const app = express();
+const app2 = express();
 const router = express.Router();
+const port = 1990;
+const port2 = 1991;
 
-const server = app.listen(1990);
-const server2 = app.listen(1991);
-server.get('*', function(req, res) {
+  app.listen(port, () => {
+    console.log(`Success! Data server 1 is running on port ${port}.`);
+  });
+  app2.listen(port2, () => {
+    console.log(`Success! Data server 2 running on port ${port2}.`);
+  });
+  
+app.get('*', function(req, res) {
   var home = {};
   res.json(home);
 });
-server2.get('*', function(req, res) {
+app2.get('*', function(req, res) {
   var man = { "frames": {
       "man 1.png":
       {

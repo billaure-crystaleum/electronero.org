@@ -63,12 +63,12 @@ app.use('/json', function (req, res, next) {
     usdt_price: 0,
     ltc_price: 0,
     tracker: '',
-    trackers: { coingecko: "", coinmarketcap: ""},
+    trackers: { coingecko: coingecko, coinmarketcap: coinmarketcap},
     from: 'ETNX',
-    to: 'USDT',
+    to: req_params_to.toString().split(","),
     base: 'USDT',
   };
-  req.coins_config = {};
+  req.coins_config = req.coin_config;
   next();
 }, json);
 

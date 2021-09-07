@@ -102,7 +102,7 @@ app.use('/json/api/:tracker?/:subpath?/:from?'+'-'+':to?', function (req, res, n
   };console.log(req.coins_config)  
   next();
 }, json);
-app.use('/json/oracle/:params', function (req, res, next) {
+app.use('/json/oracle', function (req, res, next) {
   // console.log("req.params");   
   req.default_config = {
     name: 'Electronero',

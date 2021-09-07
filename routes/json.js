@@ -4,7 +4,6 @@ const app = express();
 const router = express.Router();
 const port = 1990;
 const port2 = 1991;
-var http = require('http');
 
 var man = { "frames": {
     "man 1.png":
@@ -1298,7 +1297,11 @@ var man = { "frames": {
 }};
 
 router.get('/api', (req,res) => {
-  res.json({ message: 'Hello World'});
+    async function getJSONAsync(){
+	  let json = await axios.get('https://electronero.org/json/man.json');
+	  console.log('after the call to service');
+    res.json(json);
+	}  
 });
 /* GET home data. */
 router.get('/', function(req, res, next) {

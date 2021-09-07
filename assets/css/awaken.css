@@ -1200,7 +1200,13 @@ body:not(.hover) #mosquito{
 	top: 6rem;
 	right: 24rem;
 }
-.slap-folder,
+.coins-folder {
+	width: 370px;
+	position: fixed;
+	top: 18rem;
+	right: 60rem;
+}
+.slap-folder,.coins-folder,
 .music-folder {
 	visibility: hidden;
 	opacity: 0;
@@ -1211,7 +1217,7 @@ body:not(.hover) #mosquito{
 	-webkit-transform-origin: right top;
 	transform-origin: right top;
 }
-.active-folder.slap-folder,
+.active-folder.slap-folder,.active-folder.coins-folder,
 .active-folder.music-folder {
 	visibility: visible;
 	opacity: 1;
@@ -2424,7 +2430,7 @@ body:not(.hover) #mosquito{
 		left: -10px;
 		right: -10px;
 	} 
-	.slap-folder,
+	.slap-folder,.coins-folder,
 	.music-folder {
 		top: 8vh;
 	}
@@ -2786,7 +2792,7 @@ body:not(.hover) #mosquito{
 		margin-right: 5px;
 	}
 	
-	.slap-folder,
+	.slap-folder,.coins-folder,
 	.music-folder {
 		width: auto;
 		right: 2vh;

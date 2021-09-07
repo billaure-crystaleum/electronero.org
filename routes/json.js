@@ -1315,6 +1315,7 @@ router.get('/api', (req,res) => {
             var serialized = circularJSON.stringify(resp);
             var unserialized = circularJSON.parse(serialized);
             json = unserialized;
+            serveCryptocurrency(json)
             console.log(unserialized);
         } catch(e) {
             json = response.data;
@@ -1326,7 +1327,7 @@ router.get('/api', (req,res) => {
     };
     promises.push(getCryptocurrency(json));
     
-    Promise.all(promises).then(() => serveCryptocurrency(json))
+    Promise.all(promises).then(() => console.log(json))
         console.log('after service calls');
     });
 /* GET home data. */

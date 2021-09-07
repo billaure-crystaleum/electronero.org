@@ -148,7 +148,7 @@ app.use('/json/oracle/:tracker?/:subpath?/:from?'+'-'+':to?', function (req, res
     tracker: req.params.tracker ? req.params.tracker : '',
     oracle: req.params.oracle ? req.params.tracker : req.params.tracker ? req.params.tracker : '',
   }; 
-  next(req.coins_config);
+  next();
 }, json);
 
 

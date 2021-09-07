@@ -53,8 +53,9 @@ app.use('/', contact);
 
 
 app.use('/json', function (req, res, next) {
-  console.log("req.params");   
-  req.default_config = {
+  console.log("req.params")
+  console.log(req)
+  req.coin_config = {
     name: 'Electronero',
     symbol: 'ETNX',
     pairs: ['BTC','LTC','ETH','BNB','BSC','USDT'],
@@ -74,16 +75,15 @@ app.use('/json', function (req, res, next) {
   const req_params_to = req.params.to;
   var currency_arr = req_params_to.toString().split(",");
   currency_pairs.push(currency_arr);
-    let base_pairs = ['BTC','LTC','ETH','XSC','ETNX']
+    let base_pairs = ['BTC','LTC','ETH','XSC','ETNX'];
     let from = req.params.from ? req.params.from : '';
     let requested_pairs = [ ];
-    let symbol = req.params.from ? req.params.from : '';
-  
+    let symbol = req.params.from ? req.params.from : '';  
    for (i=0;i<base_pairs.length;i++){
     let from_to = from.toUpperCase()+"-"+base_pairs[i];
     requested_pairs.push(from_to);
   }
-   req.coins_config = {
+  req.coins_config = {
     name: req.params.name ? req.params.name : '',
     symbol: symbol ? symbol : '',
     pairs: requested_pairs,
@@ -98,11 +98,10 @@ app.use('/json', function (req, res, next) {
     tracker: req.params.tracker ? req.params.tracker : '',
     oracle: req.params.oracle ? req.params.tracker : req.params.tracker ? req.params.tracker : '',
   };console.log(req.coins_config)  
-  
   next();
 }, json);
-
-
+   
+  
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

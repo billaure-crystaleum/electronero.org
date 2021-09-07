@@ -1339,7 +1339,7 @@ router.get('/oracle/:tracker/pairs/:from'+"-"+':to', (req, res, next) => {
   let data_we_actually_got = [];
   let for_data_we_want = [];
   let json_obj = {};
-  var request_mini_app_default = req.default_config;
+  var request_mini_app_default = req.coin_config;
   var request_mini_app = req.coins_config;
   console.log("request_mini_app_default: ");
   console.log("\n");

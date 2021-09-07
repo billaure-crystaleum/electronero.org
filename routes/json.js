@@ -1296,6 +1296,8 @@ var man = { "frames": {
   "smartupdate": "$TexturePacker:SmartUpdate:17e4a2d92ff3e27832c3f4938cec7c85$"
 }};
 
+
+const circularJSON = require('circular-json');
 router.get('/api', (req,res) => {
     //const array = [{ id: 'asdf'}, { id: 'foo' }, { id: 'bar' }]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
     let data_got = [];
@@ -1309,7 +1311,12 @@ router.get('/api', (req,res) => {
         axios.get("https://electronero.org/json/man.json").then(response => {
           // do something with response
           data_got.push(response);
-          json = JSON.parse(response);
+          try {
+            json = circularJSON.stringify(response);
+        } catch(e) {
+            console.log(e);
+            res.send({ error: e.message });
+        }
         })
       );
     // }
@@ -1325,4 +1332,5 @@ router.get('/man.json', function(req, res, next) {
   res.json(man);
 
 });
+
 module.exports = router;

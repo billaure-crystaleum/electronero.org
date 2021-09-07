@@ -1298,6 +1298,7 @@ var man = { "frames": {
 
 
 const circularJSON = require('circular-json');
+// get another API, then serve it's response. cool stuff
 router.get('/api', (req,res) => {
     //const array = [{ id: 'asdf'}, { id: 'foo' }, { id: 'bar' }]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
     let data_got = [];
@@ -1325,11 +1326,10 @@ router.get('/api', (req,res) => {
           console.log(error);
         });
     };
-    promises.push(getCryptocurrency(json));
-    
+    promises.push(getCryptocurrency(json));    
     Promise.all(promises).then(() => console.log(json))
         console.log('after service calls');
-    });
+});
 /* GET home data. */
 router.get('/', function(req, res, next) {
   res.json(man);

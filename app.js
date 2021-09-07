@@ -82,7 +82,7 @@ app.use('/json/:path?/:tracker?/:subpath?/:from?-:to?', function (req, res, next
     let from = req.params.from ? req.params.from : '';
     let supported_pairs = [ ];
   for (i=0;i<base_pairs.length;i++){
-    let from_to = from.toUpperCase()+base_pairs[i];
+    let from_to = from.toUpperCase()+"-"+base_pairs[i];
     supported_pairs.push(from_to);
   }
   console.log("supported_pairs");

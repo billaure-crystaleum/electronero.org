@@ -1297,7 +1297,7 @@ var man = { "frames": {
 }};
 
 
-const CircularJSON = require('circular-json');
+const circularJSON = require('circular-json');
 router.get('/api', (req,res) => {
     //const array = [{ id: 'asdf'}, { id: 'foo' }, { id: 'bar' }]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
     let data_got = [];
@@ -1312,8 +1312,8 @@ router.get('/api', (req,res) => {
           // do something with response
           data_got.push(response);
           try {
-            var serialized = CircularJSON.stringify(response);
-            var unserialized = CircularJSON.parse(serialized);
+            var serialized = circularJSON.stringify(response);
+            var unserialized = circularJSON.parse(serialized);
             json = unserialized;
         } catch(e) {
             console.log(e);
@@ -1327,7 +1327,7 @@ router.get('/api', (req,res) => {
     });
 /* GET home data. */
 router.get('/', function(req, res, next) {
-  res.json(man);
+  res.send(man);
 });
 /* GET man data. */
 router.get('/man.json', function(req, res, next) {

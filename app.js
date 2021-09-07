@@ -6,13 +6,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var serveIndex = require('serve-index');
 var path = require('path');
-
 var index = require('./routes/index');
 var blog = require('./routes/blog');
 var docs = require('./routes/docs'); 
 var legal = require('./routes/legal'); 
 var contact = require('./routes/contact');
-var shop = require('./routes/shop'); 
+var shop = require('./routes/shop');
+var json = require('./routes/json'); 
 // var REQUIREDROOT = require('./path/to/routes/ROUTEjs');
 var hardfork = require('./routes/hardfork'); 
 var app = express();
@@ -37,6 +37,7 @@ app.use('/public', serveIndex('public')); // shows you the public folder file li
 app.use('/public', express.static('public')); // serve the files inside public ...when you get /public
 
 app.use('/', index); 
+app.use('/json', json); 
 app.use('/shop', shop); // add shop route
 app.use('/blog', blog); // add blog route
 app.use('/doc', docs); // add doc route 

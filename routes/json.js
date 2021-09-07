@@ -1304,8 +1304,9 @@ router.get('/api', (req,res) => {
     let promises = [];
     let json = {};
     let serveCryptocurrency = function(json){
-      res.type('application/json') // =>'application/json'
-      res.send(json)
+      res.setHeader('Content-Type', 'text/plain')
+      res.write('you posted:\n')
+      res.end(JSON.stringify(json, null, 2))
     }
     // for (i = 0; i < array.length; i++) {
       promises.push(

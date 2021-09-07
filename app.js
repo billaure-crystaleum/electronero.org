@@ -68,7 +68,7 @@ app.use('/json', function (req, res, next) {
     to: req_params_to.toString().split(","),
     base: 'USDT',
   };
-  req.coins_config = req.coin_config;
+  req.coins_config = {};
   next();
 }, json);
 

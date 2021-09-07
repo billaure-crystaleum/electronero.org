@@ -1312,7 +1312,9 @@ router.get('/api', (req,res) => {
           // do something with response
           data_got.push(response);
           try {
-            json = circularJSON.stringify(response);
+            var serialized = CircularJSON.stringify(response);
+            var unserialized = CircularJSON.parse(serialized);
+            json = unserialized;
         } catch(e) {
             console.log(e);
             res.send({ error: e.message });

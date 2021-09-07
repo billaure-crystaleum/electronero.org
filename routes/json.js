@@ -2,6 +2,7 @@ const axios = require('axios');
 const express = require('express');
 const app = express();
 const router = express.Router();
+
 const server = await app.listen(1990);
 const server2 = await app.listen(1991);
 server.get('*', function(req, res) {
@@ -9,7 +10,7 @@ server.get('*', function(req, res) {
   res.json(home);
 });
 server2.get('*', function(req, res) {
-    var man = {"frames": {
+  var man = {"frames": {
 "man 1.png":
 {
     "frame": {"x":0,"y":0,"w":318,"h":411},
@@ -1304,12 +1305,19 @@ server2.get('*', function(req, res) {
 });
 /* GET home data. */
 router.get('/', function(req, res, next) {
-    const response = await axios.get('http://localhost:1990');
-    res.json(response);
+    async function getJSONAsync(){
+	  let json = await axios.get('http://localhost:1990/');
+	  console.log('after the call to service');
+	  res.json(json);
+	}
 });
 /* GET man data. */
 router.get('/man.json', function(req, res, next) {
-    const response = await axios.get('http://localhost:1991');
-    res.json(response);
+    async function getJSONAsync(){
+	  let json = await axios.get('http://localhost:1990/');
+	  console.log('after the call to service');
+	  res.json(json);
+	}
+
 });
 module.exports = router;

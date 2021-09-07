@@ -1297,24 +1297,26 @@ var man = { "frames": {
 }};
 
 router.get('/api', (req,res) => {
-	  let json = axios.get('https://electronero.org/json/man.json');
-	  console.log('after the call to service');
-    res.json(json);
-});
+    //const array = [{ id: 'asdf'}, { id: 'foo' }, { id: 'bar' }]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
+    let data_got = [];
+    let promises = [];
+    // for (i = 0; i < array.length; i++) {
+      promises.push(
+        axios.get("https://electronero.org/json/man.json").then(response => {
+          // do something with response
+          data_got.push(response);
+        })
+      );
+    // }
+    Promise.all(promises).then(() => res.json(data_got));
+        console.log('after service calls');
+    });
 /* GET home data. */
 router.get('/', function(req, res, next) {
-  //   async function getJSONAsync(){
-	// //   let json = await axios.get('http://localhost:1990/');
-	// //   console.log('after the call to service');
-	// }
   res.json(man);
 });
 /* GET man data. */
 router.get('/man.json', function(req, res, next) {
-  //   async function getJSONAsync(){
-	// //   let json = await axios.get('http://localhost:1990/');
-	// //   console.log('after the call to service');
-	// }
   res.json(man);
 
 });

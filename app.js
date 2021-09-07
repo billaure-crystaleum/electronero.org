@@ -77,13 +77,14 @@ app.use('/json/:path?/:tracker?/:subpath?/:from?-:to?', function (req, res, next
   var currency_arr = req_params_to.toString().split(",");
   currency_pairs.push(currency_arr);
   console.log("currency_arr");
-  console.log(currency_arr);
+  console.log(currency_pairs);
+  let from = req.params.from ? req.params.from : '';
   req.coins_config = {
     name: req.params.name ? req.params.name : '',
     symbol: req.params.symbol ? req.params.symbol : '',
-    pairs: req.params.to ? req.params.to : ['BTC','LTC','ETH','BNB','BSC','USDT'],
+    pairs: currency_pairs != [] ? currency_pairs : [from+'-BTC',from+'-LTC',from+'-ETH',from+'-BNB',from+'-BSC',from+'-USDT'],
     base: req.params.base ? req.params.base : '',
-    from: req.params.from ? req.params.from : '',
+    from: from != '' ? from : '',
     to: req.params.to ? req.params.to : '',
     price: req.params.price ? req.params.price : '',
     btc_price: req.params.btc_price ? req.params.btc_price : '',

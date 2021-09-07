@@ -54,12 +54,11 @@ app.use('/', contact);
 // basically you can use the query operator and the parameters are optional 
 // https://stackoverflow.com/questions/41736413/multiple-optional-route-parameters-in-express
 // /articles/:year?/:month?/:day?
-app.use('/json/:route?/:tracker?/:base?/:pairs?', function (req, res, next) {
+app.use('/json/:oracle?/:tracker?/:pairs?/:pairs?', function (req, res, next) {
   console.log("client_passport")
   req.client_passport = { 
     oracle: req.params.tracker ? req.params.tracker : '',
-    pairs:  req.params.pairs ? req.params.pairs : '',
-    base:  req.params.base ? req.params.base : '' 
+    pairs:  req.params.pairs ? req.params.pairs : ''
   }; console.log(client_passport);
   
   req.coin_config = {

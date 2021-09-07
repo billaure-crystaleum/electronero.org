@@ -1492,7 +1492,7 @@ var mobTip;
 												// 	'stroke-dashoffset': totalLength
 												// });
 												if($(".relax-off").hasClass("playing")){	
-													// audio[0].play();
+													audio[0].play();
 											  }
 
 												audio.on('timeupdate', function() {
@@ -1500,7 +1500,7 @@ var mobTip;
 														maxduration = audio[0].duration,
 														calc = totalLength - ( currentTime / maxduration * totalLength );
 
-													circle.attr('stroke-dashoffset', calc);
+													// circle.attr('stroke-dashoffset', calc);
 												});
 												playAnimation();
 											}
@@ -2147,7 +2147,7 @@ var mobTip;
 								maxduration = audio[0].duration,
 								calc = totalLength - ( currentTime / maxduration * totalLength );
 
-							circle.attr('stroke-dashoffset', calc);
+							// circle.attr('stroke-dashoffset', calc);
 						});
 
 						if(!$(".shake").hasClass("playing")){	
@@ -2216,7 +2216,7 @@ var mobTip;
 		    	}
 
 
-		    	//$("#click")[0].play();
+		    	$("#click")[0].play();
      	
 		    	if($(".relax-off").hasClass("playing")){	
 		    		// $("#snore-sound")[0].play();
@@ -2345,7 +2345,7 @@ var mobTip;
 								maxduration = audio[0].duration,
 								calc = totalLength - ( currentTime / maxduration * totalLength );
 
-							circle.attr('stroke-dashoffset', calc);
+							// circle.attr('stroke-dashoffset', calc);
 						});
 						playAnimation();
 					}	
@@ -2377,7 +2377,7 @@ var mobTip;
 	    	if($(".second").val() == 9 ){
 	    		// $("#relax-sound")[0].pause();
 	    		if($(".relax-off").hasClass("playing")){
-	    		//   $("#time-end")[0].play();ff
+	    		//   $("#time-end")[0].play();
 	    	  }
 	    	}
 

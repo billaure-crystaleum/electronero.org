@@ -1309,7 +1309,7 @@ router.get('/api', (req,res) => {
         axios.get("https://electronero.org/json/man.json").then(response => {
           // do something with response
           data_got.push(response);
-          json = response;
+          json = JSON.parse(response);
         })
       );
     // }

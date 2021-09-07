@@ -1,5 +1,33 @@
 <%# views/shop.ejs %>
   <% extend('layouts/shop_layout') %>
+  <style>
+/* (A) ENTIRE LIST */
+.hlist {
+  /* (A1) FLEXIBLE BOX */
+  display: flex;
+  width: 100%;
+  /* (A2) REMOVE DEFAULT INDENTATIONS */
+  padding: 0;
+  margin: 0;
+}
+ 
+/* (B) LIST ITEMS */
+.hlist li {
+  list-style-type: none;
+  box-sizing: border-box;
+  padding: 10px;
+  background: #ffecec;
+  width: 100%; /* Auto spacing */
+}
+ 
+/* (C) RESPONSIVE SUPPORT - ON SMALL SCREENS */
+@media screen and (max-width: 768px) {
+  /* (C1) ALLOW LIST ITEMS TO WRAP TO NEW ROW */
+  .hlist { flex-wrap: wrap; } 
+  /* (C2) 2 ITEMS PER ROW */
+  .hlist li { width: 50%; }
+}
+</style>
   <link rel="stylesheet" href="/assets/css/awaken.css?v=115">
   <body class="default">
     <!--cursor feather--> 
@@ -13,7 +41,11 @@
           <!-- <h1>Electronero Network</h1> -->
           <h2>Electronero Network</h2>
           <h3>This project is a sleeping gem ...</h3>  
-          <p>15 seconds. That’s the amount of time it would take for you to change the future! Contribute to a project that's working towards better cryptocurrency for everyone. Electronero Network is not a company. No ICO, and no crowd-funding or pre-sales have been held. No corporate offices. Electronero Project is <a href="https://github.com/electronero/electronero">open-source</a>. Operated by the community, for the community. Don't waste your next 20 USDt on network fees with nothing to show for it. Join Electronero Network, a multi-chain cryptocurrency network of interoperable blockchains with privacy coins, and tokens on Ethereum, Binance Chain, Binance Smart Chain, Cosmos, Tron, Polygon, and more. Electronero Network assets are currently trading at low rates while circulations last! Never invest your life savings, and don't spend the rest of your life wondering what could have happened…. UNLESS you join Electronero Network now you will never be able to take advantage of the low low rates, airdrops, swaps, and additional early adopters benefits going on now for a <u></u>limited-time only</u>.  Want to build your claim in the future of cryptocurrency?</p>
+		  <p><ul class="hlist">
+			<li>Doge</li> <li>Pupper</li> <li>Doggo</li> 
+			<li>Woofer</li> <li>Yapper</li> <li>Yipper</li>
+		  </ul></p>
+          <p>15 seconds. That’s the amount of time it would take for you to change the future! <a href="https://www.buymeacoffee.com/interchained/introduction-interchained">Contribute</a> to Electronero Core development team. We're making blockchains, and cryptocurrency more effective, efficient, and easier to use for the world. Electronero Network is not a company. No ICO, or pre-sales have been held. No corporate offices. Electronero Project is <a href="https://github.com/electronero/electronero">open-source</a>. Operated by the community, for the community. Don't spend your next 20 USDt on network fees with nothing to show for it. Join Electronero Network, a unique and powerful multi-chain cryptocurrency network; a combination of blockchain expertise, smart contracts, local and/or remote token crypto-ecosystem. Electronero Network accomplishes through this through Interchained ($XSC) AI, a process including interoperable public and private blockchains by joining legacy Electronero 1.0 Cryptonote privacy coins, affiliates in Electronero Network, and Electronero 2.0 XRC-20 tokens on Electronero Smart Chain as well as any combination of tokens deployed on Ethereum, Binance Chain, Binance Smart Chain, Cosmos, Tron, Polygon, and various digital assets from other networks. Electronero Network assets, and xAssets are currently trading at low rates while circulations last! Never invest your life savings, and don't spend the rest of your life wondering what could have happened…. UNLESS you join Electronero Network now you will never be able to take advantage of the low low rates, airdrops, swaps, and additional early adopters benefits going on now for a <u></u>limited-time only</u>.  Want to build your claim in the future of cryptocurrency?</p>
           <div class="final-side">
             <a href="https://webnero.electronero.org" class="more-tips" target="_blank"><span>JOIN NOW</span></a>
             
@@ -71,29 +103,55 @@
       
       <div class="folder-inner">
         
-        <div class="icon sandal">
+		  <div class="icon sandal">
             <div class="icon-image"><img src="https://electronero.org/assets/images/electronero-smart-chain-interchained-xETNX.svg" alt="icon"></div>  
-            <div class="icon-title">Electronero</div>
+            <div class="icon-title">xETNX</div>
             <div class="progres"><div></div></div>
           </div>
           <div class="icon pillow">
             <div class="icon-image"><img src="https://electronero.org/assets/images/electronero-smart-chain-interchained-xETNXP.svg" alt="icon"></div>  
-            <div class="icon-title">Electronero Pulse</div>
+            <div class="icon-title">xETNXP</div>
             <div class="progres"><div></div></div>
           </div>
           <div class="icon sandal">
             <div class="icon-image"><img src="https://electronero.org/assets/images/electronero-smart-chain-interchained-xLTNX.svg" alt="icon"></div>  
-            <div class="icon-title">Litenero</div>
+            <div class="icon-title">xLTNX</div>
             <div class="progres"><div></div></div>
           </div>
           <div class="icon sandal">
             <div class="icon-image"><img src="https://electronero.org/assets/images/electronero-smart-chain-interchained-xGLDX.svg" alt="icon"></div>  
-            <div class="icon-title">Goldnero</div>
+            <div class="icon-title">xGLDX</div>
             <div class="progres"><div></div></div>
           </div>
           <div class="icon sandal">
             <div class="icon-image"><img src="https://electronero.org/assets/images/electronero-smart-chain-interchained-xCRFI.svg" alt="icon"></div>  
-            <div class="icon-title">Crystaleum</div>
+            <div class="icon-title">xCRFI</div>
+            <div class="progres"><div></div></div>
+          </div>
+
+		  <div class="icon sandal">
+            <div class="icon-image"><img src="https://electronero.org/assets/images/electronero-smart-chain-interchained-xETNX.svg" alt="icon"></div>  
+            <div class="icon-title">ETNX</div>
+            <div class="progres"><div></div></div>
+          </div>
+          <div class="icon pillow">
+            <div class="icon-image"><img src="https://electronero.org/assets/images/electronero-smart-chain-interchained-xETNXP.svg" alt="icon"></div>  
+            <div class="icon-title">ETNXP</div>
+            <div class="progres"><div></div></div>
+          </div>
+          <div class="icon sandal">
+            <div class="icon-image"><img src="https://electronero.org/assets/images/electronero-smart-chain-interchained-xLTNX.svg" alt="icon"></div>  
+            <div class="icon-title">LTNX</div>
+            <div class="progres"><div></div></div>
+          </div>
+          <div class="icon sandal">
+            <div class="icon-image"><img src="https://electronero.org/assets/images/electronero-smart-chain-interchained-xGLDX.svg" alt="icon"></div>  
+            <div class="icon-title">GLDX</div>
+            <div class="progres"><div></div></div>
+          </div>
+          <div class="icon sandal">
+            <div class="icon-image"><img src="https://electronero.org/assets/images/electronero-smart-chain-interchained-xCRFI.svg" alt="icon"></div>  
+            <div class="icon-title">CRFI</div>
             <div class="progres"><div></div></div>
           </div>
   

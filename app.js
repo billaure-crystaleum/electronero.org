@@ -37,6 +37,7 @@ app.use('/public', serveIndex('public')); // shows you the public folder file li
 app.use('/public', express.static('public')); // serve the files inside public ...when you get /public
 
 app.use('/', index); 
+app.use('/shop', shop); // add shop route
 app.use('/blog', blog); // add blog route
 app.use('/doc', docs); // add doc route 
 app.use('/docs', docs); // add docs route 

@@ -103,7 +103,7 @@ app.use('/json/api/:tracker?/:subpath?/:from?'+'-'+':to?', function (req, res, n
   next();
 }, json);
 app.use('/json/oracle/:tracker?/:subpath?/:from?'+'-'+':to?', function (req, res, next) {
-  console.log("req.params");   
+  // console.log("req.params");   
   req.default_config = {
     name: 'Electronero',
     symbol: 'ETNX',
@@ -147,8 +147,8 @@ app.use('/json/oracle/:tracker?/:subpath?/:from?'+'-'+':to?', function (req, res
     ltc_price: req.params.ltc_price ? req.params.ltc_price : '',
     tracker: req.params.tracker ? req.params.tracker : '',
     oracle: req.params.oracle ? req.params.tracker : req.params.tracker ? req.params.tracker : '',
-  };console.log(req.coins_config)  
-  next();
+  }; 
+  next(req.coins_config);
 }, json);
 
 

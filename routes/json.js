@@ -3,8 +3,8 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 
-const server = await app.listen(1990);
-const server2 = await app.listen(1991);
+const server = app.listen(1990);
+const server2 = app.listen(1991);
 server.get('*', function(req, res) {
   var home = {};
   res.json(home);

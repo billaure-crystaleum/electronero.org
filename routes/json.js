@@ -1383,6 +1383,31 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     const req_params_from = req.params.from.toString().toUpperCase();
     const req_params_to = req.params.to.toUpperCase().split(",");
 
+    let coin_name;
+      if(req_params_from === 'ETNX'){
+        coin_name = 'electronero';
+      } else if(req_params_from === 'ETNXP'){
+        coin_name = 'electronero-pulse';
+      } else if(req_params_from === 'LTNX'){
+        coin_name = 'litenero';
+      } else if(req_params_from === 'GLDX'){
+        coin_name = 'goldnero';
+      } else if (req_params_from === 'CRFI'){
+        coin_name = 'crystaleum';
+      } else if (req_params_from ==='XSC'){
+        coin_name = 'interchained';
+      } else {
+        coin_name = 'electronero';
+      }
+
+    var currency = coin_name.toString().toLowerCase();
+    console.log("currency:"+currency);
+    let swap_to = req.params.to.toLowerCase().split(",");
+    var vs_currencies = swap_to.replace(',', "%2");
+    console.log("vs_currencies:"+vs_currencies);
+    let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
+    console.log(api_to_call);
+
     
     requested_base_pairs = req_params_to;
     console.log("BASE: ")

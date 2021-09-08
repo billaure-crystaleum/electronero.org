@@ -1375,9 +1375,12 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         coin_profile.name = 'electronero';
     }
     var currency = coin_profile.name;
+    console.log("currency:"+currency)
     var vs_currencies = swap_to.toString().toLowerCase().replace(',', "%2");
+    console.log("vs_currencies:"+vs_currencies)
     let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
-    axios.get(api_to_call).then((response) => {
+    console.log(api_to_call);
+    axios.get('https://api.coingecko.com/api/v3/simple/price?ids=crystaleum&vs_currencies=btc').then((response) => {
         try {
           let resp = response.data;
           var r_serialized = circularJSON.stringify(resp);

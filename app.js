@@ -56,7 +56,6 @@ app.use('/', contact);
 app.use("/json", function(request, response, next){
   console.log("step 1: Authenticate");
   req.coins_config = req.params;
-  var authenticated = true;
   next();
 },json);
 

@@ -1378,7 +1378,6 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     const eth_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'eth']);
     // const usdt_price = price != undefined ? price : undefined;
     console.log("name: "+name);
-    console.log(coin_profile.from + " USDt value: " + usdt_price)
     console.log(coin_profile.from + " USD value: " + usd_price)
     console.log(coin_profile.from + " BTC value: " + btc_price)
     console.log(coin_profile.from + " LTC value: " + ltc_price)

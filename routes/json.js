@@ -1358,6 +1358,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     //   coin_profile.usd_price = ;
     //   coin_profile.eth_price = ;
     // }
+    console.log("USD/CRFI value " + Object.keys(coin_data)[0])
     console.log("USD/CRFI value " + Object.keys(coin_data)[0].usd)
     console.log("BTC/CRFI value " + Object.keys(coin_data)[0].btc)
     console.log("LTC/CRFI value " + Object.keys(coin_data)[0].ltc)

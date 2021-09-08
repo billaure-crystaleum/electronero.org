@@ -1383,7 +1383,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     const req_params_from = req.params.from.toString().toUpperCase();
     const req_params_to = req.params.to.toUpperCase().split(",");
 
-    var currency = req_params_from.toString().toLowerCase();
+    var currency = 'electronero';
     console.log("currency:"+currency);
     let swap_to = req.params.to.toLowerCase().split(",");
     var vs_currencies = swap_to.replace(',', "%2");

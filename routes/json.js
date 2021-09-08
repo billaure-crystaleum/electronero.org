@@ -1353,9 +1353,6 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
 
   // for (i = 0; i < array.length; i++) {}
   let getCryptocurrency = function(coin_profile){ 
-    // ['BTC','LTC']; 
-    let swap_to = coin_profile.swap_to;
-    var vs_currencies = coin_profilevs_currencies;
     let api_to_call = coin_profile.oracle.toString();
     axios.get(api_to_call).then((response) => {
         try {

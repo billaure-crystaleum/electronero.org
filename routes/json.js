@@ -1338,7 +1338,19 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   let data_we_actually_got = [];
   let for_data_we_want = [];
   let json_obj = {};
-  var request_mini_app = req.coin_config;
+  let coin_profile = {};
+  var request_mini_app = req.coin_config;    
+  let requested_base_pairs = [ ];
+  let requested_pairs = [ ];
+  let requested_currency = [ ];
+  const base_pairs = ['BTC','LTC','ETH','XSC','ETNX']; 
+  const req_params_from = req.params.from.toString().toUpperCase().split(",");
+  const req_params_to = req.params.to.toUpperCase().split(",");    
+  var currency_arr = req_params_from;
+  let tracker = req.params.tracker;
+  // symbol === currency name from Coingecko later?
+  let symbol = req_params_from;  
+  requested_base_pairs = req_params_to;
   console.log("request_mini_app: ");
   console.log("\n");
   console.log(request_mini_app);
@@ -1346,12 +1358,40 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   console.log("\n");
   console.log(req.params);
 
-  let serveCryptocurrency = function(json_obj){
-    res.json(json_obj);
+  let serveCryptocurrency = function(coin_profile){
+    res.json(coin_profile);
   }
-    
+
+  let cryptocurrencyData = function(json_obj){
+    console.log("BASE: ")
+    console.log(requested_base_pairs);
+    requested_currency.push(currency_arr);
+      for (j=0;j<requested_base_pairs.length;j++){
+        let from_to = req_params_from+"-"+requested_base_pairs[j];
+        requested_pairs.push(from_to);
+      }
+    const coin_profile = {
+      symbol: symbol ? symbol : '',
+      pairs: requested_pairs,
+      base: req_params_from ? req_params_from : '',
+      from: req_params_from ? req_params_from : '',
+      to: req_params_to ? req_params_to : '',
+      to_all: req.params.to.toString().toUpperCase(),
+      from_all: req.params.from.toString().toUpperCase(),
+      price: 0,
+      btc_price: 0,
+      eth_price: 0,
+      usdt_price: 0,
+      ltc_price: 0,
+      tracker: tracker ? tracker : '',
+      oracle: tracker ? tracker : '',
+    };
+    console.log(coin_profile);
+    serveCryptocurrency(coin_profile);
+  }
+  
   // for (i = 0; i < array.length; i++) {}
-  let getCryptocurrency = function(coin_profile){
+  let getCryptocurrency = function(json_obj){
     let coin = coin_profile.from;
     let from = coin;
     let to = coin_profile.to;
@@ -1368,7 +1408,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
           var r_unserialized = circularJSON.parse(r_serialized);
           json_obj = r_unserialized;
           data_we_actually_got.push(json_obj);
-          serveCryptocurrency(json_obj)
+          cryptocurrencyData(json_obj)
           console.log(r_unserialized);
       } catch(e) {
         json_obj = response.data;
@@ -1377,48 +1417,8 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
       }).catch((error) => {
         console.log(error);
       });
-  }
-
-  let cryptocurrencyData = function(json_obj){
-    const base_pairs = ['BTC','LTC','ETH','XSC','ETNX']; 
-    let requested_base_pairs = [ ];
-    let requested_pairs = [ ];
-    let requested_currency = [ ];
-    const req_params_from = req.params.from.toString().toUpperCase().split(",");
-    const req_params_to = req.params.to.toUpperCase().split(",");
-    requested_base_pairs = req_params_to;
-    console.log("BASE: ")
-    console.log(requested_base_pairs);
-    var currency_arr = req_params_from;
-    let tracker = req.params.tracker;
-    // symbol === currency name from Coingecko later?
-    let symbol = req_params_from;  
-    requested_currency.push(currency_arr);
-      for (j=0;j<requested_base_pairs.length;j++){
-        let from_to = req_params_from+"-"+requested_base_pairs[j];
-        requested_pairs.push(from_to);
-      }
-      const coin_profile = {
-        symbol: symbol ? symbol : '',
-        pairs: requested_pairs,
-        base: req_params_from ? req_params_from : '',
-        from: req_params_from ? req_params_from : '',
-        to: req_params_to ? req_params_to : '',
-        to_all: req.params.to.toString().toUpperCase(),
-        from_all: req.params.from.toString().toUpperCase(),
-        price: 0,
-        btc_price: 0,
-        eth_price: 0,
-        usdt_price: 0,
-        ltc_price: 0,
-        tracker: tracker ? tracker : '',
-        oracle: tracker ? tracker : '',
-      };
-      console.log(coin_profile);
-      getCryptocurrency(coin_profile);
   };
-
-  for_data_we_want.push(cryptocurrencyData(json_obj));    
+  for_data_we_want.push(getCryptocurrency(json_obj));    
   Promise.all(for_data_we_want).then(() => console.log(json_obj))
       console.log('after service calls');
 });

@@ -1352,20 +1352,23 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   }
 
   // for (i = 0; i < array.length; i++) {}
-  let getCryptocurrency = function(coin_profile){
-    let api_to_call = coin_profile.api.toString().toLowerCase();
+  let getCryptocurrency = function(coin_profile){ 
+    // ['BTC','LTC']; 
+    let str = coin_profile.to_all;
+    var vs_currencies = str.toString().toLowerCase().replace(',', "%2");
+    let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids=crystaleum&vs_currencies=btc%2Cusd%2Ceth%2Cltc';
     axios.get(api_to_call).then((response) => {
         try {
           let resp = response.data;
           var r_serialized = circularJSON.stringify(resp);
           var r_unserialized = circularJSON.parse(r_serialized);
           coin_data = r_unserialized;
-          data_we_actually_got.push(coin_data);
+          data_we_actually_got.push(json_obj);
           serveCryptocurrency(coin_profile, coin_data)
           console.log(r_unserialized);
       } catch(e) {
-        coin_data = response.data;
-        console.log(e);
+        json_obj = response.data;
+          console.log(e);
       }
       }).catch((error) => {
         console.log(error);
@@ -1378,7 +1381,6 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     let requested_pairs = [ ];
     let requested_currency = [ ];
     
-
     const req_params_from = req.params.from.toString().toUpperCase().split(",");
     const req_params_to = req.params.to.toUpperCase().split(",");
     requested_base_pairs = req_params_to;
@@ -1394,17 +1396,14 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         requested_pairs.push(from_to);
       }
       coin_profile = {
-        name: "coin_name",
+        name: '',
         symbol: symbol ? symbol : '',
         pairs: requested_pairs,
         base: req_params_from ? req_params_from : '',
         from: req_params_from ? req_params_from : '',
         to: req_params_to ? req_params_to : '',
-        swap_from: req.params.from.toString().toUpperCase(),
-        swap_to: req.params.to.toString().toUpperCase(),
-        api: api_to_call,
-        vs_currencies: vs_currencies,
-        currency: currency,
+        from_all: req.params.from.toString().toUpperCase(),
+        to_all: req.params.to.toString().toUpperCase(),
         price: 0,
         btc_price: 0,
         eth_price: 0,

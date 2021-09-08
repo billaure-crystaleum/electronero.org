@@ -1400,7 +1400,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     var vs_coins = to_all.replace(/,/g, percent2).toString();
     console.log("vs_coins");
     console.log(vs_coins);
-    let api_to_call = 'https://api.coingecko.com/api/v3/simple/price?ids='+coin+'&vs_currencies='+vs_coins;
+    let api_to_call = 'https://api.coingecko.com/api/v3/simple/price?ids=crystaleum&vs_currencies=usd%2eth%2btc';
     axios.get(api_to_call).then((response) => {
         try {
           let resp = response.data;

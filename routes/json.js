@@ -1356,8 +1356,8 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   const requested_pairs = [ ];
   const req_params_from = req.params.from;
   const req_params_to = req.params.to;
-  var currency_arr = req_params_from.toString().split(",");
-  var base_currency_arr = req_params_to.toString().split(",");
+  var currency_arr = req_params_from.toString().toUpperCase().split(",");
+  var base_currency_arr = req_params_to.toString().toUpperCase().split(",");
   let from = req_params_from;
   let to = req_params_to;
   let tracker = req.params.tracker;
@@ -1365,7 +1365,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   let symbol = from;  
   requested_base_pairs.push(base_currency_arr);
     for (j=0;j<requested_base_pairs.length;j++){
-      let from_to = from.toUpperCase()+"-"+requested_base_pairs[j];
+      let from_to = from+"-"+requested_base_pairs[j];
       requested_pairs.push(from_to);
     }
     const coin_profile = {

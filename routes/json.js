@@ -1333,7 +1333,7 @@ router.get('/api', (req,res) => {
       console.log('after service calls');
 });
 
-const getNestedObject = require('../assets/js/utils.js/getNestedObject'); 
+const getNestedObject = require('../assets/js/utils.js'); 
 const oracle_report = {"crystaleum":{"usd":14802.66,"btc":0.53383,"ltc":109.877,"eth":22.828348}};
 // pass in your object structure as array elements
 const name = Object.keys(oracle_report)[0];

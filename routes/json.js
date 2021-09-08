@@ -1384,28 +1384,22 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     const req_params_to = req.params.to.toUpperCase().split(",");
 
     let coin_name;
-    switch(req_params_from) {
-      case 'ETNX':
+      if(req_params_from === 'ETNX'){
         coin_name = 'electronero';
-        break;
-      case 'ETNXP':
+      } else if(req_params_from === 'ETNXP'){
         coin_name = 'electronero-pulse';
-        break;
-      case 'LTNX':
+      } else if(req_params_from === 'LTNX'){
         coin_name = 'litenero';
-        break;
-      case 'GLDX':
+      } else if(req_params_from === 'GLDX'){
         coin_name = 'goldnero';
-        break;
-      case 'CRFI':
+      } else if (req_params_from === 'CRFI'){
         coin_name = 'crystaleum';
-        break;
-      case 'XSC':
+      } else if (req_params_from ==='XSC'){
         coin_name = 'interchained';
-        break;
-      default:
+      } else {
         coin_name = 'electronero';
-    }
+      }
+
     var currency = coin_name.toString().toLowerCase();
     console.log("currency:"+currency);
     let swap_to = req.params.to.toLowerCase().split(",");

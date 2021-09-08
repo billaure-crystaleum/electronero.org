@@ -1352,15 +1352,14 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
 
   let cryptocurrencyData = function(json_obj){
   // separate by comma, push 
-  const default_pairs = [];
   const base_pairs = ['BTC','LTC','ETH','XSC','ETNX'];
   const currency_pairs = [];
   const requested_base_pairs = [];
   const requested_pairs = [];
   const req_params_from = req.params.from;
   const req_params_to = req.params.to;
-  var currency_arr = req_params_to.toString().split(",");
-  var base_currency_arr = req_params_from.toString().split(",");
+  var currency_arr = req_params_from.toString().split(",");
+  var base_currency_arr = req_params_to.toString().split(",");
   let from = req.params.from ? req.params.from : '';
   let to = req.params.to ? req.params.to : '';
   let tracker = req.params.tracker ? req.params.tracker : '';
@@ -1370,7 +1369,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   requested_base_pairs.push(base_currency_arr);
     for (i=0;i<base_pairs.length;i++){
       let from_to = from.toUpperCase()+"-"+base_pairs[i];
-      default_pairs.push(from_to);
+      currency_pairs.push(from_to);
     }
     for (j=0;j<requested_base_pairs.length;j++){
       let requested_from_to = from.toUpperCase()+"-"+requested_base_pairs[j].toString().toUpperCase();
@@ -1379,7 +1378,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     const coin_profile = {
       symbol: symbol ? symbol : '',
       pairs: requested_pairs,
-      base: req.params.from ? req.params.from : '',
+      base: from ? from : '',
       from: from ? from : '',
       to: to ? to : '',
       price: 0,

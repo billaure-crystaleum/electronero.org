@@ -1352,21 +1352,21 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
 
   let cryptocurrencyData = function(json_obj){
   const base_pairs = ['BTC','LTC','ETH','XSC','ETNX']; 
-  const requested_base_pairs = [];
-  const requested_pairs = [];
+  const requested_base_pairs = [ ];
+  const requested_pairs = [ ];
   const req_params_from = req.params.from;
   const req_params_to = req.params.to;
   var currency_arr = req_params_from.toString().split(",");
   var base_currency_arr = req_params_to.toString().split(",");
-  let from = req.params.from ? req.params.from : '';
-  let to = req.params.to ? req.params.to : '';
-  let tracker = req.params.tracker ? req.params.tracker : '';
+  let from = req_params_from;
+  let to = req_params_to;
+  let tracker = req.params.tracker;
   // symbol === currency name from Coingecko later?
   let symbol = from;  
   requested_base_pairs.push(base_currency_arr);
     for (j=0;j<requested_base_pairs.length;j++){
-      let requested_from_to = from.toUpperCase()+"-"+requested_base_pairs[j].toUpperCase();
-      requested_pairs.push(requested_from_to);
+      let from_to = from.toUpperCase()+"-"+requested_base_pairs[j];
+      requested_pairs.push(from_to);
     }
     const coin_profile = {
       symbol: symbol ? symbol : '',

@@ -1358,11 +1358,9 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   const req_params_to = req.params.to;
   var currency_arr = req_params_from.toString().toUpperCase().split(",");
   var base_currency_arr = req_params_to.toString().toUpperCase().split(",");
-  let from = req_params_from;
-  let to = req_params_to;
   let tracker = req.params.tracker;
   // symbol === currency name from Coingecko later?
-  let symbol = from;  
+  let symbol = req_params_from;  
   requested_base_pairs.push(base_currency_arr);
     for (j=0;j<requested_base_pairs.length;j++){
       let from_to = from+"-"+requested_base_pairs[j];
@@ -1371,9 +1369,9 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     const coin_profile = {
       symbol: symbol ? symbol : '',
       pairs: requested_pairs,
-      base: from ? from : '',
-      from: from ? from : '',
-      to: to ? to : '',
+      base: req_params_from ? req_params_from : '',
+      from: req_params_from ? req_params_from : '',
+      to: req_params_to ? req_params_to : '',
       price: 0,
       btc_price: 0,
       eth_price: 0,

@@ -1354,8 +1354,9 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   // for (i = 0; i < array.length; i++) {}
   let getCryptocurrency = function(coin_profile){ 
     // ['BTC','LTC']; 
-    let str = coin_profile.to_all;
-    var vs_currencies = str.toString().toLowerCase().replace(',', "%2");
+    let vs = coin_profile.to_all;
+    let swap_from = coin_profile.coin_name.toLowerCase();
+    var vs_currencies = vs.toString().toLowerCase().replace(',', "%2");
     let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids=crystaleum&vs_currencies=btc%2Cusd%2Ceth%2Cltc';
     axios.get(api_to_call).then((response) => {
         try {
@@ -1380,6 +1381,35 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     let requested_base_pairs = [ ];
     let requested_pairs = [ ];
     let requested_currency = [ ];
+    
+    let coin_name;
+    switch(swap_from) {
+      case 'ETNX':
+        coin_name = 'electronero';
+        break;
+      case 'ETNXP':
+        coin_name = 'electronero-pulse';
+        break;
+      case 'LTNX':
+        coin_name = 'litenero';
+        break;
+      case 'GLDX':
+        coin_name = 'goldnero';
+        break;
+      case 'CRFI':
+        coin_name = 'crystaleum';
+        break;
+      default:
+        coin_name = 'electronero';
+    }
+    var currency = coin_name;
+    console.log("currency:"+currency)
+    let swap_to = req.params.to.toString().toUpperCase();
+    var vs_currencies = swap_to.replace(',', "%2");
+    console.log("vs_currencies:"+vs_currencies)
+    let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
+    console.log(api_to_call);
+
     const req_params_from = req.params.from.toString().toUpperCase().split(",");
     const req_params_to = req.params.to.toUpperCase().split(",");
     requested_base_pairs = req_params_to;
@@ -1395,13 +1425,17 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         requested_pairs.push(from_to);
       }
       coin_profile = {
+        name: coin_name,
         symbol: symbol ? symbol : '',
         pairs: requested_pairs,
         base: req_params_from ? req_params_from : '',
         from: req_params_from ? req_params_from : '',
         to: req_params_to ? req_params_to : '',
-        from_all: req.params.from.toString().toUpperCase(),
-        to_all: req.params.to.toString().toUpperCase(),
+        swap_from: req.params.from.toString().toUpperCase(),
+        swap_to: req.params.to.toString().toUpperCase(),
+        api: api_to_call,
+        vs_currencies: vs_currencies,
+        currency: currency,
         price: 0,
         btc_price: 0,
         eth_price: 0,

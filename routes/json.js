@@ -1352,10 +1352,31 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   }
 
   // for (i = 0; i < array.length; i++) {}
-  let getCryptocurrency = function(coin_profile){
-    let basePair;
-    let vs_currencies;
-    let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids=crystaleum&vs_currencies=btc%2Cusd%2Ceth%2Cltc';
+  let getCryptocurrency = function(coin_profile){ 
+    let swap_from = coin_profile.symbol.toUpperCase();
+    let swap_to = coin_profile.to_all;
+    switch(swap_from) {
+      case 'ETNX':
+        coin_profile.name = 'electronero';
+        break;
+      case 'ETNXP':
+        coin_profile.name = 'electronero-pulse';
+        break;
+      case 'LTNX':
+        coin_profile.name = 'litenero';
+        break;
+      case 'GLDX':
+        coin_profile.name = 'goldnero';
+        break;
+      case 'CRFI':
+        coin_profile.name = 'crystaleum';
+        break;
+      default:
+        coin_profile.name = 'electronero';
+    }
+    var currency = coin_profile.name;
+    var vs_currencies = swap_to.toString().toLowerCase().replace(',', "%2");
+    let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
     axios.get(api_to_call).then((response) => {
         try {
           let resp = response.data;
@@ -1394,11 +1415,14 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         requested_pairs.push(from_to);
       }
       coin_profile = {
+        name: '',
         symbol: symbol ? symbol : '',
         pairs: requested_pairs,
         base: req_params_from ? req_params_from : '',
         from: req_params_from ? req_params_from : '',
         to: req_params_to ? req_params_to : '',
+        from_all: req.params.from.toString().toUpperCase(),
+        to_all: req.params.to.toString().toUpperCase(),
         price: 0,
         btc_price: 0,
         eth_price: 0,

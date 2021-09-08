@@ -1339,7 +1339,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   let for_data_we_want = [];
   let json_obj = {};
   var market_data = {};
-  var app_profile = coins_config;
+  var app_profile = req.coins_config;
   var request_profile = req.coins_config;
   console.log("app_profile: ");
   console.log("\n");

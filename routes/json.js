@@ -1372,7 +1372,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   };
   for_data_we_want.push(getCryptocurrency(json_obj));    
   Promise.all(for_data_we_want).then(() => console.log(json_obj))
-      console.log('after service calls');
+      console.log('service calls completed');
 });
 
 /* GET home data. */

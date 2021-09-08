@@ -1358,7 +1358,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     //   coin_profile.usd_price = ;
     //   coin_profile.eth_price = ;
     // }
-    console.log("crystaleum USD/CRFI value " + coin_data.crystaleum.usd)
+    console.log("crystaleum USD/CRFI value " + coin_data[0].usd)
     console.log("crystaleum BTC/CRFI value " + coin_data.crystaleum.btc)
     console.log("crystaleum LTC/CRFI value " + coin_data.crystaleum.ltc)
     console.log("crystaleum ETH/CRFI value " + coin_data.crystaleum.eth)

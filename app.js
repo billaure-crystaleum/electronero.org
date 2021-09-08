@@ -55,14 +55,8 @@ app.use('/', contact);
 app.use("/json", function(request, response, next){
   console.log("step 1");
   req.coins_config = req.params;
-  const coins_config = req.coins_config;
-  // add authentication to step 1 for next(), else end()
-  const authenticated = true;
+  // add authentication to step 1, for next(), else end()
   next();
-  if(authenticated == true){
-  } else {
-    end();
-  };
 },json);
 
   

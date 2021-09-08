@@ -1391,12 +1391,14 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   
   // for (i = 0; i < array.length; i++) {}
   let getCryptocurrency = function(json_obj){
-    coin = coin_profile.from;
-    from = coin;
-    to = coin_profile.to;
-    percent2 = '%2';
-    vs_coins = [ ];
-    var newStr = myStr.replace(/,/g, '-');
+    let coin = coin_profile.from;
+    let from = coin;
+    let to = coin_profile.to;
+    let to_all = coin_profile.to;
+    let percent2 = '%2';
+    var vs_coins = to_all.replace(/,/g, percent2);
+    console.log("vs_coins");
+    console.log(vs_coins);
     let api_to_call = 'https://api.coingecko.com/api/v3/simple/price?ids='+coin+'&vs_currencies='+vs_coins;
     axios.get(api_to_call).then((response) => {
         try {

@@ -1363,7 +1363,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   let symbol = req_params_from;  
   requested_base_pairs.push(base_currency_arr);
     for (j=0;j<requested_base_pairs.length;j++){
-      let from_to = from+"-"+requested_base_pairs[j];
+      let from_to = req_params_from+"-"+requested_base_pairs[j];
       requested_pairs.push(from_to);
     }
     const coin_profile = {

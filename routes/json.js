@@ -1335,15 +1335,12 @@ router.get('/api', (req,res) => {
 // oracle -> tracker -> :from-:to 
 // 09/07/2021 the day electronero deployed an oracle... 
 router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
-  //const array = [{ id: 'asdf'}, { id: 'foo' }, { id: 'bar' }]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
   let data_we_actually_got = [];
   let for_data_we_want = [];
   let json_obj = {};
+  var market_data = {};
   var request_mini_app_default = req.coin_config;
   var request_mini_app = req.coins_config;
-  console.log("next: ");
-  console.log("\n");
-  console.log(next);
   console.log("request_mini_app: ");
   console.log("\n");
   console.log(request_mini_app);
@@ -1373,11 +1370,11 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         console.log(error);
       });
   };
-  for_promises_we_kept.push(getCryptocurrency(json_obj));    
+  for_data_we_want.push(getCryptocurrency(json_obj));    
   Promise.all(for_data_we_want).then(() => console.log(json_obj))
       console.log('after service calls');
 });
-var market_data = {};
+
 /* GET home data. */
 router.get('/', function(req, res, next) {
   res.json(man);

@@ -1360,28 +1360,23 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
 
   let serveCryptocurrency = function(coin_profile, coin_data){
     prices = [];
-    // show all prices from swap_to
-    // for(i=0;i<price.length;i++){
-    //   let show_text = coin+"_price:" price;
-    //   prices.push(show_text)
-    //   coin_profile.btc_price = ;
-    //   coin_profile.usd_price = ;
-    //   coin_profile.eth_price = ;
-    // }
+    // show all prices from oracle report 
     const oracle_report = coin_data;
-    // pass in your object structure as array elements
+    // pass in oracles report as array elements
     const name = Object.keys(oracle_report)[0];
-    // to access nested array, just pass in array index as an element the path array.
+    // access specifice oracle reports through the nested array,
+    // just pass in array value/index as an element
+    // getNestedObject is imported via utils
     const usd_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usd']);
     const btc_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'btc']);
     const ltc_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'ltc']);
     const eth_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'eth']);
     // const usdt_price = price != undefined ? price : undefined;
     console.log("name: "+name);
-    console.log(coin_profile.from + " USD value: " + usd_price)
-    console.log(coin_profile.from + " BTC value: " + btc_price)
-    console.log(coin_profile.from + " LTC value: " + ltc_price)
-    console.log(coin_profile.from + " ETH value: " + eth_price)
+    console.log(coin_profile.from + " USD value: " + usd_price);
+    console.log(coin_profile.from + " BTC value: " + btc_price);
+    console.log(coin_profile.from + " LTC value: " + ltc_price);
+    console.log(coin_profile.from + " ETH value: " + eth_price);
     let usdRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usd']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usd']) : 0;
     let usdtRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usdt']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usd']) : 0;
     let btcRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'btc']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usd']) : 0;
@@ -1389,17 +1384,16 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     let ethTrates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'eth']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usd']) : 0;
     let xrpRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'xrp']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usd']) : 0;
     console.log("USD currency format: "+CurrencyJS(usdRates, { fromCents: true, precision: 0, separator: ',' }).format()); // "123456" => "123456.00" =>  "123,456.00"
-    var rateUSDformatCurrency = CurrencyJS(usdRates, { symbol: '₮', fromCents: true, precision: 0, separator: ',' }).format(); // "123456" => "123456.00" =>  "123,456.00"
+    var rateUSDformatCurrency = CurrencyJS(usdRates, { symbol: '$', fromCents: true, precision: 0, separator: ',' }).format(); // "123456" => "123456.00" =>  "123,456.00"
     var rateUSDTformatCurrency = CurrencyJS(usdtRates, { symbol: '₮', fromCents: true, precision: 0, separator: ',' }).format(); // "123456" => "123456.00" =>  "123,456.00"
     var rateBTCformatCurrency = CurrencyJS(btcRates, { symbol: '₿', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     var rateLTCformatCurrency = CurrencyJS(ltcTrates, { symbol: 'Ł', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     var rateETHformatCurrency = CurrencyJS(ethTrates, { symbol: 'Ξ', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
-    // display values on UI 
-    // $("#crfi-usdt-balance").html(rateUSDformatCurrency)
-    // $("#crfi-btc-balance").html(rateBTCformatCurrency)
-    // $("#crfi-eth-balance").html(rateETHformatCurrency);
-    // $("#crfi-ltc-balance").html(rateLTCformatCurrency);
-    res.json(coin_data);
+    // serve oracle as JSON 
+    const oracle = {
+
+    }
+    res.json(coin_profile);
   }
 
   // for (i = 0; i < array.length; i++) {}

@@ -1406,7 +1406,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     console.log(swap_to)
     var vs_currencies = swap_to.replace(',', "%2");
     console.log("vs_currencies:"+vs_currencies);
-    let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+'vs_currencies';
+    let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
     console.log(api_to_call);
 
     requested_base_pairs = req_params_to;
@@ -1430,6 +1430,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         to: req_params_to ? req_params_to : '',
         swap_from: req.params.from.toString().toUpperCase(),
         swap_to: req.params.to.toString().toUpperCase(),
+        vs_currencies: vs_currencies,
         price: 0,
         btc_price: 0,
         eth_price: 0,

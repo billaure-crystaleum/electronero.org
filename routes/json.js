@@ -1356,6 +1356,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   const requested_pairs = [ ];
   const requested_currency = [ ];
   const req_params_from = req.params.from.toString().toUpperCase().split(",");
+  let req_params_to;
   var currency_arr = req_params_from;
   let tracker = req.params.tracker;
   // symbol === currency name from Coingecko later?
@@ -1364,7 +1365,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   console.log("BASE: ")
   console.log(requested_base_pairs);
     for (j=0;j<requested_base_pairs.length;j++){
-      const req_params_to = req.params.to.toUpperCase().split(",");
+      req_params_to = req.params.to.toUpperCase().split(",");
       requested_base_pairs.push(req_params_to);
       let from_to = req_params_from+"-"+requested_base_pairs[j];
       requested_pairs.push(from_to);

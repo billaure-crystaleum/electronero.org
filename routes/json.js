@@ -1399,10 +1399,10 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         coin_name = 'electronero';
     }
     var currency = coin_name;
-    console.log("currency:"+currency)
+    console.log("currency:"+currency);
     let swap_to = req.params.to.toString().toUpperCase();
     var vs_currencies = swap_to.replace(',', "%2");
-    console.log("vs_currencies:"+vs_currencies)
+    console.log("vs_currencies:"+vs_currencies);
     let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
     console.log(api_to_call);
 

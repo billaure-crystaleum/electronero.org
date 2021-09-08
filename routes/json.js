@@ -1347,8 +1347,8 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   console.log("\n");
   console.log(req.params);
 
-  let serveCryptocurrency = function(coin_profile){
-    res.json(coin_profile);
+  let serveCryptocurrency = function(coin_profile, coin_data){
+    res.json(coin_data);
   }
 
   // for (i = 0; i < array.length; i++) {}
@@ -1361,9 +1361,9 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
           let resp = response.data;
           var r_serialized = circularJSON.stringify(resp);
           var r_unserialized = circularJSON.parse(r_serialized);
-          coin_profile = r_unserialized;
+          coin_data = r_unserialized;
           data_we_actually_got.push(json_obj);
-          serveCryptocurrency(coin_profile)
+          serveCryptocurrency(coin_profile, coin_data)
           console.log(r_unserialized);
       } catch(e) {
         json_obj = response.data;

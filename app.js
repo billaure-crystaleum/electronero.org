@@ -49,15 +49,21 @@ app.use('/tos', legal); // add tos route
 app.use('/privacy', legal); // add privacy route
 // app.use('/routeIwantToVisit', REQUIREDROUTE); // something useful...
 app.use('/hardfork', hardfork); // add hardfork route 
-app.use('/', contact);
+app.use('/', contact); 
 
-
-app.use('/json', function (req, res, next) {
+// Electronero Oracle JSON api
+app.use("/json", function(request, response, next){
+  console.log("step 1");
   req.coins_config = req.params;
-  console.log(req.coins_config)  
-  next();
-}, json);
-   
+  // add authentication to step 1 for next(), else end()
+  authenticated = true;
+  if(authenticated === true){
+    next();
+  } else {
+    end();
+  };
+},json);
+
   
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

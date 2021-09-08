@@ -1338,7 +1338,6 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   let data_we_actually_got = [];
   let for_data_we_want = [];
   let json_obj = {};
-  var market_data = {};
   var request_mini_app_default = req.coin_config;
   var request_mini_app = req.coins_config;
   console.log("request_mini_app: ");
@@ -1372,7 +1371,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   };
   for_data_we_want.push(getCryptocurrency(json_obj));    
   Promise.all(for_data_we_want).then(() => console.log(json_obj))
-      console.log('service calls completed');
+      console.log('after service calls');
 });
 
 /* GET home data. */

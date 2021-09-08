@@ -1362,11 +1362,11 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   // symbol === currency name from Coingecko later?
   let symbol = req_params_from;  
   requested_currency.push(currency_arr);
-  console.log("BASE: ")
-  console.log(requested_base_pairs);
     for (j=0;j<requested_base_pairs.length;j++){
       req_params_to = req.params.to.toUpperCase().split(",");
       requested_base_pairs.push(req_params_to);
+      console.log("BASE: ")
+      console.log(requested_base_pairs);
       let from_to = req_params_from+"-"+requested_base_pairs[j];
       requested_pairs.push(from_to);
     }

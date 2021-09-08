@@ -1358,10 +1358,10 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     //   coin_profile.usd_price = ;
     //   coin_profile.eth_price = ;
     // }
-    console.log("crystaleum USD/CRFI value " + coin_data[0].usd)
-    console.log("crystaleum BTC/CRFI value " + coin_data.crystaleum.btc)
-    console.log("crystaleum LTC/CRFI value " + coin_data.crystaleum.ltc)
-    console.log("crystaleum ETH/CRFI value " + coin_data.crystaleum.eth)
+    console.log("USD/CRFI value " + console.log(Object.keys(coin_data)[0]).usd)
+    console.log("BTC/CRFI value " + Object.keys(coin_data)[0]).btc)
+    console.log("LTC/CRFI value " + Object.keys(coin_data)[0]).ltc)
+    console.log("ETH/CRFI value " + Object.keys(coin_data)[0]).eth)
     let usdRates = coin_data.crystaleum.usd;
     let usdtRates = coin_data.crystaleum.usdt ? coin_data.crystaleum.usdt : 0;
     let xrpRates = coin_data.crystaleum.xrp ? coin_data.crystaleum.xrp : 0;

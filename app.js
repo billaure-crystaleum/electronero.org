@@ -59,7 +59,7 @@ app.use("/json", function(request, response, next){
   // add authentication to step 1 for next(), else end()
   authenticated = true;
   if(authenticated === true){
-    next(coins_config);
+    next();
   } else {
     end();
   };

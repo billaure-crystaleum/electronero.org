@@ -1394,11 +1394,8 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     let to = req_params_to;
     let to_all = req_params_to;
     let percent2 = '%2';
-    var vs_coins = to_all.replace(/,/g, percent2).toString();
-    console.log("vs_coins");
-    console.log(vs_coins);
     let api_to_call = 'https://api.coingecko.com/api/v3/simple/price?ids=crystaleum&vs_currencies=usd%2eth%2btc';
-    axios.get('https://api.coingecko.com/api/v3/simple/price?ids=crystaleum&vs_currencies=btc%2Cusd%2Ceth%2Cltc').then((response) => {
+    axios.get(api_to_call).then((response) => {
         try {
           let resp = response.data;
           var r_serialized = circularJSON.stringify(resp);

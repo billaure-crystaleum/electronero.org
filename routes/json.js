@@ -1339,15 +1339,14 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   let for_data_we_want = [];
   let json_obj = {};
   var market_data = {};
-  var request_mini_app_default = req.coin_config;
-  var request_mini_app = req.coins_config;
-  console.log("request_mini_app: ");
+  var app_profile = coins_config;
+  var request_profile = req.coins_config;
+  console.log("app_profile: ");
   console.log("\n");
-  console.log(request_mini_app);
-  console.log("req.params: ");
+  console.log(app_profile);
+  console.log("request_profile: ");
   console.log("\n");
-  console.log(req.params);
-
+  console.log(request_profile);
   let serveCryptocurrency = function(json_obj){
     res.json(json_obj);
   }
@@ -1361,7 +1360,6 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
           json_obj = r_unserialized;
           data_we_actually_got.push(json_obj);
           serveCryptocurrency(json_obj)
-          console.log(r_unserialized);
       } catch(e) {
         json_obj = response.data;
           console.log(e);

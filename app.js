@@ -58,11 +58,11 @@ app.use("/json", function(request, response, next){
   req.coins_config = req.params;
   var authenticated = true;
   if(authenticated){
-    next(err);
+    next();
   } else {
     var err = new Error('Authentication Failed');
     err.status = 404;
-    next();
+    next(err);
   }
 },json);
 

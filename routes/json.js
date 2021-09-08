@@ -1363,14 +1363,16 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     console.log("crystaleum LTC/CRFI value " + coin_data.crystaleum.ltc)
     console.log("crystaleum ETH/CRFI value " + coin_data.crystaleum.eth)
     let usdRates = coin_data.crystaleum.usd;
+    let usdtRates = coin_data.crystaleum.usdt ? coin_data.crystaleum.usdt : 0;
     let btcRates = coin_data.crystaleum.btc;
     let ltcTrates = coin_data.crystaleum.ltc;
     let ethTrates = coin_data.crystaleum.eth;
     console.log(CurrencyJS(usdRates, { fromCents: true, precision: 0, separator: ',' }).format()); // "123456" => "123456.00" =>  "123,456.00"
-    // var rateUSDformatCurrency = CurrencyJS(usdTrates, { symbol: '₮', fromCents: true, precision: 0, separator: ',' }).format(); // "123456" => "123456.00" =>  "123,456.00"
-    // var rateBTCformatCurrency = CurrencyJS(btcRates, { symbol: '₿', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
-    // var rateETHformatCurrency = CurrencyJS(ethTrates, { symbol: 'Ξ', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
-    // var rateLTCformatCurrency = CurrencyJS(ltcTrates, { symbol: 'Ł', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
+    var rateUSDformatCurrency = CurrencyJS(usdRates, { symbol: '₮', fromCents: true, precision: 0, separator: ',' }).format(); // "123456" => "123456.00" =>  "123,456.00"
+    var rateUSDTformatCurrency = CurrencyJS(usdtRates, { symbol: '₮', fromCents: true, precision: 0, separator: ',' }).format(); // "123456" => "123456.00" =>  "123,456.00"
+    var rateBTCformatCurrency = CurrencyJS(btcRates, { symbol: '₿', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
+    var rateLTCformatCurrency = CurrencyJS(ltcTrates, { symbol: 'Ł', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
+    var rateETHformatCurrency = CurrencyJS(ethTrates, { symbol: 'Ξ', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     // display values on UI 
     // $("#crfi-usdt-balance").html(rateUSDformatCurrency)
     // $("#crfi-btc-balance").html(rateBTCformatCurrency)

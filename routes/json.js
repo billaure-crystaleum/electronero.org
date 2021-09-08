@@ -1368,20 +1368,20 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
       let requested_from_to = from.toUpperCase()+"-"+requested_base_pairs[j].toUpperCase();
       requested_pairs.push(requested_from_to);
     }
-  coins_config = {
-    symbol: symbol ? symbol : '',
-    pairs: requested_pairs,
-    base: req.params.from ? req.params.from : '',
-    from: from ? from : '',
-    to: to ? to : '',
-    price: 0,
-    btc_price: 0,
-    eth_price: 0,
-    usdt_price: 0,
-    ltc_price: 0,
-    tracker: req.params.tracker ? req.params.tracker : '',
-    oracle: req.params.tracker ? req.params.tracker : '',
-  };console.log(req.coins_config)
+    const coins_config = {
+      symbol: symbol ? symbol : '',
+      pairs: requested_pairs,
+      base: req.params.from ? req.params.from : '',
+      from: from ? from : '',
+      to: to ? to : '',
+      price: 0,
+      btc_price: 0,
+      eth_price: 0,
+      usdt_price: 0,
+      ltc_price: 0,
+      tracker: req.params.tracker ? req.params.tracker : '',
+      oracle: req.params.tracker ? req.params.tracker : '',
+    };console.log(coins_config)
   let serveCryptocurrency = function(json_obj){
     res.json(json_obj);
   }

@@ -1348,7 +1348,16 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   console.log(req.params);
 
   let serveCryptocurrency = function(coin_profile, coin_data){
-    res.json(coin_profile);
+    prices = [];
+    // show all prices from swap_to
+    // for(i=0;i<price.length;i++){
+    //   let show_text = coin+"_price:" price;
+    //   prices.push(show_text)
+    //   coin_profile.btc_price = ;
+    //   coin_profile.usd_price = ;
+    //   coin_profile.eth_price = ;
+    // }
+    res.json(coin_data);
   }
 
   // for (i = 0; i < array.length; i++) {}

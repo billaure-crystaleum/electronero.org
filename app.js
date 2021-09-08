@@ -52,11 +52,18 @@ app.use('/hardfork', hardfork); // add hardfork route
 app.use('/', contact); 
 
 // Electronero Oracle JSON api
+// add authentication to step 1, for next(), else end()
 app.use("/json", function(request, response, next){
-  console.log("step 1");
+  console.log("step 1: Authenticate");
   req.coins_config = req.params;
-  // add authentication to step 1, for next(), else end()
-  next();
+  var authenticated = true;
+  if(authenticated){
+    next(err);
+  } else {
+    var err = new Error('Authentication Failed');
+    err.status = 404;
+    next();
+  }
 },json);
 
   

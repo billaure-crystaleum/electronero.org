@@ -1352,9 +1352,9 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
 
   let cryptocurrencyData = function(json_obj){
   const base_pairs = ['BTC','LTC','ETH','XSC','ETNX']; 
-  const requested_base_pairs = [ ];
-  const requested_pairs = [ ];
-  const requested_currency = [ ];
+  let requested_base_pairs = [ ];
+  let requested_pairs = [ ];
+  let requested_currency = [ ];
   const req_params_from = req.params.from.toString().toUpperCase().split(",");
   const req_params_to = req.params.to.toUpperCase().split(",");
   requested_base_pairs = req_params_to;

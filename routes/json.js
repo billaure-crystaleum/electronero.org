@@ -1338,7 +1338,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   let data_we_actually_got = [];
   let for_data_we_want = [];
   let json_obj = {};
-  var request_mini_app = req.coins_config;
+  var request_mini_app = req.coin_config;
   console.log("request_mini_app: ");
   console.log("\n");
   console.log(request_mini_app);

@@ -1402,7 +1402,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
 
     var currency = coin_name.toString().toLowerCase();
     console.log("currency:"+currency);
-    let swap_to = req.params.to.toString().toLowerCase().split(",");
+    let swap_to = req_params_to.toString().toLowerCase();
     console.log(swap_to)
     // var vs_currencies = swap_to.replace(',', "%2");
     // console.log("vs_currencies:"+vs_currencies);

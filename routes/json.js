@@ -1381,6 +1381,34 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     let requested_pairs = [ ];
     let requested_currency = [ ];
     
+    let coin_name;
+    switch(swap_from) {
+      case 'ETNX':
+        coin_name = 'electronero';
+        break;
+      case 'ETNXP':
+        coin_name = 'electronero-pulse';
+        break;
+      case 'LTNX':
+        coin_name = 'litenero';
+        break;
+      case 'GLDX':
+        coin_name = 'goldnero';
+        break;
+      case 'CRFI':
+        coin_name = 'crystaleum';
+        break;
+      default:
+        coin_name = 'electronero';
+    }
+    var currency = coin_name.toString().toLowerCase();
+    console.log("currency:"+currency);
+    let swap_to = req.params.to.toString().toLowerCase();
+    var vs_currencies = swap_to.replace(',', "%2");
+    console.log("vs_currencies:"+vs_currencies);
+    let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
+    console.log(api_to_call);
+    
     const req_params_from = req.params.from.toString().toUpperCase().split(",");
     const req_params_to = req.params.to.toUpperCase().split(",");
     requested_base_pairs = req_params_to;
@@ -1402,8 +1430,8 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         base: req_params_from ? req_params_from : '',
         from: req_params_from ? req_params_from : '',
         to: req_params_to ? req_params_to : '',
-        from_all: req.params.from.toString().toUpperCase(),
-        to_all: req.params.to.toString().toUpperCase(),
+        swap_from: req.params.from.toString().toUpperCase(),
+        swap_to: req.params.to.toString().toUpperCase(),
         price: 0,
         btc_price: 0,
         eth_price: 0,

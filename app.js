@@ -57,8 +57,8 @@ app.use("/json", function(request, response, next){
   req.coins_config = req.params;
   const coins_config = req.coins_config;
   // add authentication to step 1 for next(), else end()
-  authenticated = true;
-  if(authenticated === true){
+  const authenticated = true;
+  if(authenticated == true){
     next();
   } else {
     end();

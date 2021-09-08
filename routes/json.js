@@ -1402,7 +1402,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
 
     var currency = coin_name.toString().toLowerCase();
     console.log("currency:"+currency);
-    let swap_to = req.params.to.toLowerCase().split(",");
+    let swap_to = req.params.to.toString().toLowerCase().split(",");
     console.log(swap_to)
     // var vs_currencies = swap_to.replace(',', "%2");
     // console.log("vs_currencies:"+vs_currencies);
@@ -1422,7 +1422,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         requested_pairs.push(from_to);
       }
       coin_profile = {
-        name: '',
+        name: currency,
         symbol: symbol ? symbol : '',
         pairs: requested_pairs,
         base: req_params_from ? req_params_from : '',
@@ -1436,7 +1436,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         usdt_price: 0,
         ltc_price: 0,
         tracker: tracker ? tracker : '',
-        oracle: tracker ? tracker : '',
+        oracle: api_to_call ? api_to_call : '',
       };
       console.log(coin_profile);
       getCryptocurrency(coin_profile);

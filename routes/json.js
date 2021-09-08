@@ -1371,7 +1371,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
           coin_data = r_unserialized;
           data_we_actually_got.push(json_obj);
           serveCryptocurrency(coin_profile, coin_data)
-          console.log(r_unserialized);
+          //console.log(r_unserialized);
       } catch(e) {
         json_obj = response.data;
           console.log(e);
@@ -1406,16 +1406,16 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         coin_name = 'electronero';
       }
     var currency = coin_name.toString().toLowerCase();
-    console.log("currency:"+currency);
+    //console.log("currency:"+currency);
     let swap_to = req_params_to.toString().toLowerCase();
-    console.log(swap_to)
+    //console.log(swap_to)
     var vs_currencies = swap_to.replace(',', "%2C");
-    console.log("vs_currencies:"+vs_currencies);
+    //console.log("vs_currencies:"+vs_currencies);
     let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
-    console.log(api_to_call);
+    //console.log(api_to_call);
     requested_base_pairs = req_params_to;
-    console.log("BASE: ")
-    console.log(requested_base_pairs);
+    //console.log("BASE: ")
+    //console.log(requested_base_pairs);
     var currency_arr = req_params_from;
     let tracker = req.params.tracker;
     // symbol === currency name from Coingecko later?
@@ -1443,13 +1443,13 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         tracker: tracker ? tracker : '',
         oracle: api_to_call ? api_to_call : '',
       };
-      console.log(coin_profile);
+      //console.log(coin_profile);
       getCryptocurrency(coin_profile);
     }
     
   for_data_we_want.push(cryptocurrencyData(json_obj));    
   Promise.all(for_data_we_want).then(() => console.log(json_obj))
-      console.log('after service calls');
+      console.log('service calls complete!');
 });
 
 /* GET home data. */

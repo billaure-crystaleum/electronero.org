@@ -61,39 +61,47 @@ app.use("/json", function(req, res, next){
   const req_params_from = req.params.from;
   const req_params_to = req.params.to;
   var currency_arr = req_params_to.toString().split(",");
+  //var base_currency_arr = req_params_from.toString().split(",");
   currency_pairs.push(currency_arr);
     let base_pairs = ['BTC','LTC','ETH','XSC','ETNX'];
+    let requested_base_pairs = [ ];
     let from = req.params.from ? req.params.from : '';
+    let to = req.params.to ? req.params.to : '';
+    // separate by comma, push into 
+    let default_pairs = [ ];
     let requested_pairs = [ ];
     let symbol = req.params.from ? req.params.from : '';  
-   for (i=0;i<base_pairs.length;i++){
-    let from_to = from.toUpperCase()+"-"+base_pairs[i];
-    requested_pairs.push(from_to);
-  }
+    for (i=0;i<base_pairs.length;i++){
+      let from_to = from.toUpperCase()+"-"+base_pairs[i];
+      default_pairs.push(from_to);
+    }
+    for (j=0;j<requested_base_pairs.length;j++){
+      let requested_from_to = from.toUpperCase()+"-"+requested_base_pairs[j].toUpperCase();
+      requested_pairs.push(requested_from_to);
+    }
   req.coins_config = {
-    name: req.params.name ? req.params.name : '',
     symbol: symbol ? symbol : '',
     pairs: requested_pairs,
     base: req.params.from ? req.params.from : '',
     from: from ? from : '',
-    to: req.params.to ? req.params.to : '',
-    price: req.params.price ? req.params.price : 0,
-    btc_price: req.params.btc_price ? req.params.btc_price : 0,
-    eth_price: req.params.eth_price ? req.params.eth_price : 0,
-    usdt_price: req.params.usdt_price ? req.params.usdt_price : 0,
-    ltc_price: req.params.ltc_price ? req.params.ltc_price : '',
+    to: to ? to : '',
+    price: 0,
+    btc_price: 0,
+    eth_price: 0,
+    usdt_price: 0,
+    ltc_price: 0,
     tracker: req.params.tracker ? req.params.tracker : '',
-    oracle: req.params.oracle ? req.params.tracker : req.params.tracker ? req.params.tracker : '',
+    oracle: req.params.tracker ? req.params.tracker : '',
   };console.log(req.coins_config)
   const request_profile = req.coins_config;
   var authenticated = true;
-  if(authenticated){
-    next();
-  } else {
-    var err = new Error('Authentication Failed');
-    err.status = 404;
-    next(err);
-  }
+    if(authenticated){
+      next();
+    } else {
+      var err = new Error('Authentication Failed');
+      err.status = 404;
+      next(err);
+    }
 },json);
 
   

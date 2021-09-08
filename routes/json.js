@@ -1358,15 +1358,14 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     //   coin_profile.usd_price = ;
     //   coin_profile.eth_price = ;
     // }
-    console.log("balance USDt/CRFI rate " + coin_data.crystaleum.usd)
-    console.log("crystaleum USDt/CRFI value " + crfiBalance * coin_data.crystaleum.usd)
-    console.log("crystaleum BTC/CRFI value " + crfiBalance * coin_data.crystaleum.btc)
-    console.log("crystaleum ETH/CRFI value " + crfiBalance * coin_data.crystaleum.eth)
-    console.log("crystaleum LTC/CRFI value " + crfiBalance * coin_data.crystaleum.ltc)
-    let usdRates = crfiBalance * coin_data.crystaleum.usd;
-    let btcRates = crfiBalance * coin_data.crystaleum.btc;
-    let ltcTrates = crfiBalance * coin_data.crystaleum.ltc;
-    let ethTrates = crfiBalance * coin_data.crystaleum.eth;
+    console.log("crystaleum USD/CRFI value " + coin_data.crystaleum.usd)
+    console.log("crystaleum BTC/CRFI value " + coin_data.crystaleum.btc)
+    console.log("crystaleum LTC/CRFI value " + coin_data.crystaleum.ltc)
+    console.log("crystaleum ETH/CRFI value " + coin_data.crystaleum.eth)
+    let usdRates = coin_data.crystaleum.usd;
+    let btcRates = coin_data.crystaleum.btc;
+    let ltcTrates = coin_data.crystaleum.ltc;
+    let ethTrates = coin_data.crystaleum.eth;
     console.log(CurrencyJS(usdRates, { fromCents: true, precision: 0, separator: ',' }).format()); // "123456" => "123456.00" =>  "123,456.00"
     // var rateUSDformatCurrency = CurrencyJS(usdTrates, { symbol: '₮', fromCents: true, precision: 0, separator: ',' }).format(); // "123456" => "123456.00" =>  "123,456.00"
     // var rateBTCformatCurrency = CurrencyJS(btcRates, { symbol: '₿', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł

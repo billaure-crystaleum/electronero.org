@@ -53,10 +53,17 @@ app.use('/', contact);
 
 // Electronero Oracle JSON api
 // add authentication to step 1, for next(), else end()
-app.use("/json", function(request, response, next){
+app.use("/json", function(req, res, next){
   console.log("step 1: Authenticate");
   req.coins_config = req.params;
-  next();
+  var authenticated = true;
+  if(authenticated){
+    next();
+  } else {
+    var err = new Error('Authentication Failed');
+    err.status = 404;
+    next(err);
+  }
 },json);
 
   

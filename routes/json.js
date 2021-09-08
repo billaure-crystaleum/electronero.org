@@ -1338,7 +1338,6 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   let data_we_actually_got = [];
   let for_data_we_want = [];
   let json_obj = {};
-  var request_mini_app_default = req.coin_config;
   var request_mini_app = req.coins_config;
   console.log("request_mini_app: ");
   console.log("\n");
@@ -1346,6 +1345,43 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   console.log("req.params: ");
   console.log("\n");
   console.log(req.params);
+  const currency_base = {};
+  const currency_pairs = [];
+  const req_params_from = req.params.from;
+  const req_params_to = req.params.to;
+  var currency_arr = req_params_to.toString().split(",");
+  var base_currency_arr = req_params_from.toString().split(",");
+  currency_pairs.push(currency_arr);
+    let base_pairs = ['BTC','LTC','ETH','XSC','ETNX'];
+    let requested_base_pairs = [ ];
+    let from = req.params.from ? req.params.from : '';
+    let to = req.params.to ? req.params.to : '';
+    // separate by comma, push into 
+    let default_pairs = [ ];
+    let requested_pairs = [ ];
+    let symbol = req.params.from ? req.params.from : '';  
+    for (i=0;i<base_pairs.length;i++){
+      let from_to = from.toUpperCase()+"-"+base_pairs[i];
+      default_pairs.push(from_to);
+    }
+    for (j=0;j<requested_base_pairs.length;j++){
+      let requested_from_to = from.toUpperCase()+"-"+requested_base_pairs[j].toUpperCase();
+      requested_pairs.push(requested_from_to);
+    }
+  coins_config = {
+    symbol: symbol ? symbol : '',
+    pairs: requested_pairs,
+    base: req.params.from ? req.params.from : '',
+    from: from ? from : '',
+    to: to ? to : '',
+    price: 0,
+    btc_price: 0,
+    eth_price: 0,
+    usdt_price: 0,
+    ltc_price: 0,
+    tracker: req.params.tracker ? req.params.tracker : '',
+    oracle: req.params.tracker ? req.params.tracker : '',
+  };console.log(req.coins_config)
   let serveCryptocurrency = function(json_obj){
     res.json(json_obj);
   }

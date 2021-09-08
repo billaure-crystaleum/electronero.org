@@ -1392,10 +1392,10 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   
   // for (i = 0; i < array.length; i++) {}
   let getCryptocurrency = function(json_obj){
-    let coin = coin_profile.from;
+    let coin = req_params_from;
     let from = coin;
-    let to = coin_profile.to;
-    let to_all = coin_profile.to;
+    let to = req_params_to;
+    let to_all = req_params_to;
     let percent2 = '%2';
     var vs_coins = to_all.replace(/,/g, percent2);
     console.log("vs_coins");

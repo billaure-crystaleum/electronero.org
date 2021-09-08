@@ -1338,19 +1338,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   let data_we_actually_got = [];
   let for_data_we_want = [];
   let json_obj = {};
-  let coin_profile = {};
-  var request_mini_app = req.coin_config;    
-  let requested_base_pairs = [ ];
-  let requested_pairs = [ ];
-  let requested_currency = [ ];
-  const base_pairs = ['BTC','LTC','ETH','XSC','ETNX']; 
-  const req_params_from = req.params.from.toString().toUpperCase().split(",");
-  const req_params_to = req.params.to.toUpperCase().split(",");    
-  var currency_arr = req_params_from;
-  let tracker = req.params.tracker;
-  // symbol === currency name from Coingecko later?
-  let symbol = req_params_from;  
-  requested_base_pairs = req_params_to;
+  var request_mini_app = req.coin_config;
   console.log("request_mini_app: ");
   console.log("\n");
   console.log(request_mini_app);
@@ -1358,26 +1346,35 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   console.log("\n");
   console.log(req.params);
 
-  let serveCryptocurrency = function(coin_profile){
-    res.json(coin_profile);
+  let serveCryptocurrency = function(json_obj){
+    res.json(json_obj);
   }
 
   let cryptocurrencyData = function(json_obj){
-    console.log("BASE: ")
-    console.log(requested_base_pairs);
-    requested_currency.push(currency_arr);
-      for (j=0;j<requested_base_pairs.length;j++){
-        let from_to = req_params_from+"-"+requested_base_pairs[j];
-        requested_pairs.push(from_to);
-      }
+  const base_pairs = ['BTC','LTC','ETH','XSC','ETNX']; 
+  let requested_base_pairs = [ ];
+  let requested_pairs = [ ];
+  let requested_currency = [ ];
+  const req_params_from = req.params.from.toString().toUpperCase().split(",");
+  const req_params_to = req.params.to.toUpperCase().split(",");
+  requested_base_pairs = req_params_to;
+  console.log("BASE: ")
+  console.log(requested_base_pairs);
+  var currency_arr = req_params_from;
+  let tracker = req.params.tracker;
+  // symbol === currency name from Coingecko later?
+  let symbol = req_params_from;  
+  requested_currency.push(currency_arr);
+    for (j=0;j<requested_base_pairs.length;j++){
+      let from_to = req_params_from+"-"+requested_base_pairs[j];
+      requested_pairs.push(from_to);
+    }
     const coin_profile = {
       symbol: symbol ? symbol : '',
       pairs: requested_pairs,
       base: req_params_from ? req_params_from : '',
       from: req_params_from ? req_params_from : '',
       to: req_params_to ? req_params_to : '',
-      to_all: req.params.to.toString().toUpperCase(),
-      from_all: req.params.from.toString().toUpperCase(),
       price: 0,
       btc_price: 0,
       eth_price: 0,
@@ -1392,16 +1389,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   
   // for (i = 0; i < array.length; i++) {}
   let getCryptocurrency = function(json_obj){
-    let coin = req_params_from;
-    let from = coin.toString();
-    let to = req_params_to;
-    let to_all = req_params_to;
-    let percent2 = '%2';
-    var vs_coins = to_all.replace(/,/g, percent2).toString();
-    console.log("vs_coins");
-    console.log(vs_coins);
-    let api_to_call = 'https://api.coingecko.com/api/v3/simple/price?ids=crystaleum&vs_currencies=usd%2eth%2btc';
-    axios.get(api_to_call).then((response) => {
+    axios.get('https://api.coingecko.com/api/v3/simple/price?ids=crystaleum&vs_currencies=btc%2Cusd%2Ceth%2Cltc').then((response) => {
         try {
           let resp = response.data;
           var r_serialized = circularJSON.stringify(resp);

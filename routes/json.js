@@ -1356,7 +1356,6 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     // ['BTC','LTC']; 
     let swap_to = coin_profile.swap_to;
     var vs_currencies = coin_profilevs_currencies;
-    let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids=crystaleum&vs_currencies=btc%2Cusd%2Ceth%2Cltc';=
     let api_to_call = coin_profile.oracle.toString();
     axios.get(api_to_call).then((response) => {
         try {

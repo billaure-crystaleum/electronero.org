@@ -1364,6 +1364,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     console.log("crystaleum ETH/CRFI value " + coin_data.crystaleum.eth)
     let usdRates = coin_data.crystaleum.usd;
     let usdtRates = coin_data.crystaleum.usdt ? coin_data.crystaleum.usdt : 0;
+    let xrpRates = coin_data.crystaleum.xrp ? coin_data.crystaleum.xrp : 0;
     let btcRates = coin_data.crystaleum.btc;
     let ltcTrates = coin_data.crystaleum.ltc;
     let ethTrates = coin_data.crystaleum.eth;

@@ -1351,9 +1351,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   }
 
   let cryptocurrencyData = function(json_obj){
-  // separate by comma, push 
-  const base_pairs = ['BTC','LTC','ETH','XSC','ETNX'];
-  const currency_pairs = [];
+  const base_pairs = ['BTC','LTC','ETH','XSC','ETNX']; 
   const requested_base_pairs = [];
   const requested_pairs = [];
   const req_params_from = req.params.from;
@@ -1365,12 +1363,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   let tracker = req.params.tracker ? req.params.tracker : '';
   // symbol === currency name from Coingecko later?
   let symbol = from;  
-  currency_pairs.push(currency_arr);
   requested_base_pairs.push(base_currency_arr);
-    for (i=0;i<base_pairs.length;i++){
-      let from_to = from.toUpperCase()+"-"+base_pairs[i];
-      currency_pairs.push(from_to);
-    }
     for (j=0;j<requested_base_pairs.length;j++){
       let requested_from_to = from.toUpperCase()+"-"+requested_base_pairs[j].toString().toUpperCase();
       requested_pairs.push(requested_from_to);

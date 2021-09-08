@@ -1353,10 +1353,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
 
   // for (i = 0; i < array.length; i++) {}
   let getCryptocurrency = function(coin_profile){ 
-    // ['BTC','LTC']; 
-    let swap_to = coin_profile.swap_to;
-    var vs_currencies = swap_to.toString().toLowerCase().replace(',', "%2");
-    let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids=crystaleum&vs_currencies=btc%2Cusd%2Ceth%2Cltc';
+    let api_to_call = coin_profile.oracle;
     axios.get(api_to_call).then((response) => {
         try {
           let resp = response.data;
@@ -1399,7 +1396,6 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
       } else {
         coin_name = 'electronero';
       }
-
     var currency = coin_name.toString().toLowerCase();
     console.log("currency:"+currency);
     let swap_to = req_params_to.toString().toLowerCase();
@@ -1408,7 +1404,6 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     console.log("vs_currencies:"+vs_currencies);
     let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
     console.log(api_to_call);
-
     requested_base_pairs = req_params_to;
     console.log("BASE: ")
     console.log(requested_base_pairs);

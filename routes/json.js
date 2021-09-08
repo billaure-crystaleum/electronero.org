@@ -1357,6 +1357,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     //   coin_profile.usd_price = ;
     //   coin_profile.eth_price = ;
     // }
+    console.log(coin_data.)
     res.json(coin_data);
   }
 

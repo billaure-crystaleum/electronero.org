@@ -1423,7 +1423,6 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     const req_params_from = req.params.from.toString().toUpperCase();
     const req_params_to = req.params.to.toUpperCase().split(",");
     const swap_to = req_params_to.toString().toLowerCase();
-    const currency_arr = req_params_from;
     const tracker = req.params.tracker;
     const symbol = req_params_from;  
     let requested_pairs = [ ];
@@ -1446,7 +1445,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
       }; 
     const currency = coin_name.toString().toLowerCase();
       let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+swap_to;
-        requested_currency.push(currency_arr);
+
         for (j=0;j<requested_base_pairs.length;j++){
           let from_to = req_params_from+"-"+requested_base_pairs[j];
           requested_pairs.push(from_to);

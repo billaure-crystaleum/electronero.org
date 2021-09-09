@@ -1367,8 +1367,8 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     var rateUSDTformatCurrency = CurrencyJS(usdtRates, { fromCents: false, precision: 8, separator: ',' }).format(); // "123456" => "123456.00" =>  "123,456.00"
     var rateBTCformatCurrency = CurrencyJS(btcRates, { fromCents: false, precision: 8, separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     //ŁΞ₿₮'$',
-    var rateLTCformatCurrency = CurrencyJS(ltcRates, { fromCents: false, precision: 8, separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
-    var rateETHformatCurrency = CurrencyJS(ethRates, { fromCents: false, precision: 16, separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
+    var rateLTCformatCurrency = CurrencyJS(ltcRates, { symbol: '', fromCents: false, precision: 8, separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
+    var rateETHformatCurrency = CurrencyJS(ethRates, { symbol: false, fromCents: false, precision: 16, separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     var rateXRPformatCurrency = CurrencyJS(xrpRates, { fromCents: false, precision: 2, separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     var rateBNBformatCurrency = CurrencyJS(bnbRates, { fromCents: false, precision: 16, separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
      console.log("BNB currency format: "+CurrencyJS(ethRates, { symbol: '₮', fromCents: false, precision: 16, separator: ',' }).format()); // "123456" => "123456.00" =>  "123,456.00"

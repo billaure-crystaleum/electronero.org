@@ -1385,21 +1385,20 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     vs_currencies: coin_profile.vs_currencies,
     tracker: coin_profile.tracker,
     oracle: coin_profile.oracle,
-    extra: { usd_price: 0, usdt_price: 0, xrp_price: 0, btc_price: 0, ltc_price: 0, bnb_price: 0, bsc_price: 0, doge_price: 0,},
+    extra: { usd_price: usdRates != undefined ? usdRates : usdRates != "undefined" : {}, 
+    usdt_price: usdtRates != "undefined" ? usdtRates : {}, 
+    btc_price: btcRates!= "undefined" ? btcRates : {}, 
+    ltc_price: ltcRates!= undefined ? ltcRates : {}, 
+    eth_price: ethRates!= undefined ?ethRates : {},
+    xrp_price: xrpRates!= undefined ? xrpRates : {}, 
+    bnb_price: bnbRates!= undefined ? bnbRates : {}, 
+    bsc_price: bscRates!= undefined ? bscRates : {}, 
+    doge_price: dogeRates!= undefined ? dogeRates : {},
+  },
     }
    };
-   // Object.keys(oracle)[0]
-   let testUSD = getNestedObject(oracle, [Object.keys(oracle)[0],'extra'])
-   console.log(testUSD);
-   testUSD.usd_price=usdRates != "undefined" ? usdRates : {};
-    // oracle.extra.usdt_price=usdtRates != "undefined" ? usdtRates : {};
-    // oracle.extra.btc_price=btcRates!= "undefined" ? usdRates : {};
-    // oracle.extra.ltc_price=ltcRates!= undefined ? ltcRates : {};
-    // oracle.extra.eth_price=ethRates!= undefined ?ethRates : {};
-    // oracle.extra.xrp_price=xrpRates!= undefined ? xrpRates : {};
-    // oracle.extra.bnb_price=bnbRates!= undefined ? bnbRates : {};
-    // oracle.extra.bsc_price=bscRates!= undefined ? bscRates : {};
-    // oracle.extra.doge_price=dogeRates!= undefined ? dogeRates : {};
+  //  let testUSD = getNestedObject(oracle, [Object.keys(oracle)[0],'extra']).usd_price;
+  //  console.log(testUSD);
     res.json(oracle);
   };
 

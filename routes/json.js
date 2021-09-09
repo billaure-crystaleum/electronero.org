@@ -1448,13 +1448,27 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     //console.log("currency:"+currency);
     const swap_to = req_params_to.toString().toLowerCase();
     //console.log(swap_to)
-    const unformatted_pairs = ['BTC','LTC','ETH','XSC','ETNX']; 
     const partial = '%2C';
     var formatted_pairs = [];
     for(i=0;i<unformatted_pairs.length;i++){
       formatted_pairs.push(unformatted_pairs[i]);
     }
-    const vs_currencies = formatted_pairs.join('%2C').toString().toLowerCase();
+    const unformatted_pairs = req_params_to; 
+    const partial = '%2C';
+    var formatted_pairs = [];
+    for(i=0;i<unformatted_pairs.length;i++){
+      let formattedPairs = unformatted_pairs[i].toLowerCase();
+      formatted_pairs.push(formattedPairs);
+    }; 
+    requested_base_pairs = req_params_from;
+    if(coin_profile.tracker === 'coingecko'){
+      console.log("🔮oracle says... use coingekco API");
+      for (m=0;m<requested_base_pairs.length;m++){
+        let from_to = req_params_from+"-"+requested_base_pairs[m].toLowerCase();
+        requested_pairs.push(from_to);
+      }
+    };
+    const vs_currencies = formatted_pairs.join('%2C').toString();
 	  console.log(vs_currencies);
     //console.log("vs_currencies:"+vs_currencies);
     let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
@@ -1487,7 +1501,8 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         usdt_price: 0,
         ltc_price: 0,
         tracker: tracker ? tracker : '',
-        oracle: api_to_call ? api_to_call : '',
+        oracle: api_to_call ? api_to_call : tracker,
+        extra: {},
       };
       //console.log(coin_profile);
       getCryptocurrency(coin_profile);

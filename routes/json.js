@@ -1342,7 +1342,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   let for_data_we_want = [];
   let json_obj = {};
   let coin_profile;
-  const request_mini_app = req.coin_config;
+  let request_mini_app = req.coin_config;
   const serveCryptocurrency = function(coin_profile, coin_data){
     prices = [];
     // show all prices from oracle report 
@@ -1391,7 +1391,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     oracle.extra.usd_price=usdRates != undefined ? usdRates : {};
     oracle.extra.usdt_price=usdtRates != undefined ? usdtRates : {};
     oracle.extra.btc_price=btcRates!= undefined ? usdRates : {};
-    oracle.extra.ltc_price=ltcRates!= undefined ? ltcRates : {];
+    oracle.extra.ltc_price=ltcRates!= undefined ? ltcRates : {};
     oracle.extra.eth_price=ethRates!= undefined ?ethRates : {};
     oracle.extra.xrp_price=xrpRates!= undefined ? xrpRates : {};
     oracle.extra.bnb_price=bnbRates!= undefined ? bnbRates : {};

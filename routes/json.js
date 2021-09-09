@@ -1388,15 +1388,15 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     oracle_extra: { },
     }
    };
-    oracle.extra.usd_price=usdRates;
-    oracle.extra.usdt_price=usdtRates;
-    oracle.extra.btc_price=btcRates;
-    oracle.extra.ltc_price=ltcRates;
-    oracle.extra.eth_price=ethRates;
-    oracle.extra.xrp_price=xrpRates;
-    oracle.extra.bnb_price=bnbRates;
-    oracle.extra.bsc_price=bscRates;
-    oracle.extra.doge_price=dogeRates;
+    oracle.extra.usd_price=usdRates != undefined usdRates : {};
+    oracle.extra.usdt_price=usdtRates != undefined usdRates : {};
+    oracle.extra.btc_price=btcRates!= undefined usdRates : {};
+    oracle.extra.ltc_price=ltcRates!= undefined ltcRates : {];
+    oracle.extra.eth_price=ethRates!= undefined ethRates : {};
+    oracle.extra.xrp_price=xrpRates!= undefined xrpRates : {};
+    oracle.extra.bnb_price=bnbRates!= undefined bnbRates : {};
+    oracle.extra.bsc_price=bscRates!= undefined bscRates : {};
+    oracle.extra.doge_price=dogeRates!= undefined dogeRates : {};
     res.json(oracle);
   };
 

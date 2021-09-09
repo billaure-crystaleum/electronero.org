@@ -19,11 +19,7 @@ const requestOptions = {
   json: true,
   gzip: true
 };
-rp(requestOptions).then(response => {
-  console.log('API call response:', response);
-}).catch((err) => {
-  console.log('API call error:', err.message);
-});
+
 
 // get nested objects 
 //  let testUSD = getNestedObject(oracle, [Object.keys(oracle)[0],'extra']).usd_price;
@@ -78,7 +74,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     vs_currencies: coin_profile.vs_currencies,
     tracker: coin_profile.tracker,
     oracle: coin_profile.oracle,
-    extra: { 
+    coingecko: { 
       usd_price: rateUSDformatCurrency != undefined ? rateUSDformatCurrency : rateUSDformatCurrency != "undefined" ? rateUSDformatCurrency : {}, 
       usdt_price: rateUSDTformatCurrency != "undefined" ? rateUSDTformatCurrency : {}, 
       btc_price: rateBTCformatCurrency!= "undefined" ? rateBTCformatCurrency : {}, 
@@ -86,7 +82,8 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
       eth_price: rateETHformatCurrency!= undefined ?rateETHformatCurrency : {},
       xrp_price: rateXRPformatCurrency!= undefined ? rateXRPformatCurrency : {}, 
       bnb_price: rateBNBformatCurrency!= undefined ? rateBNBformatCurrency : {}, 
-    }
+    },
+    extra: { }
    }
   };
   res.json(oracle);
@@ -138,9 +135,17 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     let symbol = req_params_from;
     const currency_arr = req_params_from;
     const tracker = req.params.tracker;
+    console.log("tracker: "+tracker.toString())
     if(tracker.toString() === 'coingecko'){
       console.log("🔮oracle says... use coingekco API");
     };
+    if(tracker.toString() === 'coinmarketcap'){
+      rp(requestOptions).then(response => {
+        console.log('API call response:', response);
+      }).catch((err) => {
+        console.log('API call error:', err.message);
+      });
+    }
     let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
     requested_base_pairs = req_params_to;
     requested_currency.push(currency_arr);

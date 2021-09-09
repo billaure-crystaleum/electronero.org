@@ -1402,13 +1402,11 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     let requested_base_pairs = [ ];
     let requested_pairs = [ ];
     let requested_currency = [ ];
-    const swap_to = req_params_to.toString().toLowerCase();
-    const vs_currencies = swap_to.replace(',', "%2C");
-    const currency_arr = req_params_from;
-    const tracker = req.params.tracker;
-    const symbol = req_params_from;  
+    let swap_to = req_params_to.toString().toLowerCase();
+    let vs_currencies = swap_to.replace(',', "%2C");
     const req_params_from = req.params.from.toString().toUpperCase();
-    const req_params_to = req.params.to.toUpperCase().split(",");    
+    const req_params_to = req.params.to.toUpperCase().split(",");
+    
     let coin_name;
       if(req_params_from === 'ETNX'){
         coin_name = 'electronero';
@@ -1424,18 +1422,19 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         coin_name = 'interchained';
       } else {
         coin_name = 'electronero';
-      };
-      if(coin_profile.tracker === 'coingecko'){
-        console.log("🔮oracle says... use coingekco API");
-      };
+      }
     var currency = coin_name.toString().toLowerCase();
     let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
     requested_base_pairs = req_params_to;
+    var currency_arr = req_params_from;
+    let tracker = req.params.tracker;
+    // symbol === currency name from Coingecko later?
+    let symbol = req_params_from;  
     requested_currency.push(currency_arr);
       for (j=0;j<requested_base_pairs.length;j++){
         let from_to = req_params_from+"-"+requested_base_pairs[j];
         requested_pairs.push(from_to);
-      };
+      }
       coin_profile = {
         name: currency,
         symbol: symbol ? symbol : '',
@@ -1454,6 +1453,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         tracker: tracker ? tracker : '',
         oracle: api_to_call ? api_to_call : '',
       };
+      //console.log(coin_profile);
       getCryptocurrency(coin_profile);
     }
     

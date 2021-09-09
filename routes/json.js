@@ -1404,10 +1404,9 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
           let resp = response.data;
           var r_serialized = circularJSON.stringify(resp);
           var r_unserialized = circularJSON.parse(r_serialized);
-          coin_data = r_unserialized;
+          const coin_data = r_unserialized;
           data_we_actually_got.push(json_obj);
           serveCryptocurrency(coin_profile, coin_data)
-          //console.log(r_unserialized);
       } catch(e) {
         json_obj = response.data;
           console.log(e);
@@ -1417,17 +1416,20 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
       });
   };
 
-  let cryptocurrencyData = function(json_obj){
-    const base_pairs = ['BTC','LTC','ETH','XSC','ETNX']; 
-    const requested_base_pairs = req_params_to;
-    const req_params_from = req.params.from.toString().toUpperCase();
-    const req_params_to = req.params.to.toUpperCase().split(",");
-    const swap_to = req_params_to.toString().toLowerCase();
-    const tracker = req.params.tracker;
-    const symbol = req_params_from;  
+  var cryptocurrencyData = function(json_obj){
+    var base_pairs = ['BTC','LTC','ETH','XSC','ETNX']; 
+    var requested_base_pairs = req_params_to;
+    var req_params_from = req.params.from.toString().toUpperCase();
+    var req_params_to = req.params.to.toUpperCase().split(",");
+    var swap_to = req_params_to.toString().toLowerCase();
+    var tracker = req.params.tracker;
+    var symbol = req_params_from;  
     let requested_pairs = [ ];
-    let requested_currency = [ ];
-    let coin_name;
+    for (j=0;j<requested_base_pairs.length;j++){
+      var from_to = req_params_from+"-"+requested_base_pairs[j];
+      requested_pairs.push(from_to);
+    };
+      var coin_name;
       if(req_params_from === 'ETNX'){
         coin_name = 'electronero';
       } else if(req_params_from === 'ETNXP'){
@@ -1443,13 +1445,8 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
       } else {
         coin_name = 'electronero';
       }; 
-    const currency = coin_name.toString().toLowerCase();
-      let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+swap_to;
-
-        for (j=0;j<requested_base_pairs.length;j++){
-          let from_to = req_params_from+"-"+requested_base_pairs[j];
-          requested_pairs.push(from_to);
-        };
+      var currency = coin_name.toString().toLowerCase();
+      var api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+swap_to;
       coin_profile = {
         name: currency,
         symbol: symbol ? symbol : '',

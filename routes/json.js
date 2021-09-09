@@ -1361,7 +1361,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     let bnbRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'bnb']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'bnb']) : 0;
     let bscRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'bsc']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'bsc']) : 0;
     let dogeRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'doge']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'doge']) : 0;
-    console.log("USD currency format: "+CurrencyJS(usdRates, { fromCents: true, precision: 0, separator: ',' }).format()); // "123456" => "123456.00" =>  "123,456.00"
+    console.log("ETH currency format: "+CurrencyJS(ethRates, { fromCents: true, precision: 16, separator: ',' }).format()); // "123456" => "123456.00" =>  "123,456.00"
     var rateUSDformatCurrency = CurrencyJS(usdRates, { symbol: '$', fromCents: true, precision: 0, separator: ',' }).format(); // "123456" => "123456.00" =>  "123,456.00"
     var rateUSDTformatCurrency = CurrencyJS(usdtRates, { symbol: '₮', fromCents: true, precision: 0, separator: ',' }).format(); // "123456" => "123456.00" =>  "123,456.00"
     var rateBTCformatCurrency = CurrencyJS(btcRates, { symbol: '₿', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
@@ -1369,9 +1369,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     var rateETHformatCurrency = CurrencyJS(ethRates, { symbol: 'Ξ', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     var rateXRPformatCurrency = CurrencyJS(xrpRates, { symbol: 'x', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     var rateBNBformatCurrency = CurrencyJS(bnbRates, { symbol: 'B', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
-    var rateBSCformatCurrency = CurrencyJS(bscRates, { symbol: 'B', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
-    var rateDOGEformatCurrency = CurrencyJS(dogeRates, { symbol: 'D', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
-    console.log("DOGE currency format: "+CurrencyJS(dogeRates, { fromCents: true, precision: 0, separator: ',' }).format()); // "123456" => "123456.00" =>  "123,456.00"
+     console.log("BNB currency format: "+CurrencyJS(Rates, { fromCents: true, precision: 16, separator: ',' }).format()); // "123456" => "123456.00" =>  "123,456.00"
     // build oracles coin_profile
    const oracle = { "coin_profile" : {
     name: coin_profile.name,
@@ -1394,7 +1392,6 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
       xrp_price: xrpRates!= undefined ? xrpRates : {}, 
       bnb_price: bnbRates!= undefined ? bnbRates : {}, 
       bsc_price: bscRates!= undefined ? bscRates : {}, 
-      doge_price: dogeRates!= undefined ? dogeRates : {},
     }
    }
   };
@@ -1424,7 +1421,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   };
 
   let cryptocurrencyData = function(json_obj){
-    const base_pairs = ['BTC','LTC','ETH','XSC','ETNX']; 
+    const default_base_pairs = ['BTC','LTC','ETH','XSC','ETNX']; 
     let requested_base_pairs = [ ];
     let requested_pairs = [ ];
     let requested_currency = [ ];

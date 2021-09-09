@@ -1395,8 +1395,8 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
       bnb_price: bnbRates!= undefined ? bnbRates : {}, 
       bsc_price: bscRates!= undefined ? bscRates : {}, 
       doge_price: dogeRates!= undefined ? dogeRates : {},
-    },
-   };
+    }
+   }
   };
   //  let testUSD = getNestedObject(oracle, [Object.keys(oracle)[0],'extra']).usd_price;
   //  console.log(testUSD);

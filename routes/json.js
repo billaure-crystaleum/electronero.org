@@ -1342,8 +1342,8 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
   let for_data_we_want = [];
   let json_obj = {};
   let coin_profile;
-  var request_mini_app = req.coin_config;
-  let serveCryptocurrency = function(coin_profile, coin_data){
+  const request_mini_app = req.coin_config;
+  const serveCryptocurrency = function(coin_profile, coin_data){
     prices = [];
     // show all prices from oracle report 
     const oracle_report = coin_data;
@@ -1374,12 +1374,6 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     var rateLTCformatCurrency = CurrencyJS(ltcTrates, { symbol: 'Ł', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     var rateETHformatCurrency = CurrencyJS(ethTrates, { symbol: 'Ξ', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     // add rates to oracles coin_profile
-    coin_profile.usd_price=usdRates;
-    coin_profile.usdt_price=usdtRates;
-    coin_profile.btc_price=btcRates;
-    coin_profile.ltc_price=ltcTrates;
-    coin_profile.eth_price=ethTrates;
-    coin_profile.xrp_price=xrpRates;
     const oracle = { "coin_profile" : {
     name: coin_profile.name,
     symbol: coin_profile.symbol,
@@ -1395,11 +1389,17 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     oracle_extra: { },
     }
    };
+    oracle.usd_price=usdRates;
+    oracle.usdt_price=usdtRates;
+    oracle.btc_price=btcRates;
+    oracle.ltc_price=ltcTrates;
+    oracle.eth_price=ethTrates;
+    oracle.xrp_price=xrpRates;
     res.json(oracle);
-  }
+  };
 
   // for (i = 0; i < array.length; i++) {}
-  let getCryptocurrency = function(coin_profile){ 
+  const getCryptocurrency = function(coin_profile){ 
     let api_to_call = coin_profile.oracle.toString();
     axios.get(api_to_call).then((response) => {
         try {

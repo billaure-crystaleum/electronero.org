@@ -1426,7 +1426,6 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     let requested_pairs = [ ];
     const req_params_from = req.params.from.toString().toUpperCase();
     const req_params_to = req.params.to.toUpperCase().split(",");
-    const currency_arr = req_params_from;
     const tracker = req.params.tracker;
     let symbol = req_params_from;  
     let coin_name;
@@ -1455,8 +1454,8 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
       formatted_pairs.push(formattedPairs);
     }; 
     requested_base_pairs = req_params_from;
-    if(coin_profile.tracker.toString() === 'coingecko'){
-      console.log("oracle says... use coingekco API");
+    if(coin_profile.tracker === 'coingecko'){
+      console.log("🔮oracle says... use coingekco API");
       for (m=0;m<requested_base_pairs.length;m++){
         let from_to = req_params_from+"-"+requested_base_pairs[m].toLowerCase();
         requested_pairs.push(from_to);

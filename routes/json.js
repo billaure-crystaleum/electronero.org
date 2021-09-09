@@ -1334,14 +1334,6 @@ router.get('/api', (req,res) => {
 });
 
 const getNestedObject = require('../assets/js/utils.js'); 
-const oracle_report = {"crystaleum":{"usd":14802.66,"btc":0.53383,"ltc":109.877,"eth":22.828348}};
-// pass in your object structure as array elements
-const name = Object.keys(oracle_report)[0];
-// to access nested array, just pass in array index as an element the path array.
-const price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usd']);
-console.log(name);
-console.log(price) 
-
 // oracle gets tracker API, then serve it's response. cool stuff
 // oracle -> get data = :from-:to:etc -> tracker -> client 
 // 09/07/2021 the day electronero deployed an oracle... 

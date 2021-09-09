@@ -1356,7 +1356,10 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     const btc_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'btc']);
     const ltc_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'ltc']);
     const eth_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'eth']);
-    // const usdt_price = price != undefined ? price : undefined;
+    const xrp_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'xrp']);
+    const doge_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'doge']);
+    const bnb_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'bnb']);
+    const bsc_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'bsc']);
     console.log(coin_profile.from + " USD value: " + usd_price);
     console.log(coin_profile.from + " BTC value: " + btc_price);
     console.log(coin_profile.from + " LTC value: " + ltc_price);
@@ -1394,7 +1397,10 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     oracle.btc_price=btcRates;
     oracle.ltc_price=ltcTrates;
     oracle.eth_price=ethTrates;
-    //oracle.xrp_price=xrpRates;
+    oracle.bnb_price=bnbTrates;
+    oracle.doge_price=dogeTrates;
+    oracle.bsc_price=bscTrates;
+    oracle.xrp_price=xrpRates;
     res.json(oracle);
   };
 

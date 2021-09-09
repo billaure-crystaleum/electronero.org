@@ -1373,7 +1373,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     var rateDOGEformatCurrency = CurrencyJS(dogeRates, { symbol: 'D', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     console.log("DOGE currency format: "+CurrencyJS(dogeRates, { fromCents: true, precision: 0, separator: ',' }).format()); // "123456" => "123456.00" =>  "123,456.00"
     // build oracles coin_profile
-    const oracle = { "coin_profile" : {
+   const oracle = { "coin_profile" : {
     name: coin_profile.name,
     symbol: coin_profile.symbol,
     pairs: coin_profile.pairs,
@@ -1395,9 +1395,9 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
       bnb_price: bnbRates!= undefined ? bnbRates : {}, 
       bsc_price: bscRates!= undefined ? bscRates : {}, 
       doge_price: dogeRates!= undefined ? dogeRates : {},
-  },
-    }
+    },
    };
+  };
   //  let testUSD = getNestedObject(oracle, [Object.keys(oracle)[0],'extra']).usd_price;
   //  console.log(testUSD);
     res.json(oracle);
@@ -1448,7 +1448,8 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
       };
     var currency = coin_name.toString().toLowerCase();
     let swap_to = req_params_to.toString().toLowerCase();
-    var vs_currencies = swap_to.replace(',', "%2C");
+    // add back? >>> .replace(',', "%2C");
+    var vs_currencies = swap_to;
     let symbol = req_params_from;
     const currency_arr = req_params_from;
     const tracker = req.params.tracker;

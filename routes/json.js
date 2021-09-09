@@ -1366,7 +1366,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     let btcRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'btc']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'btc']) : 0;
     let ltcTrates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'ltc']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'ltc']) : 0;
     let ethTrates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'eth']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'eth']) : 0;
-    let xrpRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'xrp']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'xrp']) : 0;
+    //let xrpRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'xrp']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'xrp']) : 0;
     console.log("USD currency format: "+CurrencyJS(usdRates, { fromCents: true, precision: 0, separator: ',' }).format()); // "123456" => "123456.00" =>  "123,456.00"
     var rateUSDformatCurrency = CurrencyJS(usdRates, { symbol: '$', fromCents: true, precision: 0, separator: ',' }).format(); // "123456" => "123456.00" =>  "123,456.00"
     var rateUSDTformatCurrency = CurrencyJS(usdtRates, { symbol: '₮', fromCents: true, precision: 0, separator: ',' }).format(); // "123456" => "123456.00" =>  "123,456.00"
@@ -1394,7 +1394,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     oracle.btc_price=btcRates;
     oracle.ltc_price=ltcTrates;
     oracle.eth_price=ethTrates;
-    oracle.xrp_price=xrpRates;
+    //oracle.xrp_price=xrpRates;
     res.json(oracle);
   };
 
@@ -1443,13 +1443,19 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         coin_name = 'electronero';
       }
     var currency = coin_name.toString().toLowerCase();
+    //console.log("currency:"+currency);
     let swap_to = req_params_to.toString().toLowerCase();
+    //console.log(swap_to)
     var vs_currencies = swap_to.replace(',', "%2C");
-    t
+    //console.log("vs_currencies:"+vs_currencies);
     let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
+    //console.log(api_to_call);
     requested_base_pairs = req_params_to;
+    //console.log("BASE: ")
+    //console.log(requested_base_pairs);
     var currency_arr = req_params_from;
     let tracker = req.params.tracker;
+    // symbol === currency name from Coingecko later?
     let symbol = req_params_from;  
     requested_currency.push(currency_arr);
       for (j=0;j<requested_base_pairs.length;j++){

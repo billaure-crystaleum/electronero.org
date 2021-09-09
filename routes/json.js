@@ -1389,11 +1389,8 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     var rateBTCformatCurrency = CurrencyJS(btcRates, { symbol: '₿', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     var rateLTCformatCurrency = CurrencyJS(ltcTrates, { symbol: 'Ł', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     var rateETHformatCurrency = CurrencyJS(ethTrates, { symbol: 'Ξ', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
-    // serve oracle as JSON 
-    const oracle = {
 
-    }
-    res.json(coin_profile);
+    res.json(coin_data);
   }
 
   // for (i = 0; i < array.length; i++) {}
@@ -1404,9 +1401,10 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
           let resp = response.data;
           var r_serialized = circularJSON.stringify(resp);
           var r_unserialized = circularJSON.parse(r_serialized);
-          const coin_data = r_unserialized;
+          coin_data = r_unserialized;
           data_we_actually_got.push(json_obj);
           serveCryptocurrency(coin_profile, coin_data)
+          //console.log(r_unserialized);
       } catch(e) {
         json_obj = response.data;
           console.log(e);
@@ -1416,20 +1414,15 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
       });
   };
 
-  var cryptocurrencyData = function(json_obj){
-    var base_pairs = ['BTC','LTC','ETH','XSC','ETNX']; 
-    var requested_base_pairs = req_params_to;
-    var req_params_from = req.params.from.toString().toUpperCase();
-    var req_params_to = req.params.to.toUpperCase().split(",");
-    var swap_to = req_params_to.toString().toLowerCase();
-    var tracker = req.params.tracker;
-    var symbol = req_params_from;  
+  let cryptocurrencyData = function(json_obj){
+    const base_pairs = ['BTC','LTC','ETH','XSC','ETNX']; 
+    let requested_base_pairs = [ ];
     let requested_pairs = [ ];
-    for (j=0;j<requested_base_pairs.length;j++){
-      var from_to = req_params_from+"-"+requested_base_pairs[j];
-      requested_pairs.push(from_to);
-    };
-      var coin_name;
+    let requested_currency = [ ];
+    const req_params_from = req.params.from.toString().toUpperCase();
+    const req_params_to = req.params.to.toUpperCase().split(",");
+    
+    let coin_name;
       if(req_params_from === 'ETNX'){
         coin_name = 'electronero';
       } else if(req_params_from === 'ETNXP'){
@@ -1444,9 +1437,27 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         coin_name = 'interchained';
       } else {
         coin_name = 'electronero';
-      }; 
-      var currency = coin_name.toString().toLowerCase();
-      var api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+swap_to;
+      }
+    var currency = coin_name.toString().toLowerCase();
+    //console.log("currency:"+currency);
+    let swap_to = req_params_to.toString().toLowerCase();
+    //console.log(swap_to)
+    var vs_currencies = swap_to.replace(',', "%2C");
+    //console.log("vs_currencies:"+vs_currencies);
+    let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
+    //console.log(api_to_call);
+    requested_base_pairs = req_params_to;
+    //console.log("BASE: ")
+    //console.log(requested_base_pairs);
+    var currency_arr = req_params_from;
+    let tracker = req.params.tracker;
+    // symbol === currency name from Coingecko later?
+    let symbol = req_params_from;  
+    requested_currency.push(currency_arr);
+      for (j=0;j<requested_base_pairs.length;j++){
+        let from_to = req_params_from+"-"+requested_base_pairs[j];
+        requested_pairs.push(from_to);
+      }
       coin_profile = {
         name: currency,
         symbol: symbol ? symbol : '',
@@ -1464,12 +1475,14 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         ltc_price: 0,
         tracker: tracker ? tracker : '',
         oracle: api_to_call ? api_to_call : '',
-      }; 
+      };
+      //console.log(coin_profile);
       getCryptocurrency(coin_profile);
-    };    
-    for_data_we_want.push(cryptocurrencyData(json_obj));
+    }
+    
+  for_data_we_want.push(cryptocurrencyData(json_obj));    
   Promise.all(for_data_we_want).then(() => console.log(json_obj))
-console.log('service calls complete!');
+      console.log('service calls complete!');
 });
 
 /* GET home data. */

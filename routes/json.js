@@ -1452,7 +1452,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
           let from_to = req_params_from+"-"+requested_base_pairs[j];
           requested_pairs.push(from_to);
         };
-      req.coin_profile = {
+      coin_profile = {
         name: currency,
         symbol: symbol ? symbol : '',
         pairs: requested_pairs,
@@ -1469,7 +1469,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         ltc_price: 0,
         tracker: tracker ? tracker : '',
         oracle: api_to_call ? api_to_call : '',
-      };coin_profile=req.coin_profile;
+      }; 
       getCryptocurrency(coin_profile);
     };    
     for_data_we_want.push(cryptocurrencyData(json_obj));

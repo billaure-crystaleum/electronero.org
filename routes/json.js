@@ -1374,7 +1374,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     var rateLTCformatCurrency = CurrencyJS(ltcTrates, { symbol: 'Ł', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     var rateETHformatCurrency = CurrencyJS(ethTrates, { symbol: 'Ξ', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     const oracle = { };
-    res.json(coin_data);
+    res.json(coin_profile);
   }
 
   // for (i = 0; i < array.length; i++) {}

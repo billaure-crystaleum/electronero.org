@@ -1389,14 +1389,11 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     var rateBTCformatCurrency = CurrencyJS(btcRates, { symbol: '₿', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     var rateLTCformatCurrency = CurrencyJS(ltcTrates, { symbol: 'Ł', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     var rateETHformatCurrency = CurrencyJS(ethTrates, { symbol: 'Ξ', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
-    // match coin_profile to oracle report
-    coin_profile.usd_price = usd_price;
-    coin_profile.btc_price = btc_price;
-    coin_profile.ltc_price = ltc_price;
-    coin_profile.eth_price = eth_price;
     // serve oracle as JSON 
-    const oracle = coin_profile;
-    res.json(oracle);
+    const oracle = {
+
+    }
+    res.json(coin_profile);
   }
 
   // for (i = 0; i < array.length; i++) {}
@@ -1422,13 +1419,16 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
 
   let cryptocurrencyData = function(json_obj){
     const base_pairs = ['BTC','LTC','ETH','XSC','ETNX']; 
-    let requested_base_pairs = [ ];
-    let requested_pairs = [ ];
-    let requested_currency = [ ];
-    let coingecko_pairs = [ ];
+    const requested_base_pairs = req_params_to;
     const req_params_from = req.params.from.toString().toUpperCase();
     const req_params_to = req.params.to.toUpperCase().split(",");
-    
+    const swap_to = req_params_to.toString().toLowerCase();
+    const vs_currencies = swap_to.replace(',', "%2C");
+    const currency_arr = req_params_from;
+    const tracker = req.params.tracker;
+    const symbol = req_params_from;  
+    let requested_pairs = [ ];
+    let requested_currency = [ ];
     let coin_name;
       if(req_params_from === 'ETNX'){
         coin_name = 'electronero';
@@ -1444,44 +1444,15 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         coin_name = 'interchained';
       } else {
         coin_name = 'electronero';
-      }
+      }; 
     const currency = coin_name.toString().toLowerCase();
-    //console.log("currency:"+currency);
-    const swap_to = req_params_to.toString().toLowerCase();
-    //console.log(swap_to)
-    const unformatted_pairs = req_params_to; 
-    const partial = '%2C';
-    var formatted_pairs = [];
-    for(i=0;i<unformatted_pairs.length;i++){
-      let formatted = unformatted_pairs[i].toLowerCase();
-      formatted_pairs.push(formatted);
-    }
-    console.log("TRACKER: "+coin_profile.tracker);
-    if(coin_profile.tracker === 'coingecko'){
-      console.log("🔮oracle says... use coingekco API");
-      for (m=0;m<requested_base_pairs.length;m++){
-        let coingecko_format = requested_base_pairs[m].toLowerCase();
-        coingecko_pairs.push(coingecko_format);
-      }
-    };
-    const vs_currencies = formatted_pairs.join('%2C').toString();
-	  console.log(vs_currencies);
-    //console.log("vs_currencies:"+vs_currencies);
-    let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
-    //console.log(api_to_call);
-    requested_base_pairs = req_params_to;
-    //console.log("BASE: ")
-    //console.log(requested_base_pairs);
-    const currency_arr = req_params_from;
-    const tracker = req.params.tracker;
-    // symbol === currency name from Coingecko later?
-    let symbol = req_params_from;  
-    requested_currency.push(currency_arr);
-      for (j=0;j<requested_base_pairs.length;j++){
-        let from_to = req_params_from+"-"+requested_base_pairs[j];
-        requested_pairs.push(from_to);
-      }
-      coin_profile = {
+      let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
+        requested_currency.push(currency_arr);
+        for (j=0;j<requested_base_pairs.length;j++){
+          let from_to = req_params_from+"-"+requested_base_pairs[j];
+          requested_pairs.push(from_to);
+        };
+      req.coin_profile = {
         name: currency,
         symbol: symbol ? symbol : '',
         pairs: requested_pairs,
@@ -1498,14 +1469,12 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         ltc_price: 0,
         tracker: tracker ? tracker : '',
         oracle: api_to_call ? api_to_call : '',
-      };
-      //console.log(coin_profile);
+      };coin_profile=req.coin_profile;
       getCryptocurrency(coin_profile);
-    }
-    
-  for_data_we_want.push(cryptocurrencyData(json_obj));    
+    };    
+    for_data_we_want.push(cryptocurrencyData(json_obj));
   Promise.all(for_data_we_want).then(() => console.log(json_obj))
-      console.log('service calls complete!');
+console.log('service calls complete!');
 });
 
 /* GET home data. */

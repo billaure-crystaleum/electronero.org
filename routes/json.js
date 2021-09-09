@@ -1357,9 +1357,9 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     const ltc_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'ltc']);
     const eth_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'eth']);
     const xrp_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'xrp']);
-    const doge_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'doge']);
     const bnb_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'bnb']);
     const bsc_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'bsc']);
+    const doge_price = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'doge']);
     console.log(coin_profile.from + " USD value: " + usd_price);
     console.log(coin_profile.from + " BTC value: " + btc_price);
     console.log(coin_profile.from + " LTC value: " + ltc_price);
@@ -1367,16 +1367,23 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     let usdRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usd']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usd']) : 0;
     let usdtRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usdt']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usdt']) : 0;
     let btcRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'btc']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'btc']) : 0;
-    let ltcTrates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'ltc']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'ltc']) : 0;
-    let ethTrates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'eth']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'eth']) : 0;
-    //let xrpRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'xrp']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'xrp']) : 0;
+    let ltcRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'ltc']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'ltc']) : 0;
+    let ethRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'eth']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'eth']) : 0;
+    let xrpRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'xrp']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'xrp']) : 0;
+    let bnbRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'bnb']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'bnb']) : 0;
+    let bscRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'bsc']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'bsc']) : 0;
+    let dogeRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'doge']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'doge']) : 0;
     console.log("USD currency format: "+CurrencyJS(usdRates, { fromCents: true, precision: 0, separator: ',' }).format()); // "123456" => "123456.00" =>  "123,456.00"
     var rateUSDformatCurrency = CurrencyJS(usdRates, { symbol: '$', fromCents: true, precision: 0, separator: ',' }).format(); // "123456" => "123456.00" =>  "123,456.00"
     var rateUSDTformatCurrency = CurrencyJS(usdtRates, { symbol: '₮', fromCents: true, precision: 0, separator: ',' }).format(); // "123456" => "123456.00" =>  "123,456.00"
     var rateBTCformatCurrency = CurrencyJS(btcRates, { symbol: '₿', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
-    var rateLTCformatCurrency = CurrencyJS(ltcTrates, { symbol: 'Ł', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
-    var rateETHformatCurrency = CurrencyJS(ethTrates, { symbol: 'Ξ', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
-    // add rates to oracles coin_profile
+    var rateLTCformatCurrency = CurrencyJS(ltcRates, { symbol: 'Ł', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
+    var rateETHformatCurrency = CurrencyJS(ethRates, { symbol: 'Ξ', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
+    var rateXRPformatCurrency = CurrencyJS(xrpRates, { symbol: 'Ξ', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
+    var rateBNBformatCurrency = CurrencyJS(bnbRates, { symbol: 'Ξ', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
+    var rateBSCformatCurrency = CurrencyJS(bscRates, { symbol: 'Ξ', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
+    var rateDOGEformatCurrency = CurrencyJS(dogeRates, { symbol: 'Ξ', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
+    // build oracles coin_profile
     const oracle = { "coin_profile" : {
     name: coin_profile.name,
     symbol: coin_profile.symbol,
@@ -1395,11 +1402,11 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     oracle.usd_price=usdRates;
     oracle.usdt_price=usdtRates;
     oracle.btc_price=btcRates;
-    oracle.ltc_price=ltcTrates;
-    oracle.eth_price=ethTrates;
-    oracle.bnb_price=bnbTrates;
-    oracle.doge_price=dogeTrates;
-    oracle.bsc_price=bscTrates;
+    oracle.ltc_price=ltcRates;
+    oracle.eth_price=ethRates;
+    oracle.bnb_price=bnbRates;
+    oracle.doge_price=dogeRates;
+    oracle.bsc_price=bscRates;
     oracle.xrp_price=xrpRates;
     res.json(oracle);
   };

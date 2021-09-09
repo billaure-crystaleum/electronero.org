@@ -1333,6 +1333,8 @@ router.get('/api', (req,res) => {
       console.log('after service calls');
 });
 
+// get nested objects 
+//  let testUSD = getNestedObject(oracle, [Object.keys(oracle)[0],'extra']).usd_price;
 const getNestedObject = require('../assets/js/utils.js'); 
 // oracle gets tracker API, then serve it's response. cool stuff
 // oracle -> get data = :from-:to:etc -> tracker -> client 
@@ -1383,20 +1385,17 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     tracker: coin_profile.tracker,
     oracle: coin_profile.oracle,
     extra: { 
-      usd_price: usdRates != undefined ? usdRates : usdRates != "undefined" ? usdRates : {}, 
-      usdt_price: usdtRates != "undefined" ? usdtRates : {}, 
-      btc_price: btcRates!= "undefined" ? btcRates : {}, 
-      ltc_price: ltcRates!= undefined ? ltcRates : {}, 
-      eth_price: ethRates!= undefined ?ethRates : {},
-      xrp_price: xrpRates!= undefined ? xrpRates : {}, 
-      bnb_price: bnbRates!= undefined ? bnbRates : {}, 
-      bsc_price: bscRates!= undefined ? bscRates : {}, 
+      usd_price: rateUSDformatCurrency != undefined ? rateUSDformatCurrency : rateUSDformatCurrency != "undefined" ? rateUSDformatCurrency : {}, 
+      usdt_price: rateUSDTformatCurrency != "undefined" ? rateUSDTformatCurrency : {}, 
+      btc_price: rateBTCformatCurrency!= "undefined" ? rateBTCformatCurrency : {}, 
+      ltc_price: rateLTCformatCurrency!= undefined ? rateLTCformatCurrency : {}, 
+      eth_price: rateETHformatCurrency!= undefined ?rateETHformatCurrency : {},
+      xrp_price: rateXRPformatCurrency!= undefined ? rateXRPformatCurrency : {}, 
+      bnb_price: rateBNBformatCurrency!= undefined ? rateBNBformatCurrency : {}, 
     }
    }
   };
-  //  let testUSD = getNestedObject(oracle, [Object.keys(oracle)[0],'extra']).usd_price;
-  //  console.log(testUSD);
-    res.json(oracle);
+  res.json(oracle);
   };
 
   // for (i = 0; i < array.length; i++) {}

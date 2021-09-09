@@ -1424,16 +1424,11 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     const base_pairs = ['BTC','LTC','ETH','XSC','ETNX']; 
     let requested_base_pairs = [ ];
     let requested_pairs = [ ];
-    let requested_currency = [ ];
     const req_params_from = req.params.from.toString().toUpperCase();
     const req_params_to = req.params.to.toUpperCase().split(",");
-    //console.log("BASE: ")
-    //console.log(requested_base_pairs);
     const currency_arr = req_params_from;
     const tracker = req.params.tracker;
-    // symbol === currency name from Coingecko later?
     let symbol = req_params_from;  
-    requested_currency.push(currency_arr);
     let coin_name;
       if(req_params_from === 'ETNX'){
         coin_name = 'electronero';
@@ -1451,9 +1446,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         coin_name = 'electronero';
       };
     const currency = coin_name.toString().toLowerCase();
-    //console.log("currency:"+currency);
     const swap_to = req_params_to.toString().toLowerCase();
-    //console.log(swap_to)
     const unformatted_pairs = req_params_to; 
     const partial = '%2C';
     var formatted_pairs = [];
@@ -1461,15 +1454,15 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
       let formattedPairs = unformatted_pairs[i].toLowerCase();
       formatted_pairs.push(formattedPairs);
     }; 
-    requested_base_pairs = formatted_pairs;
+    requested_base_pairs = req_params_from;
     if(coin_profile.tracker.toString() === 'coingecko'){
-      console.log("🔮oracle says... use coingekco API");
+      console.log("oracle says... use coingekco API");
       for (m=0;m<requested_base_pairs.length;m++){
         let from_to = req_params_from+"-"+requested_base_pairs[m].toLowerCase();
         requested_pairs.push(from_to);
       }
     };
-    const vs_currencies = formatted_pairs.join(partial).toString();
+    const vs_currencies = formatted_pairs.join('%2C').toString();
 	  console.log(vs_currencies);
     //console.log("vs_currencies:"+vs_currencies);   
     let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;

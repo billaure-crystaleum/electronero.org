@@ -28,7 +28,7 @@ rp(requestOptions).then(response => {
 // get nested objects 
 //  let testUSD = getNestedObject(oracle, [Object.keys(oracle)[0],'extra']).usd_price;
 const UtilityToolbox = require('../assets/js/utils.js'); 
-const getNestedObject = UtilityToolbox.getNestedObject(nestedObj, pathArr);
+const getNestedObject = UtilityToolbox.getNestedObject;
 // oracle gets tracker API, then serve it's response. cool stuff
 // oracle -> get data = :from-:to:etc -> tracker -> client 
 // 09/07/2021 the day electronero deployed an oracle... 

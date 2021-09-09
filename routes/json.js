@@ -1389,7 +1389,8 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     }
    };
    // Object.keys(oracle)[0]
-   let testUSD = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'extra'])
+   let testUSD = getNestedObject(oracle, [Object.keys(oracle)[0],'extra'])
+   console.log(testUSD);
    testUSD.usd_price=usdRates != "undefined" ? usdRates : {};
     // oracle.extra.usdt_price=usdtRates != "undefined" ? usdtRates : {};
     // oracle.extra.btc_price=btcRates!= "undefined" ? usdRates : {};

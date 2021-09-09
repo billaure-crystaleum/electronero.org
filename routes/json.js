@@ -1373,8 +1373,15 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     var rateBTCformatCurrency = CurrencyJS(btcRates, { symbol: '₿', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     var rateLTCformatCurrency = CurrencyJS(ltcTrates, { symbol: 'Ł', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     var rateETHformatCurrency = CurrencyJS(ethTrates, { symbol: 'Ξ', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
-    const oracle = { };
-    res.json(coin_profile);
+    // add rates to oracles coin_profile
+    coin_profile.usd_price=usdRates;
+    coin_profile.usdt_price=usdtRates;
+    coin_profile.btc_price=btcRates;
+    coin_profile.ltc_price=ltcTrates;
+    coin_profile.eth_price=ethTrates;
+    coin_profile.xrp_price=xrpRates;
+    const oracle = { "coin_profile" : coin_profile };
+    res.json(oracle);
   }
 
   // for (i = 0; i < array.length; i++) {}

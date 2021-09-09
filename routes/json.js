@@ -1425,10 +1425,10 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     let requested_base_pairs = [ ];
     let requested_pairs = [ ];
     let requested_currency = [ ];
-    let coingecko_pairs = [];    
+    let coingecko_pairs = [ ];
     const req_params_from = req.params.from.toString().toUpperCase();
     const req_params_to = req.params.to.toUpperCase().split(",");
-    let requested_base_pairs = req_params_to;
+    
     let coin_name;
       if(req_params_from === 'ETNX'){
         coin_name = 'electronero';
@@ -1449,30 +1449,32 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     //console.log("currency:"+currency);
     const swap_to = req_params_to.toString().toLowerCase();
     //console.log(swap_to)
-    const partial = '%2C';
-    var formatted_pairs = [];
-    for(i=0;i<unformatted_pairs.length;i++){
-      formatted_pairs.push(unformatted_pairs[i]);
-    }
     const unformatted_pairs = req_params_to; 
     const partial = '%2C';
     var formatted_pairs = [];
     for(i=0;i<unformatted_pairs.length;i++){
-      let formattedPairs = unformatted_pairs[i].toLowerCase();
-      formatted_pairs.push(formattedPairs);
-    }; 
+      let formatted = unformatted_pairs[i].toLowerCase();
+      formatted_pairs.push(formatted);
+    }
+    console.log("TRACKER: "+coin_profile.tracker);
     if(coin_profile.tracker === 'coingecko'){
       console.log("🔮oracle says... use coingekco API");
       for (m=0;m<requested_base_pairs.length;m++){
-        let coingecko_format = req_params_from+"-"+requested_base_pairs[m].toLowerCase();
+        let coingecko_format = requested_base_pairs[m].toLowerCase();
         coingecko_pairs.push(coingecko_format);
       }
     };
     const vs_currencies = formatted_pairs.join('%2C').toString();
 	  console.log(vs_currencies);
+    //console.log("vs_currencies:"+vs_currencies);
     let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
+    //console.log(api_to_call);
+    requested_base_pairs = req_params_to;
+    //console.log("BASE: ")
+    //console.log(requested_base_pairs);
     const currency_arr = req_params_from;
     const tracker = req.params.tracker;
+    // symbol === currency name from Coingecko later?
     let symbol = req_params_from;  
     requested_currency.push(currency_arr);
       for (j=0;j<requested_base_pairs.length;j++){
@@ -1495,8 +1497,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         usdt_price: 0,
         ltc_price: 0,
         tracker: tracker ? tracker : '',
-        oracle: api_to_call ? api_to_call : tracker,
-        extra: {},
+        oracle: api_to_call ? api_to_call : '',
       };
       //console.log(coin_profile);
       getCryptocurrency(coin_profile);

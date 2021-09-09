@@ -1369,7 +1369,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     var rateETHformatCurrency = CurrencyJS(ethRates, { symbol: 'Ξ', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     var rateXRPformatCurrency = CurrencyJS(xrpRates, { symbol: 'x', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
     var rateBNBformatCurrency = CurrencyJS(bnbRates, { symbol: 'B', separator: ',' }).format(); // "123456" => "123,456.00" ? Ξ Ł
-     console.log("BNB currency format: "+CurrencyJS(Rates, { fromCents: true, precision: 16, separator: ',' }).format()); // "123456" => "123456.00" =>  "123,456.00"
+     console.log("BNB currency format: "+CurrencyJS(ethRates, { symbol: 'Ł', fromCents: true, precision: 16, separator: ',' }).format()); // "123456" => "123456.00" =>  "123,456.00"
     // build oracles coin_profile
    const oracle = { "coin_profile" : {
     name: coin_profile.name,

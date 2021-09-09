@@ -1380,7 +1380,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     coin_profile.ltc_price=ltcTrates;
     coin_profile.eth_price=ethTrates;
     coin_profile.xrp_price=xrpRates;
-    const oracle = { "coin_profile" :
+    const oracle = { "coin_profile" : {
     name: coin_profile.name,
     symbol: coin_profile.symbol,
     pairs: requested_pairs,
@@ -1393,6 +1393,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     tracker: coin_profile.tracker,
     oracle: coin_profile.oracle,
     oracle_extra: { },
+    }
    };
     res.json(oracle);
   }

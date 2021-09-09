@@ -1385,7 +1385,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
           let resp = response.data;
           var r_serialized = circularJSON.stringify(resp);
           var r_unserialized = circularJSON.parse(r_serialized);
-          const coin_data = r_unserialized;
+          coin_data = r_unserialized;
           data_we_actually_got.push(json_obj);
           serveCryptocurrency(coin_profile, coin_data)
       } catch(e) {
@@ -1402,8 +1402,6 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     let requested_base_pairs = [ ];
     let requested_pairs = [ ];
     let requested_currency = [ ];
-    let swap_to = req_params_to.toString().toLowerCase();
-    let vs_currencies = swap_to.replace(',', "%2C");
     const req_params_from = req.params.from.toString().toUpperCase();
     const req_params_to = req.params.to.toUpperCase().split(",");
     
@@ -1424,8 +1422,16 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         coin_name = 'electronero';
       }
     var currency = coin_name.toString().toLowerCase();
+    //console.log("currency:"+currency);
+    let swap_to = req_params_to.toString().toLowerCase();
+    //console.log(swap_to)
+    var vs_currencies = swap_to.replace(',', "%2C");
+    //console.log("vs_currencies:"+vs_currencies);
     let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
+    //console.log(api_to_call);
     requested_base_pairs = req_params_to;
+    //console.log("BASE: ")
+    //console.log(requested_base_pairs);
     var currency_arr = req_params_from;
     let tracker = req.params.tracker;
     // symbol === currency name from Coingecko later?

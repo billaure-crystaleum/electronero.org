@@ -1423,7 +1423,6 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     const req_params_from = req.params.from.toString().toUpperCase();
     const req_params_to = req.params.to.toUpperCase().split(",");
     const swap_to = req_params_to.toString().toLowerCase();
-    const vs_currencies = swap_to.replace(',', "%2C");
     const currency_arr = req_params_from;
     const tracker = req.params.tracker;
     const symbol = req_params_from;  

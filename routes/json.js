@@ -1408,6 +1408,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
           var r_serialized = circularJSON.stringify(resp);
           var r_unserialized = circularJSON.parse(r_serialized);
           coin_data = r_unserialized; data_we_actually_got.push(cryptocurrency);
+          console.log(coin_data);
           serveCryptocurrency(coin_profile, coin_data);
         } catch(e) { cryptocurrency = response.data; console.log(e);
     }}).catch((error) => {console.log(error);

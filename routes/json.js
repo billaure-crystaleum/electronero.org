@@ -1385,7 +1385,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     vs_currencies: coin_profile.vs_currencies,
     tracker: coin_profile.tracker,
     oracle: coin_profile.oracle,
-    oracle_extra: { },
+    oracle_extra: { usd_price: 0, usdt_price: 0, xrp_price: 0, btc_price: 0, ltc_price: 0, bnb_price: 0, bsc_price: 0, doge_price: 0,},
     }
    };
     oracle.extra.usd_price=usdRates != undefined ? usdRates : {};

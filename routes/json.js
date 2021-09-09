@@ -1446,7 +1446,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         coin_name = 'electronero';
       }; 
     const currency = coin_name.toString().toLowerCase();
-      let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
+      let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+swap_to;
         requested_currency.push(currency_arr);
         for (j=0;j<requested_base_pairs.length;j++){
           let from_to = req_params_from+"-"+requested_base_pairs[j];

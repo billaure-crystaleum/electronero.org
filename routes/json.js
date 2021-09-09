@@ -1383,7 +1383,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     const oracle = { "coin_profile" : {
     name: coin_profile.name,
     symbol: coin_profile.symbol,
-    pairs: requested_pairs,
+    pairs: coin_profile.pairs,
     base: coin_profile.base,
     from: coin_profile.from,
     to: coin_profile.to,

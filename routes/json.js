@@ -1445,9 +1445,7 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     var currency = coin_name.toString().toLowerCase();
     let swap_to = req_params_to.toString().toLowerCase();
     var vs_currencies = swap_to.replace(',', "%2C");
-    if(coin_profile.tracker === 'coingecko'){
-      console.log("oracle says... use coingekco API");
-    }
+    t
     let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
     requested_base_pairs = req_params_to;
     var currency_arr = req_params_from;

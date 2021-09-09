@@ -1449,10 +1449,10 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     const partial = '%2C';
     var formatted_pairs = [];
     for(i=0;i<unformatted_pairs.length;i++){
-      formatted_pairs.push(unformatted_pairs[i].concat(partial).replace(',', ""));
+      formatted_pairs.push(unformatted_pairs[i]);
     }
-    const vs_currencies = formatted_pairs.toString().toLowerCase();
-    console.log(vs_currencies);
+    const vs_currencies = formatted_pairs.join('%2C').toString().toLowerCase();
+	  console.log(vs_currencies);
     //console.log("vs_currencies:"+vs_currencies);
     let api_to_call ='https://api.coingecko.com/api/v3/simple/price?ids='+currency+'&vs_currencies='+vs_currencies;
     //console.log(api_to_call);

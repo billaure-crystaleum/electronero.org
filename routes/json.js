@@ -1362,11 +1362,11 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     console.log(coin_profile.from + " LTC value: " + ltc_price);
     console.log(coin_profile.from + " ETH value: " + eth_price);
     let usdRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usd']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usd']) : 0;
-    let usdtRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usdt']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usd']) : 0;
-    let btcRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'btc']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usd']) : 0;
-    let ltcTrates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'ltc']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usd']) : 0;
-    let ethTrates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'eth']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usd']) : 0;
-    let xrpRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'xrp']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usd']) : 0;
+    let usdtRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usdt']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'usdt']) : 0;
+    let btcRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'btc']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'btc']) : 0;
+    let ltcTrates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'ltc']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'ltc']) : 0;
+    let ethTrates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'eth']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'eth']) : 0;
+    let xrpRates = getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'xrp']) != undefined ? getNestedObject(oracle_report, [Object.keys(oracle_report)[0],'xrp']) : 0;
     console.log("USD currency format: "+CurrencyJS(usdRates, { fromCents: true, precision: 0, separator: ',' }).format()); // "123456" => "123456.00" =>  "123,456.00"
     var rateUSDformatCurrency = CurrencyJS(usdRates, { symbol: '$', fromCents: true, precision: 0, separator: ',' }).format(); // "123456" => "123456.00" =>  "123,456.00"
     var rateUSDTformatCurrency = CurrencyJS(usdtRates, { symbol: '₮', fromCents: true, precision: 0, separator: ',' }).format(); // "123456" => "123456.00" =>  "123,456.00"

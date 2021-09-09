@@ -1380,7 +1380,20 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
     coin_profile.ltc_price=ltcTrates;
     coin_profile.eth_price=ethTrates;
     coin_profile.xrp_price=xrpRates;
-    const oracle = { "coin_profile" : coin_profile };
+    const oracle = { "coin_profile" :
+    name: coin_profile.name,
+    symbol: coin_profile.symbol,
+    pairs: requested_pairs,
+    base: coin_profile.base,
+    from: coin_profile.from,
+    to: coin_profile.to,
+    swap_from: coin_profile.swap_from,
+    swap_to: coin_profile.swap_to,
+    vs_currencies: coin_profile.vs_currencies,
+    tracker: coin_profile.tracker,
+    oracle: coin_profile.oracle,
+    oracle_extra: { },
+   };
     res.json(oracle);
   }
 
@@ -1458,13 +1471,9 @@ router.get('/oracle/:tracker/:from-:to', (req, res, next) => {
         swap_from: req.params.from.toString().toUpperCase(),
         swap_to: req.params.to.toString().toUpperCase(),
         vs_currencies: vs_currencies,
-        price: 0,
-        btc_price: 0,
-        eth_price: 0,
-        usdt_price: 0,
-        ltc_price: 0,
         tracker: tracker ? tracker : '',
         oracle: api_to_call ? api_to_call : '',
+        coin_extra: { },
       };
       //console.log(coin_profile);
       getCryptocurrency(coin_profile);

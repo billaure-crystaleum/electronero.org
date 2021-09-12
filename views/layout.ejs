@@ -1,6 +1,23 @@
 <%# views/layout.ejs %>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
+    <script>
+        if (window.location.protocol == 'http:') {
+        
+        console.log("you are accessing Electronero via "
+            +  "an insecure protocol (HTTP). "
+            + "Redirecting you to HTTPS.");
+              
+        window.location.href = 
+            window.location.href.replace(
+                       'http:', 'https:');
+    } 
+    else
+        (window.location.protocol == "https:") {
+            console.log("you are accessing Electronero via"
+                + " our secure HTTPS protocol.");
+        } 
+    </script>
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Electronero Network: EI-1.0 - legacy Cryptonote. EI-2.0 - Interchained XSC (BEP20/ERC20) & Electronero Smart Chain">

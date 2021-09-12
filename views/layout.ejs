@@ -2,21 +2,12 @@
 <!DOCTYPE html>
 <html lang="zxx" class="js">
     <script>
-        if (window.location.protocol == 'http:') {
-        
-        console.log("you are accessing Electronero via "
-            +  "an insecure protocol (HTTP). "
-            + "Redirecting you to HTTPS.");
-              
-        window.location.href = 
-            window.location.href.replace(
-                       'http:', 'https:');
-    } 
-    else
-        (window.location.protocol == "https:") {
-            console.log("you are accessing Electronero via"
-                + " our secure HTTPS protocol.");
-        } 
+    if (window.location.protocol == 'http:') {
+            console.log("you are accessing Electronero via "+"an insecure protocol (HTTP). "+"Redirecting you to HTTPS.");
+            window.location.href = window.location.href.replace('http:', 'https:');
+    } else {
+            console.log("you are accessing Electronero via"+ " our secure HTTPS protocol.");
+        };
     </script>
 <head>
     <meta charset="utf-8">

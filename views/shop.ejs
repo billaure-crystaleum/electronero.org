@@ -315,7 +315,7 @@
 
       <div class="clear"></div>
 
-      <div class="icon music exchanges">
+      <div class="icon music exchanges hide">
         <div class="icon-image"><img src="https://electronero.org/assets/images/folder.png" alt="icon"></div>  
         
         <div class="icon-tooltip"><div></div>
@@ -329,7 +329,7 @@
 
       <div class="clear"></div>
 
-      <div class="icon mosquito">
+      <div class="icon mosquito hide">
         <div class="icon-image">
           <!-- <div class="img"></div> -->
 		  <img src="https://electronero.org/assets/images/folder.png" alt="icon">
@@ -346,7 +346,7 @@
 
       <div class="clear"></div>
 
-      <div class="icon sun">
+      <div class="icon sun hide">
         <div class="icon-image"><div><img src="https://electronero.org/assets/images/folder.png" alt="icon"></div></div>  
         
         <div class="icon-tooltip"><div></div>
@@ -360,7 +360,7 @@
 
       <div class="clear"></div>
 
-      <div class="icon feather">
+      <div class="icon feather hide">
         <div class="icon-image"><img src="https://electronero.org/assets/images/folder.png" alt="icon"></div>  
         
         <div class="icon-tooltip"><div></div>
@@ -1417,6 +1417,7 @@ var mobTip;
 		    .load(onAssetsLoaded);
 
 		function onAssetsLoaded(){
+			
 			$(".timer").val(0).knob();
 
 			$("body").addClass("intro-animate showing-el");
@@ -2340,6 +2341,10 @@ var mobTip;
 	function getRandomInt(min, max) {
 	  return Math.floor(Math.random() * (max - min)) + min;
 	}
+	
+	window.addEventListener('load', function() {
+		$("#hide").hide();
+	  }, false);
     </script>
 
 

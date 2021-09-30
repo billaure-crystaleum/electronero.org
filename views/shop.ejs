@@ -39,8 +39,6 @@
 </style>
   <link rel="stylesheet" href="/assets/css/awaken.css?v=115">
   <body class="default">
-                <div class="face" id="face"></div>
-
     <!--cursor feather--> 
     <div id="feather"></div>    
     <!-- Final pop-up -->
@@ -75,7 +73,7 @@
     <div class="final-over"></div>
   
   
-    <div class="bottom-section ad">
+    <div class="bottom-section">
       <div class="bottom-section-inner">
         <div class="btn-browser">
           <div>
@@ -85,69 +83,197 @@
         </div>
       </div>
     </div> 
-  
+    
   <div id="window"></div>
+  
+  <!-- separator -->
+    
+  <a class="by-isadora" target="_blank" href="http://isadoradigitalagency.com/"></a>
   
   <div class="relax-off playing"></div>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/g/jquery@3.2.1,pixi.js@4.5.1,jquery.knob@1.2.13"></script>
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
-    <script type="text/javascript" >    
-  var isTouchDevice = 'ontouchstart' in document.documentElement;
-  var mobTip;
-  	var i,
-  	timer2;
-  	//functions
-  	var alarmAnimation,
-  	playAnimationMan;
+    <script type="text/javascript" >
+    
+	var isTouchDevice = 'ontouchstart' in document.documentElement;
+var mobTip;
+	var i,
+	timer2;
+	//functions
+	var leftpokeAnimation,
+	rightpokeAnimation,
+	centerpokeAnimation1,
+	centerpokeAnimation2,
+	laugh1Animation,
+	laugh2Animation,
+	laugh3Animation,
+	laugh4Animation,
+	sunAnimation,
+	mosquitoAnimation,
+	musicAnimation,
+	alarmAnimation,
+	playAnimationMan;
 
-  	//textures
-  	var	steps = [], 
-  	snoreTextures = [],
-  	manTextures = [],
-  	manTextures2 = [],
-  	leftpokeTextures = [],
-  	leftpokeTextures2 = [],
-  	rightpokeTextures = [],
-  	rightpokeTextures2 = [],
-  	centerpokeTextures = [],
-  	centerpokeTextures2 = [],
-  	centerpokeTextures3 = [],
-  	laughTextures1 = [],
-  	laughTextures2 = [],
-  	laughTextures3 = [],
-  	laughTextures4 = [],
-  	sunTextures = [],
-  	mosquitoTextures = [],
-  	musicTextures = [],
-  	alarmTextures = [],
-  	i,
-  	man,
-  	snore,
-  	snore2,
-  	leftpoke,
-  	rightpoke,
-  	centerpoke,
-  	laughpoke,
-  	sun,
-  	centerAn,
-  	defAn;
+	//textures
+	var	steps = [], 
+	snoreTextures = [],
+	manTextures = [],
+	manTextures2 = [],
+	leftpokeTextures = [],
+	leftpokeTextures2 = [],
+	rightpokeTextures = [],
+	rightpokeTextures2 = [],
+	centerpokeTextures = [],
+	centerpokeTextures2 = [],
+	centerpokeTextures3 = [],
+	laughTextures1 = [],
+	laughTextures2 = [],
+	laughTextures3 = [],
+	laughTextures4 = [],
+	sunTextures = [],
+	mosquitoTextures = [],
+	musicTextures = [],
+	alarmTextures = [],
+	i,
+	man,
+	snore,
+	snore2,
+	leftpoke,
+	rightpoke,
+	centerpoke,
+	laughpoke,
+	sun,
+	centerAn,
+	defAn;
 
-  	var turnMusic = false;
-  	//param
-  	var stage = new PIXI.Container();
-  	
-  	var width = 734;
-  	var height = 280;
-  	var renderer = new PIXI.CanvasRenderer(width, height, {transparent: true});
-  	
-  	var widthMan = 318;	
-  	var heightMan = 411;
-  	var stage2 = new PIXI.Container();
-  	var renderer2 = new PIXI.CanvasRenderer(widthMan, heightMan, {transparent: true});
+	var turnMusic = false;
+	//param
+	var stage = new PIXI.Container();
+	
+	var width = 734;
+	var height = 280;
+	var renderer = new PIXI.CanvasRenderer(width, height, {transparent: true});
+	
+	var widthMan = 318;	
+	var heightMan = 411;
+	var stage2 = new PIXI.Container();
+	var renderer2 = new PIXI.CanvasRenderer(widthMan, heightMan, {transparent: true});
 
-  	document.getElementById('final-man').appendChild(renderer2.view);
+	document.getElementById('final-man').appendChild(renderer2.view);
 
 
+	//Texture frames
+	function playAnimation(){
+		//snoring
+	//   for (i = 0; i < 28; i++){
+	//     snore = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     snoreTextures.push(snore);
+	//   }
+	//   //left poke
+	//   for (i = 28; i < 33; i++){
+	//     leftpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     leftpokeTextures.push(leftpoke);
+	//   }
+	//   //right poke
+	//   for (i = 33; i < 38; i++){
+	//     rightpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     rightpokeTextures.push(rightpoke);
+	//   }
+	//   //center poke
+	//   for (i = 38; i < 43; i++){
+	//     centerpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     centerpokeTextures.push(centerpoke);
+	//   }
+	//   //left poke 2
+	//   for (i = 43; i < 48; i++){
+	//     leftpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     leftpokeTextures2.push(leftpoke);
+	//   }
+	//   //right poke
+	//   for (i = 48; i < 53; i++){
+	//     rightpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     rightpokeTextures2.push(rightpoke);
+	//   }
+	//   //center poke 2
+	//   for (i = 53; i < 58; i++){
+	//     centerpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     centerpokeTextures2.push(centerpoke);
+	//   }  
+	//   //center poke 3
+	//   for (i = 58; i < 63; i++){
+	//     centerpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     centerpokeTextures3.push(centerpoke);
+	//   }    
+	//   //laugh 1
+	//   for (i = 63; i < 70; i++){
+	//     laughpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     laughTextures1.push(laughpoke);
+	//   }
+	//   //laugh 2
+	//   for (i = 70; i < 77; i++){
+	//     laughpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     laughTextures2.push(laughpoke);
+	//   }
+	//   //laugh 3
+	//   for (i = 77; i < 84; i++){
+	//     laughpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     laughTextures3.push(laughpoke);
+	//   }
+	//   //laugh 4
+	//   for (i = 84; i < 91; i++){
+	//     laughpoke = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     laughTextures4.push(laughpoke);
+	//   }
+
+	//   //sun
+	//   for (i = 91; i < 96; i++){
+	//     sun = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     sunTextures.push(sun);
+	//   }
+	//   //mosquito
+	//   for (i = 96; i < 100; i++){
+	//     sun = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     mosquitoTextures.push(sun);
+	//   }
+	//   //music
+	//   for (i = 100; i < 104; i++){
+	//     sun = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     musicTextures.push(sun);
+	//   }
+
+	//   //alarm
+	//   for (i = 104; i < 110; i++){
+	//     sun = PIXI.Texture.fromFrame('web ' + (i+1) + '.png');
+	//     alarmTextures.push(sun);
+	//   }
+
+		//defaultAnimation();
+	}
+
+	//default Animation
+	function defaultAnimation(){
+	  snore = new PIXI.extras.AnimatedSprite(snoreTextures);
+	 
+	  snore.animationSpeed = 0.131;
+	  snore.loop = true;
+
+	  snore.position.x = width/2;
+	  snore.position.y = height/2;
+	  snore.anchor.x = 0.5;
+	  snore.anchor.y = 0.5;
+
+	  snore.play();
+	//   $("#snore-sound")[0].volume = 1;
+
+	  if($(".relax-off").hasClass("playing")){	
+	  	// $("#snore-sound")[0].play();
+		}
+
+	  stage.addChild(snore);
+	  requestAnimationFrame(animate);
+	  defAn = true;
+
+	}
 
 		
 
@@ -230,104 +356,421 @@
 
 	rightpokeAnimation = function(){
 		if(defAn){
+			// snore.loop = false;
+			//snore.onComplete = function(){
+				// snore.destroy();
 
+				thisFunction();
+
+			 	defAn = false;
+			//}
 		}else{
 			thisFunction();
 		}
 		function thisFunction() {
-		  // start animating
-		  requestAnimationFrame(animate);
-
-		}
-	}
-	rightpokeAnimation2 = function(){
-		if(defAn){
-
-		}else{
-			thisFunction();
-		}
-		function thisFunction() {
-
+			// $("#snore-sound")[0].pause();
+			// $("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				// $("#pokeright")[0].play();
+		  }
+		// 	snore = new PIXI.extras.AnimatedSprite(rightpokeTextures);
+		//   snore.animationSpeed = 0.2;
+		
+		// 	snore.loop = false;
+		//   snore.play();
+		//   stage.addChild(snore);
 
 		  // start animating
 		  requestAnimationFrame(animate);
 			
+			// snore.onComplete = function(){
+			// 	snore.destroy();
+			// 	stepsAnimation();
 
+		 	// }
 		}
 	}
-	centerpokeAnimation1 = function(){
+	rightpokeAnimation2 = function(){
 		if(defAn){
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
 
+				thisFunction();
+
+			 	defAn = false;
+			//}
 		}else{
 			thisFunction();
 		}
 		function thisFunction() {
-			$("#snore-sound")[0].currentTime = 0;
+			// $("#snore-sound")[0].pause();
+			// $("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				// $("#pokeright2")[0].play();
+		  }
+		// 	snore = new PIXI.extras.AnimatedSprite(rightpokeTextures2);
+		//   snore.animationSpeed = 0.2;
+		
+		// 	snore.loop = false;
+		//   snore.play();
+		//   stage.addChild(snore);
 
 		  // start animating
 		  requestAnimationFrame(animate);
+			
+			// snore.onComplete = function(){
+			// 	snore.destroy();
+			// 	stepsAnimation();
 
+		 	// }
+		}
+	}
+	centerpokeAnimation1 = function(){
+		if(defAn){
+			// snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
+
+				thisFunction();
+
+			 	// defAn = false;
+			//}
+		}else{
+			thisFunction();
+		}
+		function thisFunction() {
+			// $("#snore-sound")[0].pause();
+			$("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				// $("#pokecenter1")[0].play();
+		  }
+		// 	snore = new PIXI.extras.AnimatedSprite(centerpokeTextures);
+		//   snore.animationSpeed = 0.2;
+		
+		// 	snore.loop = false;
+		//   snore.play();
+		//   stage.addChild(snore);
+
+		  // start animating
+		  requestAnimationFrame(animate);
+			
+			// snore.onComplete = function(){
+			// 	snore.destroy();
+			// 	stepsAnimation();
+
+		 	// }
 		}
 	}
 
 	centerpokeAnimation2 = function(){
 		if(defAn){
+			// snore.loop = false;
+			//snore.onComplete = function(){
+				// snore.destroy();
 
+				thisFunction();
+
+			 	defAn = false;
+			//}
 		}else{
 			thisFunction();
 		}
 		function thisFunction() {
+			// $("#snore-sound")[0].pause();
+			// $("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				// $("#pokecenter2")[0].play();
+		  }
 
+		// 	snore = new PIXI.extras.AnimatedSprite(centerpokeTextures2);
+		//   snore.animationSpeed = 0.2;
+		
+		// 	snore.loop = false;
+		//   snore.play();
+		//   stage.addChild(snore);
 
 		  // start animating
 		  requestAnimationFrame(animate);
 			
+			// snore.onComplete = function(){
+			// 	snore.destroy();
+			// 	stepsAnimation();
 
+		 	// }
 		}
 	}
 
 	centerpokeAnimation3 = function(){
 		if(defAn){
-	
+			// snore.loop = false;
+			//snore.onComplete = function(){
+				// snore.destroy();
+
+				thisFunction();
+
+			 	// defAn = false;
+			//}
 		}else{
 			thisFunction();
 		}
 		function thisFunction() {
+			// $("#snore-sound")[0].pause();
 			$("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				// $("#pokecenter2")[0].play();
+		  }
+
+		// 	snore = new PIXI.extras.AnimatedSprite(centerpokeTextures3);
+		//   snore.animationSpeed = 0.2;
+		
+		// 	snore.loop = false;
+		//   snore.play();
+		//   stage.addChild(snore);
+
 		  // start animating
 		  requestAnimationFrame(animate);
 			
+			// snore.onComplete = function(){
+			// 	snore.destroy();
+			// 	stepsAnimation();
+
+		 	// }
 		}
 	}
 
 	laugh1Animation = function(){
 		if(defAn){
+			// snore.loop = false;
+			//snore.onComplete = function(){
+				// snore.destroy();
 
+				thisFunction();
+
+			 	defAn = false;
+			//}
 		}else{
 			thisFunction();
 		}
 		function thisFunction() {
+			// $("#snore-sound")[0].pause();
+			// $("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				// $("#laugh1")[0].play();
+		  }
+
+		// 	snore = new PIXI.extras.AnimatedSprite(laughTextures1);
+		//   snore.animationSpeed = 0.2;
+		
+		// 	snore.loop = false;
+		//   snore.play();
+		//   stage.addChild(snore);
 
 		  // start animating
 		  requestAnimationFrame(animate);
 					}
 	}
 	laugh2Animation = function(){
+		if(defAn){
+			// snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
 
+				thisFunction();
+
+			 	defAn = false;
+			//}
+		}else{
+			thisFunction();
+		}
+		function thisFunction() {
+			// $("#snore-sound")[0].pause();
+			$("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				// $("#laugh2")[0].play();
+		  }
+
+			snore = new PIXI.extras.AnimatedSprite(laughTextures2);
+		  snore.animationSpeed = 0.2;
+		
+			snore.loop = false;
+		  snore.play();
+		  stage.addChild(snore);
+
+		  // start animating
+		  requestAnimationFrame(animate);
+			
+			snore.onComplete = function(){
+				snore.destroy();
+				stepsAnimation();
+
+		 	}
+		}
 	}
 	laugh3Animation = function(){
+		if(defAn){
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
 
+				thisFunction();
+
+			 	defAn = false;
+			//}
+		}else{
+			thisFunction();
+		}
+		function thisFunction() {
+			// $("#snore-sound")[0].pause();
+			$("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				// $("#laugh3")[0].play();
+		  }
+			snore = new PIXI.extras.AnimatedSprite(laughTextures3);
+		  snore.animationSpeed = 0.2;
+		
+			snore.loop = false;
+		  snore.play();
+		  stage.addChild(snore);
+
+		  // start animating
+		  requestAnimationFrame(animate);
+			
+			snore.onComplete = function(){
+				snore.destroy();
+				stepsAnimation();
+
+		 	}
+		}
 	}
 
 	laugh4Animation = function(){
+		if(defAn){
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
+
+				thisFunction();
+
+			 	defAn = false;
+			//}
+		}else{
+			thisFunction();
+		}
+		function thisFunction() {
+			// $("#snore-sound")[0].pause();
+			$("#snore-sound")[0].currentTime = 0;
+			if($(".relax-off").hasClass("playing")){
+				// $("#laugh4")[0].play();
+		  }
+
+			snore = new PIXI.extras.AnimatedSprite(laughTextures4);
+		  snore.animationSpeed = 0.2;
+		
+			snore.loop = false;
+		  snore.play();
+		  stage.addChild(snore);
+
+		  // start animating
+		  requestAnimationFrame(animate);
+			
+			snore.onComplete = function(){
+				snore.destroy();
+				stepsAnimation();
+
+		 	}
+		}
 	}
 
 	sunAnimation = function(){
+		if(defAn){
+			//alert(1);
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
 
+				thisFunction();
+
+			 	defAn = false;
+			//}
+		}else{
+			thisFunction();
+		}
+		function thisFunction() {
+			// $("#snore-sound")[0].pause();
+			$("#snore-sound")[0].currentTime = 0;
+
+			snore = new PIXI.extras.AnimatedSprite(sunTextures);
+			if($(".relax-off").hasClass("playing")){
+				// $("#sunanimationsound")[0].play();
+		  }
+			
+		  snore.animationSpeed = 0.08;
+		
+			snore.loop = true;
+
+		  snore.play();
+		  
+		  stage.addChild(snore);
+
+		  // start animating
+		  requestAnimationFrame(animate);
+
+
+		  setTimeout(function(){
+				snore.loop = false;
+		  },2000);
+
+			setTimeout(function(){
+		  	$("body").addClass("putOnMask");
+		  	if($(".relax-off").hasClass("playing")){
+					// $("#move")[0].play();
+			  }
+			},1000);
+
+			snore.onComplete = function(){			
+				snore.destroy();
+
+				stepsAnimation();
+				// $("#sunanimationsound")[0].pause();
+				// $("#sunanimationsound")[0].currentTime = 0;
+				
+		 	}
+		}
 	}
 
 	mosquitoAnimation = function(){
+		if(defAn){
+			snore.loop = false;
+			//snore.onComplete = function(){
+				snore.destroy();
 
+				thisFunction();
+
+			 	defAn = false;
+			//}
+		}else{
+			thisFunction();
+		}
+		function thisFunction() {
+			// $("#snore-sound")[0].pause();
+			// $("#snore-sound")[0].currentTime = 0;
+			snore = new PIXI.extras.AnimatedSprite(mosquitoTextures);
+		  snore.animationSpeed = 0.2;
+		
+			snore.loop = true;
+		  snore.play();
+		  stage.addChild(snore);
+
+		  // start animating
+		  requestAnimationFrame(animate);
+			
+			snore.onComplete = function(){
+				snore.destroy();
+				stepsAnimation();
+
+		 	}
+		}
 	}
 
 	musicAnimation = function(){
@@ -439,17 +882,23 @@
 		}
 	}
 
-	function stepsAnimation(){		
+	function stepsAnimation(){
+		
 		if(steps[0]){
 			var fn = window[steps[0]];
 			if(typeof fn === 'function') {
 
 			  fn();
 			}
+
 			steps.splice(0, 1);
+
 		}else{
+			//defaultAnimation();
 			progres = true;
 		}
+
+
 	}	
 
 
@@ -528,6 +977,10 @@
 			$(".second").attr("data-width", "500");
 			$(".second").attr("data-height", "500")
 		}
+
+		
+
+
 		$("body").show();
 
 		if(!isTouchDevice){
@@ -540,6 +993,8 @@
 			  event.preventDefault();
 			}
 		}
+
+
 		jQuery(".try-again").on("click", function(){
 			
 			clearTimeout(timer2);
@@ -552,7 +1007,14 @@
 	      	"resetValue" : "60",
 	      	"fgColor":"#b0cfff"
 	    	}
-			);			
+			);
+
+			if($(".relax-off").hasClass("playing")){	
+				// $("#relax-sound")[0].play();
+				// $("#snore-sound")[0].play();
+				
+		  }
+			
 			$('.timer').removeClass("end-time");
 			$("body").removeClass("popup-show");
 			man.destroy();
@@ -571,7 +1033,14 @@
 	      	"resetValue" : "60",
 	      	"fgColor":"#b0cfff"
 	    	}
-			);			
+			);
+
+			if($(".relax-off").hasClass("playing")){	
+				// $("#relax-sound")[0].play();
+				// $("#snore-sound")[0].play();
+				
+		  }
+			
 			$('.timer').removeClass("end-time");
 			$("body").removeClass("popup-show");
 
@@ -619,7 +1088,10 @@
 			  	}
 			  }
 			}else if($("body").hasClass("bg-feather")){
-				centerAn = getRandomInt(1, 5);				
+				//$("body").addClass("taped");
+
+				centerAn = getRandomInt(1, 5);
+				
 				if(centerAn == 1){
 					addSteps("laugh1Animation");
 				}else if(centerAn == 2){
@@ -637,19 +1109,32 @@
 				
 			}*/
 		});
+		
+		//document.body.appendChild(renderer.view);
+		//console.log(renderer);
+
 		document.getElementById('face').appendChild(renderer.view);
+
+		// create the root of the scene graph
+
 		PIXI.loader
-		    .add(['json/man.json'])
+		    .add(['json/snoreNEW2.json', 'json/man.json'])
 		    .load(onAssetsLoaded);
+
 		function onAssetsLoaded(){
 			$(".timer").val(0).knob();
+
 			$("body").addClass("intro-animate showing-el");
+
 			setTimeout(function(){
 				$("body").addClass("intro-animate-second");
 				$("body").removeClass("intro-animate");
 				setTimeout(function(){
 					$("body").addClass("load-icons");
 					$("body").removeClass("intro-animate-second");
+					
+					
+
 					setTimeout(function(){
 						$("body").addClass("load-timer");	
 						$("body").addClass("load-ready");
@@ -661,18 +1146,42 @@
 								$("body").addClass("load-click");
 								setTimeout(function(){
 									if($("body").hasClass("hover")){
+										
+
 									}else{
 										var startAnimation = true;
 										$(".intro").on("touchend", function(){
 											if(startAnimation){
 												startAnimation = false;
+												//alert($(window).height());
+												if($(".relax-off").hasClass("playing")){	
+													// $("#time-end")[0].play();
+											  }
+												// $("#time-end")[0].pause();
+												if($(".relax-off").hasClass("playing")){	
+													// $("#end")[0].play();
+											  }
+												// $("#end")[0].pause();
+												if($(".relax-off").hasClass("playing")){	
+													// $("#mosquito-slap")[0].play();
+											  }
+												// $("#mosquito-slap")[0].pause();
+												if($(".relax-off").hasClass("playing")){	
+													// $("#mosquitoanimationsound")[0].play();
+												}
+												// $("#mosquitoanimationsound")[0].pause();
+
+												
 												$("body").addClass("load-desktop");
 												$(".browser").show();
 												$(".facke-timer").hide();
+												//stop
 												circularTimer(1);  
+
 												$(".relax").addClass("playing")
 												var audio = $("#relax-sound");
-                        playAnimationMan();
+
+												playAnimation();
 											}
 										})
 
@@ -1536,7 +2045,6 @@
 	function getRandomInt(min, max) {
 	  return Math.floor(Math.random() * (max - min)) + min;
 	}
-
     </script>
 
 

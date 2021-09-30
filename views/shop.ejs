@@ -672,7 +672,7 @@
 												circularTimer(1);  
 												$(".relax").addClass("playing")
 												var audio = $("#relax-sound");
-												playAnimation();
+                        setTimeout(playAnimationMan, 3000);
 											}
 										})
 
@@ -1537,7 +1537,6 @@
 	  return Math.floor(Math.random() * (max - min)) + min;
 	}
 
-  setTimeout(playAnimationMan, 3000)
     </script>
 
 

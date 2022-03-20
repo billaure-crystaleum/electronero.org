@@ -43,9 +43,9 @@ function googleTranslateElementInit() {
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <!-- Header -->
     <header class="site-header is-sticky">
-    <video id="background-video" autoplay loop muted>
-      <source src="#" type="video/mp4">
-    </video>
+    <!-- <video id="background-video" autoplay loop muted> -->
+     <!-- <source src="#" type="video/mp4"> -->
+    <!-- </video> -->
         <!-- Place Particle Js -->
         <div id="particles-js" class="particles-container particles-js"></div>
     <style> 
@@ -382,11 +382,11 @@ function googleTranslateElementInit() {
                                 <h3 style="color:#fff" class='interchained hone'>Electronero 2.0: Electronero Smart Chain & Interchained XSC
                                 </h3>
                                 <p style="color:#000" class='hone interchained-light'>
-                                    Deposit $ETNX, $ETNXP, or $LTNX now to <a class="hclick" href="https://webnero.electronero.org/"></a>Webnero</a> to claim your free $CRFI!
-                                    <br>$CRFI Swap started on 09/09/2021! $CRFI is being perpetually airdropped to <u>Webnero</u> members and participating exchanges holding $ETNX, $ETNXP, or $LTNX. <br>Login to Webnero and get a swap estimate to see how much $CRFI you could claim, and read full details about how the airdrop swap rates are calculated on <a href="https://electronero.org/swap"></a>Swap panel</a>. The airdrop & swap program is free for Electronero Network members to participate, join Webnero now to claim your members-only benefits.
+                                    Deposit ETNX, ETNXP, LTNX, GLDX, CRFI to <a class="hclick" href="https://webnero.electronero.org/"></a>Webnero</a> to claim CRYSTAL!
+                                    <br>Crystaleum main net operations started on 09/09/2019! CRFI and CRYSTAL are available to <u>Webnero</u> members, and participating exchanges for holding Electronero (EI-1.0) native coins. <br>Login to Webnero and get a swap estimate to see how much CRFI/CRYSTAL you could claim, and read full details about how the airdrop swap rates are calculated on <a href="https://electronero.org/swap"></a>Swap panel</a>. The airdrop & swap program is free for Electronero Network members to participate, join Webnero now to claim your members-only benefits.
                                 </p>
-                                <div class="countdown-box text-center interchained"><h2 style="color:#fefefe" align="center">$CRFI Swap</h2>
-                                    <div class="token-countdown d-flex align-content-stretch" data-date="2021/10/10"></div> <!-- .col -->
+                                <div class="countdown-box text-center interchained"><h2 style="color:#fefefe" align="center">Crystaleum</h2>
+                                    <div class="token-countdown d-flex align-content-stretch" data-date="09/09/2019"></div> <!-- .col -->
                                  
                                 <ul class="social" align="center">
                                     <li><a class="hclick" target="_blank" href="https://t.me/electronero"><em class="fab fa-telegram"></em></a></li>
@@ -425,7 +425,7 @@ function googleTranslateElementInit() {
                                 <div align="center" class="col-md-3 col-sm-3 col-lg-3"><br></div>
                                 <div align="center" class="col-md-2 col-sm-2 col-lg-2"><br></div>
                                 <div align="center" class="col-md-8 col-sm-8 col-lg-8">
-                                <p style="color:#000" class='hone interchained-light'>Deploy XRC-20 Tokens, Smart Contracts, Stake legacy Electronero, <a class="hclick" href="https://electroneum.org">Electroneum</a>, <a href="https://getmonero.org">Monero</a>, and affiliate Cryptonote coins or Electronero Smart Chain $XSC and all "xAsset" tokens! Add Liquidity to Pools on <a href="https://apewwap.finance">ApeSwap</a>, <a href="https://pancakeswap.finance">Pancakeswap</a>, <a href="https://app.uniswap.org">Uniswap</a>. Yield Farming featuring legacy Electronero, Electroneum, Monero, affiliate Cryptonote, EI-2.0 XRC-20 tokens, Ethereum ERC-20, Binance-Smart-Chain BEP-20, and Cosmos tokens. Polygon/Tron token intergrations in development. Get involved with Electronero 2.0: Interchained!
+                                <p style="color:#000" class='hone interchained-light'>Deploy ERC-20 Tokens, Smart Contracts, Stake legacy Electronero, <a class="hclick" href="https://electroneum.org">Electroneum</a>, <a href="https://getmonero.org">Monero</a>, and affiliate Cryptonote coins or Crystaleum CRYSTAL, Electronero Smart Chain XSC and all "xAsset" tokens! Add Liquidity to Pools on <a href="https://apewwap.finance">ApeSwap</a>, <a href="https://pancakeswap.finance">Pancakeswap</a>, <a href="https://app.uniswap.org">Uniswap</a>. Yield Farming featuring legacy Electronero, Electroneum, Monero, affiliate Cryptonote, EI-2.0 ERC-20 tokens, Ethereum/Polygon ERC-20, Binance-Smart-Chain BEP-20, and Aquachain tokens. Polygon/Tron token intergrations in development. Get involved with Electronero 2.0: Interchained!
                                 </p></div>
                                 <div align="center" class="col-md-2 col-sm-2 col-lg-2"></div>
                                 </div>                
@@ -546,36 +546,36 @@ function googleTranslateElementInit() {
     <!-- End Section -->
     
     <script>
-        window.addEventListener('DOMContentLoaded', (event) => {
-      $('nav').hide();
-      $("#preloader").show();
-      setTimeout(() => {
-          $("#preloader").hide();
-        }, 5000);
-      $("#header-2").hide(); // hide the fixed navbar initially
-      var topofDiv = $(".ad").offset().top; //gets offset of header
-      var height = $(".ad").outerHeight(); //gets height of header
-      $(window).scroll(function(){
-          if($(window).scrollTop() > (topofDiv + height)){
-             $("nav").show();
-            }
-          else{
-             $("nav").hide();
-          }
+     window.addEventListener('DOMContentLoaded', (event) => {
+          $('nav').hide();
+          $("#preloader").show();
+          setTimeout(() => {
+              $("#preloader").hide();
+            }, 5000);
+          $("#header-2").hide(); // hide the fixed navbar initially
+          var topofDiv = $(".ad").offset().top; //gets offset of header
+          var height = $(".ad").outerHeight(); //gets height of header
+          $(window).scroll(function(){
+              if($(window).scrollTop() > (topofDiv + height)){
+                 $("nav").show();
+                }
+              else{
+                 $("nav").hide();
+              }
+          });
       });
-      
-      // next 
+        // next 
         // function to generate random int inside a given range
-        function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
-        var video = document.getElementById('background-video');
-        var sources = video.getElementsByTagName('source');
-        var videoUrlsMp4=["https://electronero.org/assets/video/electronero_2-20.mp4", "https://electronero.org/assets/video/electronero_3-20.mp4", "https://electronero.org/assets/video/electronero_4-20.mp4", "https://electronero.org/assets/video/electronero_5-20.mp4"];
-        var random_int = getRandomInt(0, videoUrlsMp4.length-1);
-        sources[0].src = videoUrlsMp4[random_int];
-        video.load();
-        });
+        // function getRandomInt(min, max) {
+        // return Math.floor(Math.random() * (max - min + 1)) + min;
+        // }
+        // var video = document.getElementById('background-video');
+        // var sources = video.getElementsByTagName('source');
+        // var videoUrlsMp4=["https://electronero.org/assets/video/electronero_2-20.mp4", "https://electronero.org/assets/video/electronero_3-20.mp4", "https://electronero.org/assets/video/electronero_4-20.mp4", "https://electronero.org/assets/video/electronero_5-20.mp4"];
+        // var random_int = getRandomInt(0, videoUrlsMp4.length-1);
+        // sources[0].src = videoUrlsMp4[random_int];
+        // video.load();
+        
     </script>
     
     <script>
